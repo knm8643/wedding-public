@@ -1,14 +1,57 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="ko">
   <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/wedding-public/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vite App</title>
-    <script type="module" crossorigin src="/wedding-public/assets/index-GMPOITAb.js"></script>
-    <link rel="stylesheet" crossorigin href="/wedding-public/assets/index-CrXw9O2d.css">
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width,initial-scale=1.0">
+      <title>모바일초대장 & 충림</title>
+
+      <!-- 검색관련 메타태그 -->
+      <meta name="description" content="모바일청첩장으로 특별한 날을 준비하세요. 손쉽게 공유하고, 세련된 디자인으로 인사말, 오시는 길, 사진 등을 담아보세요.">
+      <meta name="keywords" content="모바일청첩장, 청첩장, 결혼식, 초대장, 결혼사진, 예식장">
+      <meta name="author" content="충림">
+      <meta name="robots" content="index, follow">
+      <!-- SNS공유용 -->
+      <meta property="og:title" content="모바일청첩장 | 충림">
+      <meta property="og:description" content="모바일청첩장으로 특별한 날을 준비하세요. 세련된 디자인과 쉬운 공유!">
+      <meta property="og:image" content="favicon.png">
+      <meta property="og:url" content="https://chungrimi.com">
+      <meta property="og:type" content="website">
+      <link rel="icon" href="favicon.png">
+
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-NXG74W1M6M"></script>
+      <script>
+          if(!location.href.includes('localhost')) {
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-NXG74W1M6M');
+          }
+      </script>
+
+      <!-- 카카오톡 문의 및 맵관련 -->
+      <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js"
+              integrity="sha384-DKYJZ8NLiK8MN4/C5P2dtSmLQ4KwPaoqAfyA/DfmEc1VDxu4yyC7wy6K1Hs90nka" crossorigin="anonymous"></script>
+      <script>
+          Kakao.init('7a00e839ba07cfb660f1cfc019bdd08b');
+      </script>
+      <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=7a00e839ba07cfb660f1cfc019bdd08b&libraries=services"></script>
+
+      <!-- 이메일 보내기 -->
+      <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+      <!-- 공용 CSS -->
+      <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+      <link
+              rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"
+      />
+    <script type="module" crossorigin src="/wedding-public/assets/index-DwehfGML.js"></script>
+    <link rel="stylesheet" crossorigin href="/wedding-public/assets/index-DcWdtJy1.css">
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app"></div>
   </body>
 </html>
