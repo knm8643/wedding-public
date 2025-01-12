@@ -16,7 +16,7 @@
             v-for="(slide, index) in slides"
             :key="index"
             class="slide"
-            :style="getSlideStyle(index, currentSlide)"
+            :style="getSlideStyle(index)"
             :data-current="currentSlide === index ? true : undefined"
             :data-next="currentSlide === (index - 1 + slides.length) % slides.length ? true : undefined"
             :data-previous="currentSlide === (index + 1) %  slides.length ? true : undefined"
@@ -85,12 +85,12 @@
 
   <!-- Support Links -->
   <div class="support">
-    <a href="https://twitter.com/DevLoop01" target="_blank">
+    <a href="https://pf.kakao.com/_xjmCjn/chat" target="_blank">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+        <path d="M12 2C6.5 2 2 6.03 2 10.93c0 2.73 1.67 5.14 4.2 6.61-.2.8-.52 2.03-.75 2.92-.14.56.39.56.67.41 1.2-.65 2.57-1.67 3.1-2 .98.2 2.02.32 3.08.32 5.5 0 10-4.03 10-8.93C22 6.03 17.5 2 12 2z" />
       </svg>
     </a>
-    <a href="https://github.com/devloop01/voyage-slider" target="_blank">
+    <a @click="sendUrlGit">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
         <path d="M9 18c-4.51 2-5-2-7-2" />
@@ -115,6 +115,7 @@ import img1 from "@/assets/images/01.jpg";
 import img2 from "@/assets/images/02.jpg";
 import img3 from "@/assets/images/03.jpg";
 import img4 from "@/assets/images/04.jpg";
+import img5 from "@/assets/images/05.jpg";
 
 export default {
   components: {MobilePopup},
@@ -145,29 +146,37 @@ export default {
           description: "A design that blossoms with love and grace.",
           image: img4,
         },
+        // {
+        //   title: "Love in Full Bloom",
+        //   subtitle: "Gracefully Designed",
+        //   description: "A design that blossoms with love and grace.",
+        //   image: img5,
+        // },
       ],
       currentSlide: 0,
       imagesLoaded: false,
       loadingProgress: 0,
-      isPopupVisible: false
+      isPopupVisible: false,
+      currentFlag: ''
     };
   },
   methods: {
     goToNextSlide() {
       this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+      this.currentFlag = 'next';
     },
     goToPreviousSlide() {
       this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+      this.currentFlag = 'previous';
     },
-    getSlideStyle(index, currentSlide) {
-      console.log(index, currentSlide)
-      var zIndex = 0;
+    getSlideStyle(index) {
+      let zIndex = 0;
       if (this.currentSlide === index) {
-        zIndex = 20
-      } else if (this.currentSlide === (index + 1) % this.slides.length) {
-        zIndex = 10; // 다음 슬라이드
-      } else if (this.currentSlide === (index - 1 + this.slides.length) % this.slides.length) {
-        zIndex = 30; // 이전 슬라이드
+        zIndex = 20;
+      }else if (index === (this.currentSlide + 1) % this.slides.length) {
+        zIndex = this.currentFlag === 'next' ? 10 : 30;
+      }else if (index === (this.currentSlide - 1 + this.slides.length) % this.slides.length) {
+        zIndex = this.currentFlag === 'next' ? 30 : 10;
       }
       return { zIndex: zIndex };
     },
@@ -185,11 +194,15 @@ export default {
         imagesLoaded({ src }, () => {
           loadedCount++;
           this.loadingProgress = Math.round((loadedCount / images.length) * 100);
+          console.log(this.loadingProgress)
           if (loadedCount === images.length) {
             this.imagesLoaded = true;
           }
         });
       });
+    },
+    sendUrlGit() {
+        window.open('https://github.com/knm8643', '_blank');
     },
     openMoblie() {
       this.isPopupVisible = true;
