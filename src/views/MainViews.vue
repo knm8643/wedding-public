@@ -17,13 +17,13 @@
             :key="index"
             class="slide"
             :style="getSlideStyle(index)"
-            :data-current="currentSlide === index ? true : undefined"
-            :data-next="currentSlide === (index - 1 + slides.length) % slides.length ? true : undefined"
-            :data-previous="currentSlide === (index + 1) %  slides.length ? true : undefined"
+            :data-current="slides.length > 1 &&  currentSlide === index ? true : undefined"
+            :data-next="slides.length > 1 &&  currentSlide === (index - 1 + slides.length) % slides.length ? true : undefined"
+            :data-previous="slides.length > 1 &&  currentSlide === (index + 1) %  slides.length ? true : undefined"
         >
           <div class="slide__inner">
             <div class="slide--image__wrapper">
-              <img class="slide--image" :src="slide.image" :alt="slide.title" />
+              <img class="slide--image" :src="slide.image" :alt="slide.title"/>
             </div>
           </div>
         </div>
@@ -72,8 +72,9 @@
 
     <!-- Next Button -->
     <button class="slider--btn slider--btn__next" @click="goToNextSlide">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="m9 18 6-6-6-6" />
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m9 18 6-6-6-6"/>
       </svg>
     </button>
   </div>
@@ -86,23 +87,65 @@
   <!-- Support Links -->
   <div class="support">
     <a href="https://pf.kakao.com/_xjmCjn/chat" target="_blank">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2C6.5 2 2 6.03 2 10.93c0 2.73 1.67 5.14 4.2 6.61-.2.8-.52 2.03-.75 2.92-.14.56.39.56.67.41 1.2-.65 2.57-1.67 3.1-2 .98.2 2.02.32 3.08.32 5.5 0 10-4.03 10-8.93C22 6.03 17.5 2 12 2z" />
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path
+            d="M12 2C6.5 2 2 6.03 2 10.93c0 2.73 1.67 5.14 4.2 6.61-.2.8-.52 2.03-.75 2.92-.14.56.39.56.67.41 1.2-.65 2.57-1.67 3.1-2 .98.2 2.02.32 3.08.32 5.5 0 10-4.03 10-8.93C22 6.03 17.5 2 12 2z"/>
       </svg>
     </a>
     <a @click="sendUrlGit">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-        <path d="M9 18c-4.51 2-5-2-7-2" />
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path
+            d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+        <path d="M9 18c-4.51 2-5-2-7-2"/>
       </svg>
     </a>
   </div>
+
+  <!-- popUp -->
   <MobilePopup v-if="isPopupVisible" :current="currentSlide">
-    <div>
-      <h1>{{ slides[currentSlide].title }}</h1>
-      <p>{{ slides[currentSlide].description }}</p>
+    <div class="main-pop-wrap">
       <button class="close-btn" @click="closePopup">X</button>
-      <img :src="slides[currentSlide].image" alt="Slide Image" style="width: 100%; height: auto;" />
+
+      <!-- type 0 -->
+      <div v-if="currentSlide === 0" class="main-pop-font">
+        <h2>핑크 봄향기 타입</h2>
+        <p>봄의 느낌을 물씬 줄수있는 아름다운 느낌</p>
+      </div>
+      <!-- type 1 -->
+      <div v-if="currentSlide === 1" class="main-pop-font">
+        <h2>산뜻한 가을 타입</h2>
+        <p>가을 낙엽을 느낄수 있는 산뜻한 느낌</p>
+      </div>
+      <!-- type 2 -->
+      <div v-if="currentSlide === 2" class="main-pop-font">
+        <h2>추위를 물씬 느끼는 타입</h2>
+        <p>강한남자만이 느낄 수 있는</p>
+      </div>
+
+      <!-- 공통 아이콘 -->
+      <div class="main-pop-icon">
+        <!-- 모바일 사이즈 보기 -->
+        <a @click="onMobile">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="7" y="2" width="10" height="20" rx="2" ry="2"></rect>
+            <line x1="12" y1="18" x2="12" y2="18"></line>
+          </svg>
+        </a>
+        <!-- 링크복사하기 -->
+        <a @click="copyLink">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="5" r="3"></circle>
+            <circle cx="6" cy="12" r="3"></circle>
+            <circle cx="18" cy="19" r="3"></circle>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+          </svg>
+        </a>
+      </div>
     </div>
   </MobilePopup>
 </template>
@@ -140,12 +183,12 @@ export default {
           description: "Start your journey with an elegant touch.",
           image: img3,
         },
-        {
-          title: "Love in Full Bloom",
-          subtitle: "Gracefully Designed",
-          description: "A design that blossoms with love and grace.",
-          image: img4,
-        },
+        // {
+        //   title: "Love in Full Bloom",
+        //   subtitle: "Gracefully Designed",
+        //   description: "A design that blossoms with love and grace.",
+        //   image: img4,
+        // },
         // {
         //   title: "Love in Full Bloom",
         //   subtitle: "Gracefully Designed",
@@ -173,12 +216,12 @@ export default {
       let zIndex = 0;
       if (this.currentSlide === index) {
         zIndex = 20;
-      }else if (index === (this.currentSlide + 1) % this.slides.length) {
+      } else if (index === (this.currentSlide + 1) % this.slides.length) {
         zIndex = this.currentFlag === 'next' ? 10 : 30;
-      }else if (index === (this.currentSlide - 1 + this.slides.length) % this.slides.length) {
+      } else if (index === (this.currentSlide - 1 + this.slides.length) % this.slides.length) {
         zIndex = this.currentFlag === 'next' ? 30 : 10;
       }
-      return { zIndex: zIndex };
+      return {zIndex: zIndex};
     },
     getBackgroundDirection(index) {
       if (index === this.currentSlide) return "current";
@@ -191,18 +234,31 @@ export default {
       let loadedCount = 0;
 
       images.forEach((src) => {
-        imagesLoaded({ src }, () => {
+        imagesLoaded({src}, () => {
           loadedCount++;
           this.loadingProgress = Math.round((loadedCount / images.length) * 100);
-          console.log(this.loadingProgress)
           if (loadedCount === images.length) {
             this.imagesLoaded = true;
           }
         });
       });
     },
+    onMobile() {
+      window.open(location.href + '?current='+ this.currentSlide +'&infoKey=%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%A0%84%EC%9A%A9', '_blank');
+    },
+    copyLink() {
+      const urlToCopy = location.href + '?current=' + this.currentSlide + '&infoKey=%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%A0%84%EC%9A%A9';
+      navigator.clipboard.writeText(urlToCopy)
+          .then(() => {
+            alert('URL이 클립보드에 복사되었습니다!');
+          })
+          .catch(err => {
+            alert('URL 복사에 실패했습니다.');
+            console.error('Error copying text: ', err);
+          });
+    },
     sendUrlGit() {
-        window.open('https://github.com/knm8643', '_blank');
+      window.open('https://github.com/knm8643/wedding-public', '_blank');
     },
     openMoblie() {
       this.isPopupVisible = true;
@@ -212,7 +268,21 @@ export default {
     }
   },
   mounted() {
-    this.loadImages();
+    // url-type submit
+    // http://localhost:5173/?current=0&infoKey=%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%A0%84%EC%9A%A9
+    const current = this.$route.query.current;
+    const infoKey = this.$route.query.infoKey;
+    if(current !== undefined && infoKey !== undefined) {
+      this.$router.push({
+        name: 'MobilePopup',
+        query: {
+          current,
+          infoKey
+        }
+      });
+    } else {
+      this.loadImages();
+    }
   },
 };
 </script>
@@ -254,6 +324,7 @@ button {
   border: none;
   background: none;
   cursor: pointer;
+
   &:focus {
     outline: none;
     border: none;
@@ -313,6 +384,7 @@ button {
 
   display: grid;
   place-items: center;
+
   & > * {
     grid-area: 1 / -1;
   }
@@ -335,11 +407,8 @@ button {
   user-select: none;
   perspective: 800px;
 
-  transform: perspective(1000px)
-  translate3d(var(--slide-tx), var(--slide-ty), var(--slide-tz, 0))
-  rotateY(var(--slide-rotY)) scale(var(--slide-scale));
-  transition: transform var(--slide-transition-duration)
-  var(--slide-transition-easing);
+  transform: perspective(1000px) translate3d(var(--slide-tx), var(--slide-ty), var(--slide-tz, 0)) rotateY(var(--slide-rotY)) scale(var(--slide-scale));
+  transition: transform var(--slide-transition-duration) var(--slide-transition-easing);
 }
 
 .slide[data-current] {
@@ -410,10 +479,8 @@ button {
   top: 50%;
   left: 50%;
   object-fit: cover;
-  transform: translate(-50%, -50%) scale(1.25)
-  translate3d(var(--bgPosX), var(--bgPosY), 0);
-  transition: filter var(--slide-transition-duration)
-  var(--slide-transition-easing);
+  transform: translate(-50%, -50%) scale(1.25) translate3d(var(--bgPosX), var(--bgPosY), 0);
+  transition: filter var(--slide-transition-duration) var(--slide-transition-easing);
 }
 
 .slide__bg {
@@ -569,15 +636,42 @@ button {
 /* -------------------- POPUP --------------------- */
 /* ------------------------------------------------ */
 
+.main-pop-wrap{
+  padding: 32px 16px;
+  background: #222222;
+  position: relative;
+}
+
 .close-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 32px;
+  right: 16px;
   background: none;
   border: none;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   cursor: pointer;
+}
+
+.main-pop-font{
+  h2{
+    padding-bottom: 16px;
+  }
+}
+
+.main-pop-icon{
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  a{
+    backface-visibility: hidden;
+    transition: all 150ms ease;
+
+    &:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+  }
 }
 
 /* ------------------------------------------- */
@@ -588,12 +682,14 @@ button {
   bottom: 10px;
   padding: 10px;
   display: flex;
+
   a {
     margin: 0 10px;
     color: #fff;
     font-size: 1.8rem;
     backface-visibility: hidden;
     transition: all 150ms ease;
+
     &:hover {
       transform: scale(1.1);
     }
