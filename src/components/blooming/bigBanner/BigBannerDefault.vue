@@ -57,7 +57,7 @@ export default {
   padding: 52px 0 64px;
 
   .content-main-font{
-    width: 150px;
+    width: 140px;
     margin: 0 auto;
     padding-bottom: 4px;
     border-bottom: 0.6px solid #b0b0b0;
@@ -73,13 +73,14 @@ export default {
   }
 
   .image-wrap{
-    padding: 32px 0;
+    padding: 54px 0;
     overflow: hidden;
 
     .content-image {
       border-radius: 4px;
-      height: 100%;
+      max-height: 475px;
       width: 100%;
+      object-fit: cover;
     }
   }
 

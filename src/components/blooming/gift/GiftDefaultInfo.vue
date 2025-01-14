@@ -12,14 +12,14 @@
       <div class="font-wrap">
         <h3>&lt;신부측&gt;</h3>
         <p>
-          신부측 : 0111-212312213-21
+          신부측 : 0111-212312213-21 (신한은행)
           <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-21')"></i>
         </p>
       </div>
       <div class="font-wrap">
         <h3>&lt;신랑측&gt;</h3>
         <p>
-          신랑측 : 0111-212312213-21
+          신랑측 : 0111-212312213-21 (카카오뱅크)
           <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-21')"></i>
         </p>
       </div>
@@ -90,10 +90,12 @@ export default {
   width: 100%;
 
   .gift-title {
-    text-align: center;
-    color:  #191c21;
-    font-size: 21px;
-    font-weight: 700;
+    h3{
+      text-align: center;
+      color:  #191c21;
+      font-size: 21px;
+      font-weight: 700;
+    }
   }
 
   .gift-info-wrap{
@@ -101,18 +103,17 @@ export default {
     margin: 12px 24px 24px;
     border-top: 0.6px solid #b0b0b0;
     .font-wrap {
-      font-size: 18px;
       padding: 12px 0;
       h3 {
         color: black;
-
-        font-weight: 700;
+        font-weight: 500;
         padding-bottom: 12px;
         white-space: nowrap;
+        font-size: 18px;
       }
       p{
-        font-size: 21px;
         font-weight: 500;
+        font-size: 18px;
         color: #757575;
         white-space: nowrap;
       }

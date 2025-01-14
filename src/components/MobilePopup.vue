@@ -29,6 +29,11 @@ export default {
     const currentFromQuery = this.$route.query.current;
     if (currentFromQuery !==  undefined) {
       this.dynamicCurrent = Number(currentFromQuery);
+
+      // MobilePopup 제거
+      const queryString = window.location.search;
+      const newUrl = `${window.location.origin}${queryString}`;
+      window.history.replaceState(null, '', newUrl);
     }
   }
 }
