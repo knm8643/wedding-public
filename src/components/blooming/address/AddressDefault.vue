@@ -12,7 +12,7 @@
     </div>
 
     <div class="address-map">
-      <div id="map" ref="map" style="width: 100%; height: 475px;"></div>
+      <div id="map" ref="map" style="width: 100%; height: 275px;"></div>
     </div>
 
     <!-- 내비게이션 버튼을 마크업에서 미리 정의 -->

@@ -110,18 +110,18 @@
 
       <!-- type 0 -->
       <div v-if="currentSlide === 0" class="main-pop-font">
-        <h2>핑크 봄향기 타입</h2>
-        <p>봄의 느낌을 물씬 줄수있는 아름다운 느낌</p>
+        <h2>{{ slides[currentSlide].subtitle }}</h2>
+        <p>{{ slides[currentSlide].description }}</p>
       </div>
       <!-- type 1 -->
       <div v-if="currentSlide === 1" class="main-pop-font">
-        <h2>산뜻한 가을 타입(미완성)</h2>
-        <p>가을 낙엽을 느낄수 있는 산뜻한 느낌</p>
+        <h2>{{ slides[currentSlide].subtitle }}</h2>
+        <p>{{ slides[currentSlide].description }}</p>
       </div>
       <!-- type 2 -->
       <div v-if="currentSlide === 2" class="main-pop-font">
-        <h2>추위를 물씬 느끼는 타입(미완성)</h2>
-        <p>강한남자만이 느낄 수 있는</p>
+        <h2>{{ slides[currentSlide].subtitle }}</h2>
+        <p>{{ slides[currentSlide].description }}</p>
       </div>
 
       <!-- 공통 아이콘 -->
@@ -642,6 +642,9 @@ button {
 .main-pop-font{
   h2{
     padding-bottom: 16px;
+  }
+  p{
+    padding-bottom: 24px;
   }
 }
 

@@ -113,7 +113,7 @@ export default {
       }
       p{
         font-weight: 500;
-        font-size: 18px;
+        font-size: 16px;
         color: #757575;
         white-space: nowrap;
       }
