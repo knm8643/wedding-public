@@ -115,12 +115,12 @@
       </div>
       <!-- type 1 -->
       <div v-if="currentSlide === 1" class="main-pop-font">
-        <h2>산뜻한 가을 타입</h2>
+        <h2>산뜻한 가을 타입(미완성)</h2>
         <p>가을 낙엽을 느낄수 있는 산뜻한 느낌</p>
       </div>
       <!-- type 2 -->
       <div v-if="currentSlide === 2" class="main-pop-font">
-        <h2>추위를 물씬 느끼는 타입</h2>
+        <h2>추위를 물씬 느끼는 타입(미완성)</h2>
         <p>강한남자만이 느낄 수 있는</p>
       </div>
 
@@ -157,8 +157,6 @@ import MobilePopup from '@/components/MobilePopup.vue';
 import img1 from "@/assets/images/01.jpg";
 import img2 from "@/assets/images/02.jpg";
 import img3 from "@/assets/images/03.jpg";
-import img4 from "@/assets/images/04.jpg";
-import img5 from "@/assets/images/05.jpg";
 
 export default {
   components: {MobilePopup},
@@ -183,18 +181,6 @@ export default {
           description: "Start your journey with an elegant touch.",
           image: img3,
         },
-        // {
-        //   title: "Love in Full Bloom",
-        //   subtitle: "Gracefully Designed",
-        //   description: "A design that blossoms with love and grace.",
-        //   image: img4,
-        // },
-        // {
-        //   title: "Love in Full Bloom",
-        //   subtitle: "Gracefully Designed",
-        //   description: "A design that blossoms with love and grace.",
-        //   image: img5,
-        // },
       ],
       currentSlide: 0,
       imagesLoaded: false,
@@ -637,7 +623,7 @@ button {
 /* ------------------------------------------------ */
 
 .main-pop-wrap{
-  padding: 32px 16px;
+  padding: 52px 16px 32px;
   background: #222222;
   position: relative;
 }

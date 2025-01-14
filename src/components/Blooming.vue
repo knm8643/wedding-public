@@ -1,15 +1,29 @@
 <template>
   <div class="blooming-wrap">
-    <div class="blooming-wrap-font">
-      <p>2024년 05월 12일(토) 13:00</p>
-      <h2>저희 둘 결혼합니다.</h2>
-    </div>
+    <BigBannerDefault />
+    <introDefault />
+    <photoDefault />
+    <calenderDefault/>
+    <addressDefault/>
+    <giftDefaultInfo/>
+    <letterDefault/>
   </div>
 </template>
 
 <script>
+import BigBannerDefault from "@/components/blooming/bigBanner/BigBannerDefault.vue";
+import IntroDefault from "@/components/blooming/intro/IntroDefault.vue";
+import PhotoDefault from "@/components/blooming/photo/PhotoDefault.vue";
+import CalenderDefault from "@/components/blooming/calender/CalenderDefault.vue";
+import AddressDefault from "@/components/blooming/address/AddressDefault.vue";
+import GiftDefaultInfo from "@/components/blooming/gift/GiftDefaultInfo.vue";
+import LetterDefault from "@/components/blooming/letter/LetterDefault.vue";
+
 export default {
   name:"Blooming",
+  components: {
+    LetterDefault,
+    GiftDefaultInfo, AddressDefault, CalenderDefault, PhotoDefault, IntroDefault, BigBannerDefault},
   mounted() {
     this.addSnowEffect();
   },
@@ -47,21 +61,26 @@ export default {
 }
 </script>
 <style lang="scss">
+@use 'sass:math';
+
 /* ------------------------------------------------ */
 /* -------------------- POPUP --------------------- */
 /* ------------------------------------------------ */
 .blooming-wrap {
   position: relative;
-  background-color: hsl(358.64deg 73.33% 88.24%);
-  height: 100%;
+  background-color: #ffffff;
+  min-height: 100%;
   overflow: hidden;
-  overflow-y: scroll;
-  /* ------------------------------------------------ */
-  /* ----------------- POPUP FONT ------------------- */
-  /* ------------------------------------------------ */
-  .blooming-wrap-font {
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 12px 0 64px;
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
+
 /* ------------------------------------------------ */
 /* ------------------ ANIMATION ------------------- */
 /* ------------------------------------------------ */
@@ -70,7 +89,7 @@ export default {
 }
 
 @function random_range($min, $max) {
-  $rand: random();
+  $rand: math.random();
   $random_range: $min + floor($rand * (($max - $min) + 1));
   @return $random_range;
 }
@@ -78,25 +97,26 @@ export default {
 .snow {
   $total: 100;
   position: absolute;
-  top:-15px;
+  top: -10px;
   width: 6px;
   height: 6px;
   background: var(--snow-color);
   border-radius: 50%;
-  filter: drop-shadow(0 0 1.6px var(--snow-color))blur(3px);
+  filter: drop-shadow(0 0 1.6px var(--snow-color)) blur(3px);
+
   @for $i from 1 through $total {
-    $random-x: random(1000000) * 0.0001vw;
+    $random-x: math.random(1000000) * 0.0001vw;
     $random-offset: random_range(-100000, 100000) * 0.0001vw;
     $random-x-end: $random-x + $random-offset;
     $random-x-end-yoyo: $random-x + ($random-offset / 2);
     $random-yoyo-time: random_range(30000, 80000) / 100000;
     $random-yoyo-y: $random-yoyo-time * 100vh;
-    $random-scale: random(10000) * 0.0001;
+    $random-scale: math.random(10000) * 0.0001;
     $fall-duration: random_range(10, 30) * 1s;
-    $fall-delay: random(30) * -1s;
+    $fall-delay: math.random(30) * -1s;
 
     &:nth-child(#{$i}) {
-      opacity: random(10000) * 0.0001;
+      opacity: math.random(10000) * 0.0001;
       transform: translate($random-x, -10px) scale($random-scale);
       animation: fall-#{$i} $fall-duration $fall-delay linear infinite;
     }

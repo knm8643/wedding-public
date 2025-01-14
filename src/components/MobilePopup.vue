@@ -50,11 +50,18 @@ export default {
   color: white;
 
   .popup-content {
-    height: 100vh;
+    height: 100%;
     width: 100%;
+    overflow-y: auto;
     max-width: 475px;
     border-radius: 8px;
     position: relative;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }
 </style>
