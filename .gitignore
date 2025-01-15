@@ -28,6 +28,3 @@ coverage
 *.sw?
 
 *.tsbuildinfo
-
-#readme
-src/assets/readme/
