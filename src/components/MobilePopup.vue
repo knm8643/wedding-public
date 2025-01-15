@@ -57,7 +57,7 @@ export default {
   .popup-content {
     height: 100%;
     width: 100%;
-    overflow-y: auto;
+    overflow-y: scroll;
     max-width: 475px;
     border-radius: 8px;
     position: relative;

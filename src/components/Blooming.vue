@@ -78,7 +78,7 @@ export default {
   background-color: #ffffff;
   min-height: 100%;
   overflow: hidden;
-  overflow-y: auto;
+  overflow-y: scroll;
   scrollbar-width: none;
   -ms-overflow-style: none;
   padding: 0 0 6px;
