@@ -247,6 +247,11 @@ export default {
       window.open('https://github.com/knm8643/wedding-public', '_blank');
     },
     openMoblie() {
+      if(this.currentSlide === 1 || this.currentSlide ===2) {
+        alert('해당 템플릿은 제작중입니다.')
+        return;
+      }
+
       this.isPopupVisible = true;
     },
     closePopup() {
