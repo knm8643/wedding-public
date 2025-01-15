@@ -81,7 +81,7 @@ export default {
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding: 0 0 12px;
+  padding: 0 0 6px;
 
   &::-webkit-scrollbar {
     display: none;

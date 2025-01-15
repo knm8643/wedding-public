@@ -222,7 +222,7 @@ export default {
       .photo-image {
         aspect-ratio: 16 / 9;
         object-fit: cover;
-        width: 30%;
+        width: 32%;
         height: 150px;
         border: 2px solid transparent;
       }
