@@ -141,10 +141,10 @@ export default {
               });
 
               // 인포윈도우로 장소에 대한 설명을 표시합니다
-              var infowindow = new kakao.maps.InfoWindow({
-                content: '<div style="width:50px;text-align:center;padding:2px 0; color: black">예식장</div>'
-              });
-              infowindow.open(this.map, marker);
+              // var infowindow = new kakao.maps.InfoWindow({
+              //   content: '<div style="width:50px;text-align:center;padding:2px 0; color: black">예식장</div>'
+              // });
+              // infowindow.open(this.map, marker);
 
               // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
               this.map.setCenter(coords);
