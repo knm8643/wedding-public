@@ -42,7 +42,9 @@ _<small>템플릿 상세 설명 및 링크 복사 예시</small>_
 
 ---
 
-## 🚀 프로젝트 사용법
+## 🚀 프로젝트 사용법 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fknm8643%2Fwedding-public&count_bg=%23000000&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+
+
 
 1. **원하는 템플릿 탐색**: 메인 페이지에서 스와이프 방식으로 템플릿을 탐색하세요.
 2. **템플릿 확인 및 공유**: 원하는 템플릿을 클릭해 세부 정보를 확인하고, 공유 링크를 복사하세요.
