@@ -645,6 +645,7 @@ button {
 
 .main-pop-font{
   h2{
+    font-size: 21px;
     padding-bottom: 16px;
   }
   p{
