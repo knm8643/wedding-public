@@ -36,11 +36,10 @@ export default {
   },
   methods:{
     addSnowEffect() {
-      // mobile-content-wrap 요소 선택
       const snowContainer = document.querySelector('.blooming-wrap');
 
       // snow를 추가할 갯수 설정
-      const snowCount = 100;
+      const snowCount = 150;
 
       // 눈 생성
       for (let i = 0; i < snowCount; i++) {
@@ -101,7 +100,7 @@ export default {
 }
 
 .snow {
-  $total: 100;
+  $total: 150;
   position: absolute;
   top: -10px;
   width: 6px;

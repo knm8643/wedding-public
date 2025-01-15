@@ -108,18 +108,7 @@
     <div class="main-pop-wrap">
       <button class="close-btn" @click="closePopup">X</button>
 
-      <!-- type 0 -->
-      <div v-if="currentSlide === 0" class="main-pop-font">
-        <h2>{{ slides[currentSlide].subtitle }}</h2>
-        <p>{{ slides[currentSlide].description }}</p>
-      </div>
-      <!-- type 1 -->
-      <div v-if="currentSlide === 1" class="main-pop-font">
-        <h2>{{ slides[currentSlide].subtitle }}</h2>
-        <p>{{ slides[currentSlide].description }}</p>
-      </div>
-      <!-- type 2 -->
-      <div v-if="currentSlide === 2" class="main-pop-font">
+      <div class="main-pop-font">
         <h2>{{ slides[currentSlide].subtitle }}</h2>
         <p>{{ slides[currentSlide].description }}</p>
       </div>

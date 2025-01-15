@@ -55,7 +55,6 @@ export default {
       isContentVisible: false, // 편지가 열리는 상태
       isVisible: false, // 애니메이션 트리거
       isEditing: false,
-      editedSection: {}, // 수정된 데이터
     };
   },
   mounted() {
@@ -206,7 +205,7 @@ export default {
 
     /* 봉투 펼쳐졌을 때 */
     .envelope.is-open .flap {
-      transform: translateX(-100%); /* 왼쪽에서 오른쪽으로 펼쳐짐 */
+      transform: translateX(-100%);
     }
 
     /* 편지 속지 */
@@ -311,25 +310,6 @@ export default {
     .envelope.is-open .letter {
       opacity: 1;
       transform: translateX(0);
-    }
-  }
-
-  .content-update{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 16px;
-    button {
-      border: 1px solid black;
-      padding: 2px 12px;
-      font-size: 18px;
-      font-weight: 500;
-    }
-    button:hover {
-      background: #ff7086;
-      font-weight: 700;
-      color: #FFFFFF;
-      border: 1px solid #ff7086;
     }
   }
 }

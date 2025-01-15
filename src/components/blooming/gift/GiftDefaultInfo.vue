@@ -35,20 +35,7 @@ export default {
     return {
       isVisible: false, // 애니메이션 트리거
       isEditing: false,
-      editedSection: {}, // 수정된 데이터
     };
-  },
-  props: {
-    section: {
-      type: [Array, Object],
-      default: () => ([]),
-    },
-    update:{
-      type: Boolean,
-    },
-    index:{
-      type: Number
-    }
   },
   mounted() {
     this.editedSection = JSON.parse(JSON.stringify(this.section)); // 데이터 복사
@@ -128,25 +115,6 @@ export default {
       .copy-icon:hover {
         color: #E57373;
       }
-    }
-  }
-
-  .content-update{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 16px;
-    button {
-      border: 1px solid black;
-      padding: 2px 12px;
-      font-size: 18px;
-      font-weight: 500;
-    }
-    button:hover {
-      background: #ff7086;
-      font-weight: 700;
-      color: #FFFFFF;
-      border: 1px solid #ff7086;
     }
   }
 }

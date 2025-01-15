@@ -2,6 +2,7 @@
   <div class="mobile-popup">
     <div class="popup-content">
       <slot />
+
       <!-- type 0 -->
       <Blooming v-if="dynamicCurrent === 0"/>
     </div>
@@ -9,7 +10,7 @@
 </template>
 
 <script>
-import Blooming from "@/components/Blooming.vue";
+import Blooming from "@/components/blooming/Blooming.vue";
 
 export default {
   components: {Blooming},
