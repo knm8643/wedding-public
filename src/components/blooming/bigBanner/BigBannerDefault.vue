@@ -14,7 +14,7 @@
 
     <div class="content-description">
       <div class="description-header">
-        <h2>이충재</h2>
+        <h2>충디딥</h2>
         <p>그리고</p>
         <h2>유디딥</h2>
       </div>
@@ -54,7 +54,7 @@ export default {
 <style scoped>
 .banner-wrap{
   border-radius: 4px;
-  padding: 52px 0 64px;
+  padding: 84px 0 64px;
 
   .content-main-font{
     width: 140px;
@@ -99,7 +99,7 @@ export default {
       padding-bottom: 26px;
       h2{
         font-weight: 700;
-        font-size: 21px;
+        font-size: 26px;
         color: #191c21;
       }
       p{
@@ -109,6 +109,7 @@ export default {
 
     .description-info {
       color: #191c21;
+      line-height: 1.6;
       p{
         padding-bottom: 4px;
       }

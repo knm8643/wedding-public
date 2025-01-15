@@ -88,14 +88,14 @@
   <div class="support">
     <a href="https://pf.kakao.com/_xjmCjn/chat" target="_blank">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+           stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path
             d="M12 2C6.5 2 2 6.03 2 10.93c0 2.73 1.67 5.14 4.2 6.61-.2.8-.52 2.03-.75 2.92-.14.56.39.56.67.41 1.2-.65 2.57-1.67 3.1-2 .98.2 2.02.32 3.08.32 5.5 0 10-4.03 10-8.93C22 6.03 17.5 2 12 2z"/>
       </svg>
     </a>
     <a @click="sendUrlGit">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+           stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path
             d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
         <path d="M9 18c-4.51 2-5-2-7-2"/>
@@ -164,21 +164,21 @@ export default {
     return {
       slides: [
         {
-          title: "Blooming Like Spring",
-          subtitle: "Sophisticated Elegance",
-          description: "Celebrate the joy of love with a vibrant design.",
+          title: "봄처럼 피어나는 사랑",
+          subtitle: "세련된 우아함",
+          description: "사랑의 기쁨을 생동감 넘치는 디자인으로 축하해요.",
           image: img1,
         },
         {
-          title: "Timeless Moments",
-          subtitle: "A Touch of Class",
-          description: "Mark your special day with timeless beauty.",
+          title: "영원히 기억될 순간",
+          subtitle: "품격 있는 우아함",
+          description: "특별한 날을 변함없이 아름답게 기념해요.",
           image: img2,
         },
         {
-          title: "A Radiant Beginning",
-          subtitle: "Modern and Refined",
-          description: "Start your journey with an elegant touch.",
+          title: "빛나는 시작",
+          subtitle: "모던하고 세련된",
+          description: "새로운 여정을 우아한 터치로 시작해요.",
           image: img3,
         },
       ],
@@ -395,6 +395,10 @@ button {
 
   transform: perspective(1000px) translate3d(var(--slide-tx), var(--slide-ty), var(--slide-tz, 0)) rotateY(var(--slide-rotY)) scale(var(--slide-scale));
   transition: transform var(--slide-transition-duration) var(--slide-transition-easing);
+}
+
+.slide:hover{
+  cursor: pointer;
 }
 
 .slide[data-current] {

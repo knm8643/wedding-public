@@ -1,11 +1,18 @@
 <template>
   <div class="blooming-wrap">
+    <!-- 빅배너 -->
     <BigBannerDefault />
+    <!-- 소개말 -->
     <introDefault />
+    <!-- 사진첩 -->
     <photoDefault />
+    <!-- 달력 -->
     <calenderDefault/>
+    <!-- 오시는 길(맵) -->
     <addressDefault/>
+    <!-- 축의금 -->
     <giftDefaultInfo/>
+    <!-- 편지보내기 -->
     <letterDefault/>
   </div>
 </template>
@@ -74,7 +81,7 @@ export default {
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding: 12px 0 54px;
+  padding: 0 0 12px;
 
   &::-webkit-scrollbar {
     display: none;
@@ -90,7 +97,7 @@ export default {
 
 @function random_range($min, $max) {
   $rand: math.random();
-  $random_range: $min + floor($rand * (($max - $min) + 1));
+  $random_range: $min + math.floor($rand * (($max - $min) + 1));
   @return $random_range;
 }
 
@@ -108,8 +115,8 @@ export default {
     $random-x: math.random(1000000) * 0.0001vw;
     $random-offset: random_range(-100000, 100000) * 0.0001vw;
     $random-x-end: $random-x + $random-offset;
-    $random-x-end-yoyo: $random-x + ($random-offset / 2);
-    $random-yoyo-time: random_range(30000, 80000) / 100000;
+    $random-x-end-yoyo: $random-x + math.div($random-offset, 2);
+    $random-yoyo-time: math.div(random_range(30000, 80000), 100000);
     $random-yoyo-y: $random-yoyo-time * 100vh;
     $random-scale: math.random(10000) * 0.0001;
     $fall-duration: random_range(10, 30) * 1s;
@@ -122,7 +129,7 @@ export default {
     }
 
     @keyframes fall-#{$i} {
-      #{percentage($random-yoyo-time)} {
+      #{math.percentage($random-yoyo-time)} {
         transform: translate($random-x-end, $random-yoyo-y) scale($random-scale);
       }
 

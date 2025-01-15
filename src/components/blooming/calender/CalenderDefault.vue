@@ -83,7 +83,7 @@ export default {
     }
 
     p{
-      padding-bottom: 4px;
+      padding-bottom: 12px;
       color:  #191c21;
       font-weight: 500;
     }

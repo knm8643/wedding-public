@@ -6,13 +6,13 @@
   >
 
     <div class="address-main-font">
-      <p>오시는길</p>
+      <p>오시는 길</p>
       <span>서울특별시 용산구 용산동 1가 8번지</span><br/>
-      <span>로얄파크컨벤션</span>
+      <span>로얄파크컨벤션 1층</span>
     </div>
 
     <div class="address-map">
-      <div id="map" ref="map" style="width: 100%; height: 275px;"></div>
+      <div id="map" ref="map" style="width: 100%; height: 245px;"></div>
     </div>
 
     <!-- 내비게이션 버튼을 마크업에서 미리 정의 -->
@@ -76,7 +76,7 @@ export default {
     startNavigation(param) {
       const lat = this.latitude;  // 목적지 위도
       const lng = this.longitude; // 목적지 경도
-      const name = '로얄파크컨벤션'    // 목적지 이름 (옵션)
+      const name = '서울특별시 용산구 용산동 1가 8번지'    // 목적지 이름 (옵션)
 
       if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
 
@@ -102,13 +102,17 @@ export default {
       }
     },
     loadKakaoMapSDK() {
+      if (typeof kakao === "undefined") {
         const script = document.createElement("script");
-        script.src = "https://dapi.kakao.com/v2/maps/sdk.js?appkey=7a00e839ba07cfb660f1cfc019bdd08b&libraries=services&secure=true";
+        script.src = "https://dapi.kakao.com/v2/maps/sdk.js?appkey=7a00e839ba07cfb660f1cfc019bdd08b&libraries=services";
         script.async = true;
         script.onload = () => {
           this.initKakaoMap();
         };
         document.head.appendChild(script);
+      } else {
+        this.initKakaoMap();  // 이미 로드된 경우 바로 초기화
+      }
     },
     initKakaoMap() {
       const mapContainer = document.getElementById('map'); // 지도를 표시할 div
@@ -122,7 +126,7 @@ export default {
       // 주소-좌표 변환 객체를 생성합니다
       var geocoder = new kakao.maps.services.Geocoder();
 
-      const param = '로얄파크컨벤션'
+      const param = '서울특별시 용산구 용산동 1가 8번지'
 
       // 주소로 좌표를 검색합니다
       geocoder.addressSearch(param, function(result, status) {
@@ -173,10 +177,12 @@ export default {
     span{
       color: #6a6a6a;
       white-space: nowrap;
+      line-height: 1.8;
+
     }
 
     p{
-      padding-bottom: 9px;
+      padding-bottom: 12px;
       color:  #191c21;
       font-size: 21px;
       font-weight: 700;
@@ -190,6 +196,7 @@ export default {
   }
 
   .address-nav-wrap{
+    color: black;
     padding: 24px 24px;
     position: relative;
     .kakao-wrap {
