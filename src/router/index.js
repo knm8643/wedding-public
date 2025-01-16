@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 import MainView from '../views/MainViews.vue';
 import MobilePopup from '../components/MobilePopup.vue';
+import EasterEgg from '../components/easterEgg/easterEgg.vue';
 
 const routes = [
     {
@@ -13,6 +14,11 @@ const routes = [
         path: '/MobilePopup',
         name: 'MobilePopup',
         component: MobilePopup,
+    },
+    {
+        path: '/EasterEgg',
+        name: 'EasterEgg',
+        component: EasterEgg,
     },
 ];
 

@@ -33,12 +33,10 @@ export default {
   name: "giftDefaultInfo",
   data() {
     return {
-      isVisible: false, // 애니메이션 트리거
-      isEditing: false,
+      isVisible: false,
     };
   },
   mounted() {
-    this.editedSection = JSON.parse(JSON.stringify(this.section)); // 데이터 복사
     const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
@@ -54,13 +52,12 @@ export default {
 
   methods: {
     copyToClipboard(number) {
-      // 새로운 텍스트 영역을 생성
       const textArea = document.createElement('textarea');
-      textArea.value = number;  // 복사할 전화번호
+      textArea.value = number;
       document.body.appendChild(textArea);
-      textArea.select();  // 텍스트 선택
-      document.execCommand('copy');  // 복사 명령 실행
-      document.body.removeChild(textArea);  // 텍스트 영역 제거
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
       alert("복사되었습니다.")
     },
   },
