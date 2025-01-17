@@ -86,12 +86,13 @@ _<small>#템플릿 상세 설명 및 링크 복사 예시</small>_
    ```bash
    VITE_KAKAO_API_KEY=여기에 카카오톡 JavaScript SDK 키를 입력하세요
 
-1. **EmailJS API 키**:
+
+2. **EmailJS API 키**:
    - EmailJS를 사용하려면 [EmailJS 홈페이지](https://www.emailjs.com/)에서 회원가입 후, API 키를 발급받으세요.
    - 발급받은 API 키는 `.sample.env` 파일의 이름을 `.env` 로 바꾼 뒤 `VITE_EMAILJS_API_KEY`에 입력하세요.
      <br><br>
    ```bash
-   VITE_EMAILJS_API_KEY=여기에 EmailJS SDK 키를 입력하세요 (예: YYYYYYYYYYYYYYYY)
+   VITE_EMAILJS_API_KEY=여기에 EmailJS SDK 키를 입력하세요
 
 위의 설정이 완료되면, 프로젝트에서 카카오톡 SDK와 EmailJS 기능을 정상적으로 사용할 수 있습니다!
    
