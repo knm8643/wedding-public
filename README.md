@@ -55,17 +55,43 @@ _<small>템플릿 상세 설명 및 링크 복사 예시</small>_
 ## 📦 설치 방법
 
 1. 이 저장소를 클론합니다.
+   
    ```bash
    git clone https://github.com/your-username/your-repo.git
 
-2. 디렉토리로 이동한 뒤, 패키지를 설치합니다.
+3. 디렉토리로 이동한 뒤, 패키지를 설치합니다.
+   
    ```bash
    cd your-repo
    npm install
    
-3. 로컬 서버를 실행합니다.
+5. 로컬 서버를 실행합니다.
+   
    ```bash
    npm run dev
    npm run dev -- --host
 
 ---
+
+## 💡 API 키 설정
+
+본 프로젝트에서 **카카오톡 JavaScript SDK**와 **EmailJS** 서비스를 개인으로 사용하려면 각각의 API 키를 설정해야 합니다.
+
+### 📝 설정 방법:
+
+1. **카카오톡 API 키**:
+   - 카카오톡 JavaScript SDK를 사용하려면 [카카오 개발자 사이트](https://developers.kakao.com/)에서 본인의 애플리케이션을 생성한 후, JavaScript SDK 키를 발급받으세요.
+   - 발급받은 API 키는 `.sample.env` 파일의 이름을 `.env` 로 바꾼 뒤 `VITE_KAKAO_API_KEY`에 입력하세요.
+     <br><br>
+   ```bash
+   VITE_KAKAO_API_KEY=여기에 카카오톡 JavaScript SDK 키를 입력하세요
+
+1. **EmailJS API 키**:
+   - EmailJS를 사용하려면 [EmailJS 홈페이지](https://www.emailjs.com/)에서 회원가입 후, API 키를 발급받으세요.
+   - 발급받은 API 키는 `.sample.env` 파일의 이름을 `.env` 로 바꾼 뒤 `VITE_EMAILJS_API_KEY`에 입력하세요.
+     <br><br>
+   ```bash
+   VITE_EMAILJS_API_KEY=여기에 EmailJS SDK 키를 입력하세요 (예: YYYYYYYYYYYYYYYY)
+
+위의 설정이 완료되면, 프로젝트에서 카카오톡 SDK와 EmailJS 기능을 정상적으로 사용할 수 있습니다!
+   
