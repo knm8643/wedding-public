@@ -87,7 +87,8 @@ export default {
 
       this.btnFlag = true;
       if (this.btnFlag) {
-        emailjs.init("HsS2kuozk9ToWT7O7");
+        // 개인으로 사용하실 거면 이메일JS 가입 후 별도 SDK 부탁드립니다!
+        emailjs.init(import.meta.env.VITE_EMAILJS_API_KEY);
         emailjs
             .send("service_portfolio", "template_5lovp15", {
               to_name: this.userName,

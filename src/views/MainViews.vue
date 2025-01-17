@@ -101,6 +101,11 @@
             d="M12 2C6.5 2 2 6.03 2 10.93c0 2.73 1.67 5.14 4.2 6.61-.2.8-.52 2.03-.75 2.92-.14.56.39.56.67.41 1.2-.65 2.57-1.67 3.1-2 .98.2 2.02.32 3.08.32 5.5 0 10-4.03 10-8.93C22 6.03 17.5 2 12 2z"/>
       </svg>
     </a>
+    <a href="https://torch-knave-705.notion.site/15b6b12f8d3580a395c5ea297195a434?pvs=74" target="_blank">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="white" stroke-width="2">
+        <path d="M4 4v16M4 4l12 16M17 4v17"/>
+      </svg>
+    </a>
   </div>
 
   <!-- popUp -->

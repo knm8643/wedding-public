@@ -19,7 +19,8 @@
     <div class="address-nav-wrap">
       <div class="kakao-wrap">
         <div class="kakao-main">
-          <a id="start-navigation" @click="startNavigation('kakao')">
+          <a id="start-navigation"
+             @click="startNavigation('kakao')">
             <img src="https://developers.kakao.com/assets/img/about/buttons/navi/kakaonavi_btn_medium.png"
                  alt="길 안내하기 버튼" />
           </a>
@@ -105,8 +106,10 @@ export default {
     },
 
     initKakaoMap() {
+      const kakaoApiKey = import.meta.env.VITE_KAKAO_API_KEY;
       const script = document.createElement("script");
-      script.src = "https://dapi.kakao.com/v2/maps/sdk.js?appkey=7a00e839ba07cfb660f1cfc019bdd08b&autoload=false&libraries=clusterer,services&";
+      // 카카오 SDK 는 직접 발급부탁드립니다.
+      script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoApiKey}&autoload=false&libraries=clusterer,services&`;
       document.head.appendChild(script);
       script.onload = () => {
         kakao.maps.load(() => {
