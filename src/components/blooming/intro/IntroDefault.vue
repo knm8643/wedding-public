@@ -8,48 +8,35 @@
     <div class="scroll-line" :class="{ 'line-visible': isVisible }"></div>
     <!-- 타이틀 제목 -->
     <div class="content-title">
-      저희 둘 결혼합니다.
+      초대합니다
     </div>
 
-    <div class="content">
-      <p style="font-style: italic; font-size: 12px; color: #999; text-align: center; padding: 24px">
-        아름다운 세상 그대에게 보여주리 말해봐요<br />
-        그대가 보고 싶은 것들을<br />
-        <span style="font-weight: bold;">© Disney. All rights reserved.</span>
-      </p>
-    </div>
 
     <!-- 내용 -->
     <div class="content">
       <p>
-        사랑이 결실을 맺어
+        사랑이 깊어 결실을 맺고
       </p>
-      <p>
+      <p style="padding-bottom: 24px">
         저희 두 사람이
       </p>
       <p>
-        새로운 시작을
+        새로운 여정을 함께 시작하려 합니다.
       </p>
       <p>
-        함께 하려 합니다.
+        세상에서 가장 특별한 이 날,
+      </p>
+      <p style="padding-bottom: 24px">
+        소중한 당신을
       </p>
       <p>
-        기쁜 마음으로 이 특별한 날에
+        기쁜 마음으로 초대합니다.
       </p>
       <p>
-        소중한 분들을
+        저희의 새로운 시작을 밝혀 주시길 바랍니다.
       </p>
       <p>
-        모시고자 하오니
-      </p>
-      <p>
-        부디 오셔서 축복해 주시고
-      </p>
-      <p>
-        자리를 빛내 주시면 감사하겠습니다.
-      </p>
-      <p>
-        여러분을 기다리겠습니다.
+        당신을 기다리겠습니다.
       </p>
     </div>
   </div>
@@ -81,6 +68,7 @@ export default {
 };
 </script>
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
 /* 애니메이션 */
 .intro-wrap {
   opacity: 0;
@@ -104,11 +92,12 @@ export default {
   }
 
   .content-title {
+    font-family: 'Playfair Display', serif;
     color: #191c21;
     font-weight: 700;
-    font-size: 21px;
+    font-size: 24px;
     text-align: center;
-    padding-top: 52px;
+    padding: 56px 0;
   }
 
   /* 컨텐츠 영역 */
@@ -117,6 +106,7 @@ export default {
   }
 
   .content p {
+    font-family: 'Noto Serif KR', serif;
     white-space: nowrap;
     color: #191c21;
     text-align: center;
@@ -124,12 +114,6 @@ export default {
     font-size: 16px;
     line-height: 1.8;
     margin-bottom: 6px;
-  }
-
-  /* 저작권 텍스트 */
-  .content p[style*="font-style: italic"] {
-    font-size: 12px;
-    color: #999;
   }
 }
 

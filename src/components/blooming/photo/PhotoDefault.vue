@@ -20,9 +20,9 @@
             :key="index"
             :src="image"
             :class="{ selected: selectedIndex === index }"
-            @click="selectImage(index, $event)"
+            @click="selectImage(index)"
             class="photo-image"
-        >
+        />
       </div>
     </div>
     <div class="content-fmInfo">
@@ -164,22 +164,15 @@ export default {
             }, 500);
           }
         },
-        { threshold: 0.5 }
+        { threshold: 0.2 }
     );
 
     observer.observe(this.$refs.photo);
   },
   methods: {
-    selectImage(index, event) {
+    selectImage(index) {
       this.selectedIndex = index;
       this.selectedImage = this.imagePath[index];
-
-      const target = event.target;
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "nearest",
-      });
     },
     openPopup() {
       this.showPopup = true;
@@ -203,11 +196,13 @@ export default {
   .swiper-container {
     width: 100%;
     height: auto;
-    margin: 16px auto 56px;
+    margin: 16px auto 72px;
 
     .main-image-wrap{
       .main-image{
-        border: 0.6px solid #b0b0b0;
+        border: 1px solid #b0b0b0;
+        outline: double 1px #b0b0b0;
+        outline-offset: -5px;
         min-height: 475px;
         aspect-ratio: 16 / 9;
         object-fit: cover;
@@ -215,35 +210,37 @@ export default {
       }
     }
 
-    .img-wrap{
-      display: flex;
-      overflow-x: scroll;
-      scroll-behavior: smooth;
-      .photo-image {
-        aspect-ratio: 16 / 9;
-        object-fit: cover;
-        width: 32%;
-        height: 150px;
-        border: 2px solid transparent;
-      }
-      .selected {
+    .img-wrap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    .photo-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 0.3s ease;
+
+      &.selected {
         border-color: #ff91a4;
       }
     }
   }
   /* 이미지 영역 */
   .content-fmInfo{
-    margin: 0 auto;
+    padding: 0 24px;
     .fmInfo {
+      font-family: 'Nanum Myeongjo', serif;
       display: flex;
-      justify-content: center;
       line-height: 1.8;
-      gap: 4px;
+      gap: 9px;
       align-items: center;
       padding-top: 4px;
       p{
         color: #191c21;
-        font-weight: 500;
+        font-weight: 600;
         font-size: 21px;
         transition: font-size 0.2s ease;
       }
@@ -296,19 +293,22 @@ input:hover{
 
 /* 팝업관련 CSS */
 .phone-info {
-  padding-top: 16px;
+  padding: 16px 24px 0;
   text-align: center;
+
   button {
-    margin-top: 16px;
+    width: 100%;
     padding: 6px 16px;
     background-color: #ff91a4;
     color: #fff;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 700;
     transition: background-color 0.3s ease;
+    font-family: 'Nanum Myeongjo', serif;
+
   }
 
   button:hover {
@@ -336,10 +336,11 @@ input:hover{
   text-align: left;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   .pop-wrap{
+    font-family: 'Nanum Myeongjo', serif;
     padding-bottom: 12px;
     h3{
       font-weight: 700;
-      font-size: 18px;
+      font-size: 17px;
       padding-bottom: 12px;
     }
 
@@ -348,7 +349,7 @@ input:hover{
       justify-content: space-between;
       align-items: center;
       gap: 24px;
-      padding-bottom: 12px;
+      padding-bottom: 5px;
 
       p{
         display: flex;
@@ -376,7 +377,7 @@ input:hover{
       span{
         font-weight: 500;
         color: #757575;
-        font-size: 16px;
+        font-size: 14px;
       }
 
     }

@@ -127,8 +127,6 @@ export default {
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      margin: 20px 0;
-
 
     /* 봉투 전체 */
     .envelope {

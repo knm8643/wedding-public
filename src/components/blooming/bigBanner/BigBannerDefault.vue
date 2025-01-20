@@ -5,11 +5,7 @@
       ref="banner"
   >
     <div class="content-main-font">
-      <p>2025-02-08</p>
-    </div>
-
-    <div class="image-wrap">
-      <img class="content-image" src="../../../assets/images/01.jpg" alt="섹션 이미지" />
+      <p>2025. 02. 08</p>
     </div>
 
     <div class="content-description">
@@ -19,9 +15,13 @@
         <h2>유디딥</h2>
       </div>
       <div class="description-info">
-        <p>2025.02.08 토요일 13시</p>
-        <span>서울 용산구 이태원로 29 로얄파크컨벤션</span>
+        <span>서울 용산구 이태원로 29</span>
+        <p>로얄파크컨벤션(홀) 1층 13시 00분</p>
       </div>
+    </div>
+
+    <div class="image-wrap">
+      <img class="content-image" src="../../../assets/images/01.jpg" alt="섹션 이미지" />
     </div>
   </div>
 </template>
@@ -52,31 +52,35 @@ export default {
 };
 </script>
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
 .banner-wrap{
   border-radius: 4px;
-  padding: 84px 0 64px;
+  padding: 64px 0 4px;
 
   .content-main-font{
-    width: 140px;
+    font-family: 'Playfair Display', serif;
     margin: 0 auto;
-    padding-bottom: 4px;
-    border-bottom: 0.6px solid #b0b0b0;
+    padding-bottom: 16px;
     text-align: center;
 
     p{
       color: #191c21;
       font-weight: 700;
-      font-size: 21px;
+      font-size: 18px;
       white-space: nowrap;
       padding: 0 12px;
     }
   }
 
   .image-wrap{
-    padding: 54px 0;
+    padding: 24px 0 52px;
     overflow: hidden;
+    margin: 0 12px;
 
     .content-image {
+      border: 1px solid #666;
+      outline: double 0.6px #666;
+      outline-offset: -5px;
       border-radius: 4px;
       max-height: 475px;
       width: 100%;
@@ -85,21 +89,21 @@ export default {
   }
 
   .content-description {
+    font-family: 'Noto Sans KR', sans-serif;
     margin-top: 8px;
     font-size: 16px;
     color: #333;
     text-align: center;
 
     .description-header{
-      gap: 14px;
+      gap: 9px;
       justify-content: center;
       display: flex;
       align-items: flex-end;
-      font-weight: 500;
-      padding-bottom: 26px;
+      padding-bottom: 46px;
       h2{
-        font-weight: 700;
-        font-size: 26px;
+        font-weight: 500;
+        font-size: 24px;
         color: #191c21;
       }
       p{
@@ -110,6 +114,8 @@ export default {
     .description-info {
       color: #191c21;
       line-height: 1.6;
+      font-size: 14px;
+      font-weight: 300;
       p{
         padding-bottom: 4px;
       }

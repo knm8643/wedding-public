@@ -10,17 +10,29 @@
 
     <div class="gift-info-wrap">
       <div class="font-wrap">
-        <h3>&lt;신부측&gt;</h3>
+        <h3>신부측</h3>
         <p>
-          신부측 : 0111-212312213-21 (신한은행)
+          신부 : 0111-212312213-21 (신한은행)
           <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-21')"></i>
+        </p>
+        <p>
+          신부 어머니 : 0111-212312213-22 (신한은행)
+          <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-22')"></i>
         </p>
       </div>
       <div class="font-wrap">
-        <h3>&lt;신랑측&gt;</h3>
+        <h3>신랑측</h3>
         <p>
-          신랑측 : 0111-212312213-21 (카카오뱅크)
+          신랑 : 0111-212312213-21 (카카오뱅크)
           <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-21')"></i>
+        </p>
+        <p>
+          신랑 어머니 : 0111-212312213-22 (카카오뱅크)
+          <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-22')"></i>
+        </p>
+        <p>
+          신랑 아버지 : 0111-212312213-23 (카카오뱅크)
+          <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-23')"></i>
         </p>
       </div>
     </div>
@@ -75,38 +87,50 @@ export default {
 
   .gift-title {
     h3{
+      font-family: 'Playfair Display', serif;
       text-align: center;
       color:  #191c21;
       font-size: 21px;
       font-weight: 700;
+      padding-bottom: 16px;
     }
   }
 
   .gift-info-wrap{
-    padding: 24px 0 12px;
+    padding: 44px 0 12px;
     margin: 12px 24px 24px;
     border-top: 0.6px solid #b0b0b0;
     .font-wrap {
+      position: relative;
       padding: 12px 0;
+
       h3 {
-        color: black;
-        font-weight: 500;
-        padding-bottom: 12px;
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        padding-bottom: 16px;
         white-space: nowrap;
-        font-size: 18px;
-      }
-      p{
-        font-weight: 500;
         font-size: 16px;
-        color: #757575;
-        white-space: nowrap;
+        color: #E57373;
+      }
+      p {
+        font-family: 'Noto Serif KR', serif;
+        font-weight: 500;
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 10px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: calc(100% - 30px);
+        line-height: 1.6;
       }
 
       .copy-icon {
         cursor: pointer;
-        margin-left: 10px;
         color: #fa8ea8;
         transition: color 0.3s;
+        margin-left: 10px;
+        position: absolute;
+        right: 10px;
       }
 
       .copy-icon:hover {
@@ -115,6 +139,7 @@ export default {
     }
   }
 }
+
 .gift-wrap.animate-visible {
   opacity: 1;
   transform: translateY(0);

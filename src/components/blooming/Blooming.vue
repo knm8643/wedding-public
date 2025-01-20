@@ -39,7 +39,7 @@ export default {
       const snowContainer = document.querySelector('.blooming-wrap');
 
       // snow를 추가할 갯수 설정
-      const snowCount = 150;
+      const snowCount = 120;
 
       // 눈 생성
       for (let i = 0; i < snowCount; i++) {
@@ -100,25 +100,25 @@ export default {
 }
 
 .snow {
-  $total: 150;
+  $total: 120;
   position: absolute;
   top: -10px;
   width: 6px;
   height: 6px;
   background: var(--snow-color);
   border-radius: 50%;
-  filter: drop-shadow(0 0 1.6px var(--snow-color)) blur(3px);
+  filter: drop-shadow(0 0 1px var(--snow-color)) blur(3px);
 
   @for $i from 1 through $total {
     $random-x: math.random(1000000) * 0.0001vw;
-    $random-offset: random_range(-100000, 100000) * 0.0001vw;
+    $random-offset: random_range(100000, 600000) * 0.0001vw;
     $random-x-end: $random-x + $random-offset;
     $random-x-end-yoyo: $random-x + math.div($random-offset, 2);
     $random-yoyo-time: math.div(random_range(30000, 80000), 100000);
     $random-yoyo-y: $random-yoyo-time * 100vh;
     $random-scale: math.random(10000) * 0.0001;
-    $fall-duration: random_range(10, 30) * 1s;
-    $fall-delay: math.random(30) * -1s;
+    $fall-duration: random_range(5, 15) * 1s;
+    $fall-delay: math.random(30) *  -1s;
 
     &:nth-child(#{$i}) {
       opacity: math.random(10000) * 0.0001;

@@ -2,10 +2,7 @@
   <div class="calendar-wrap-sub">
     <!-- 상단 월/연도 변경 -->
     <div class="calendar-header">
-      <p>{{ countdown }}</p>
-      <!--      <button @click="prevMonth">◀</button>-->
-      <!--        <span>{{ currentYear }}년 {{ currentMonth + 1 }}월</span>-->
-      <!--      <button @click="nextMonth">▶</button>-->
+      <h2>2025년 2월 8일</h2>
     </div>
 
     <!-- 요일 헤더 -->
@@ -24,6 +21,13 @@
           :class="{ 'current-date': isSelectedDate(date) }"
       >
         <span v-if="date" :style="isSelectedDate(date) ? 'color:#fff':''">{{ date }}</span>
+      </div>
+    </div>
+
+    <div class="calender-footer">
+      <div class="calender-main-font">
+        <p>2025년 02월 08일 토요일 오후 01시 00분</p>
+        <span>{{ countdown }}</span>
       </div>
     </div>
   </div>
@@ -101,24 +105,8 @@ export default {
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-      this.countdown = `${days}일 ${hours}시간 ${minutes}분 ${seconds}초 남음`;
-    },
-    prevMonth() {
-      if (this.currentMonth === 0) {
-        this.currentMonth = 11;
-        this.currentYear -= 1;
-      } else {
-        this.currentMonth -= 1;
-      }
-    },
-    nextMonth() {
-      if (this.currentMonth === 11) {
-        this.currentMonth = 0;
-        this.currentYear += 1;
-      } else {
-        this.currentMonth += 1;
-      }
-    },
+      // this.countdown = `${days}일 ${hours}시간 ${minutes}분 ${seconds}초 남음`;
+      this.countdown = `충디딥 ❤️ 유디딥의 결혼식이 ${days}일 남음`;    },
     isSelectedDate(date) {
       if (!date) return false;
 
@@ -135,9 +123,9 @@ export default {
 
 <style scoped lang="scss">
 .calendar-wrap-sub {
+  font-family: 'Spoqa Han Sans Neo', sans-serif;
   max-width: 400px;
   margin: 20px auto;
-  font-family: Arial, sans-serif;
   text-align: center;
 }
 
@@ -146,42 +134,68 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 10px 0;
-  font-weight: 500;
-  font-size: 18px;
-  span{
-    color: #191c21;
-  }
-  p{
-    font-size: 14px;
-    padding: 12px 0;
-    font-weight: 400;
-    font-style: italic;
-    color: #FF91A4;
+  color: black;
+  h2{
+    font-weight: 500;
+    font-size: 19px;
+    padding-bottom: 12px;
+    font-family: 'Playfair Display', serif;
   }
 }
 
 .calendar-grid {
+  padding: 34px 0;
   display: grid;
+  border-top: 0.6px solid #b0b0b0;
+  border-bottom: 0.6px solid #b0b0b0;
   grid-template-columns: repeat(7, 1fr);
-  gap: 5px;
+  gap: 11px;
 }
 
 .calendar-day {
-  padding: 10px;
-  border-radius: 4px;
+  font-family: 'Noto Serif KR', serif;
+  padding: 9px;
   text-align: center;
   font-size: 14px;
+  border-radius: 8px;
 }
 
 .calendar-day.header {
-  font-weight: bold;
+  font-weight: 700;
+}
+
+.calendar-day.header:nth-child(7) {
+  color: red;
 }
 
 .calendar-day.current-date {
-  background-color: #E57373;
+  background-color: #ff91a4;
   color: #FFFFFF;
   font-weight: 500;
   border-radius: 999px;
+}
+
+.calender-footer {
+  font-family: 'Noto Serif KR', serif;
+  padding-top: 34px;
+  color: #b0b0b0;
+  text-align: left;
+
+  .calender-main-font {
+    font-size: 16px;
+    color: #333;
+
+    p {
+      font-weight: 600;
+      padding-bottom: 16px;
+    }
+
+    span {
+      font-size: 14px;
+      color: #ff6347;
+      font-weight: 700;
+    }
+  }
 }
 
 </style>
