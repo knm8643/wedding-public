@@ -52,7 +52,6 @@ export default {
 };
 </script>
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
 .banner-wrap{
   border-radius: 4px;
   padding: 64px 0 4px;
