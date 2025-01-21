@@ -1,36 +1,36 @@
 <template>
   <div class="blooming-wrap">
     <!-- 빅배너 -->
-    <BigBannerDefault />
+    <BigBannerOrigin />
     <!-- 소개말 -->
-    <introDefault />
+    <IntroOrigin />
     <!-- 사진첩 -->
-    <photoDefault />
+    <PhotoOrigin />
     <!-- 달력 -->
-    <calenderDefault/>
+    <CalenderOrigin/>
     <!-- 오시는 길(맵) -->
-    <addressDefault/>
+    <AddressOrigin/>
     <!-- 축의금 -->
-    <giftDefaultInfo/>
+    <GiftOrigin/>
     <!-- 편지보내기 -->
     <letterDefault/>
   </div>
 </template>
 
 <script>
-import BigBannerDefault from "@/components/blooming/bigBanner/BigBannerDefault.vue";
-import IntroDefault from "@/components/blooming/intro/IntroDefault.vue";
-import PhotoDefault from "@/components/blooming/photo/PhotoDefault.vue";
-import CalenderDefault from "@/components/blooming/calender/CalenderDefault.vue";
-import AddressDefault from "@/components/blooming/address/AddressDefault.vue";
-import GiftDefaultInfo from "@/components/blooming/gift/GiftDefaultInfo.vue";
+import BigBannerOrigin from "@/components/blooming/bigBanner/BigBannerOrigin.vue";
+import IntroOrigin from "@/components/blooming/intro/IntroOrigin.vue";
+import PhotoOrigin from "@/components/blooming/photo/PhotoOrigin.vue";
+import CalenderOrigin from "@/components/blooming/calender/CalenderOrigin.vue";
+import AddressOrigin from "@/components/blooming/address/AddressOrigin.vue";
+import GiftOrigin from "@/components/blooming/gift/GiftOrigin.vue";
 import LetterDefault from "@/components/blooming/letter/LetterDefault.vue";
 
 export default {
-  name:"Blooming",
+  name:"BloomingOrigin",
   components: {
     LetterDefault,
-    GiftDefaultInfo, AddressDefault, CalenderDefault, PhotoDefault, IntroDefault, BigBannerDefault},
+    GiftOrigin, AddressOrigin, CalenderOrigin, PhotoOrigin, IntroOrigin, BigBannerOrigin},
   mounted() {
     this.addSnowEffect();
   },
@@ -39,7 +39,7 @@ export default {
       const snowContainer = document.querySelector('.blooming-wrap');
 
       // snow를 추가할 갯수 설정
-      const snowCount = 120;
+      const snowCount = 150;
 
       // 눈 생성
       for (let i = 0; i < snowCount; i++) {
@@ -100,25 +100,25 @@ export default {
 }
 
 .snow {
-  $total: 120;
+  $total: 150;
   position: absolute;
   top: -10px;
   width: 6px;
   height: 6px;
   background: var(--snow-color);
   border-radius: 50%;
-  filter: drop-shadow(0 0 1px var(--snow-color)) blur(3px);
+  filter: drop-shadow(0 0 1.6px var(--snow-color)) blur(3px);
 
   @for $i from 1 through $total {
     $random-x: math.random(1000000) * 0.0001vw;
-    $random-offset: random_range(100000, 600000) * 0.0001vw;
+    $random-offset: random_range(-100000, 100000) * 0.0001vw;
     $random-x-end: $random-x + $random-offset;
     $random-x-end-yoyo: $random-x + math.div($random-offset, 2);
     $random-yoyo-time: math.div(random_range(30000, 80000), 100000);
     $random-yoyo-y: $random-yoyo-time * 100vh;
     $random-scale: math.random(10000) * 0.0001;
-    $fall-duration: random_range(5, 15) * 1s;
-    $fall-delay: math.random(30) *  -1s;
+    $fall-duration: random_range(10, 30) * 1s;
+    $fall-delay: math.random(30) * -1s;
 
     &:nth-child(#{$i}) {
       opacity: math.random(10000) * 0.0001;

@@ -5,17 +5,18 @@
 
       <!-- type 0 -->
       <Blooming v-if="dynamicCurrent === 0"/>
-      <Elegance v-if="dynamicCurrent === 1"/>
+      <!-- type 1 -->
+      <BloomingOrigin v-if="dynamicCurrent === 1"/>
     </div>
   </div>
 </template>
 
 <script>
 import Blooming from "@/components/blooming/Blooming.vue";
-import Elegance from "@/components/elegance/Elegance.vue";
+import BloomingOrigin from "@/components/blooming/BloomingOrigin.vue";
 
 export default {
-  components: {Blooming,Elegance},
+  components: {Blooming,BloomingOrigin},
   name:"MobilePopup",
   props:{
     current: {

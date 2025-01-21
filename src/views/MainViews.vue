@@ -256,7 +256,7 @@ export default {
       window.open('https://github.com/knm8643/wedding-public', '_blank');
     },
     openMoblie() {
-      if(this.currentSlide === 1 || this.currentSlide ===2) {
+      if(this.currentSlide ===2) {
         alert('해당 템플릿은 제작중입니다.')
         return;
       }
@@ -294,7 +294,7 @@ export default {
   },
 };
 </script>
-<style>
+<style lang="scss">
 @import url("https://api.fontshare.com/v2/css?f[]=archivo@100,200,300,400,500,600,700,800,900&f[]=clash-display@200,300,400,500,600,700&display=swap");
 
 :root {
