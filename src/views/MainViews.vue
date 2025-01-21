@@ -165,7 +165,6 @@ import MobilePopup from '@/components/MobilePopup.vue';
 import img1 from "@/assets/images/01.jpg";
 import img2 from "@/assets/images/02.jpg";
 import img3 from "@/assets/images/03.jpg";
-import EasterEgg from "@/components/easterEgg/easterEgg.vue";
 
 export default {
   components: {MobilePopup},
@@ -256,11 +255,6 @@ export default {
       window.open('https://github.com/knm8643/wedding-public', '_blank');
     },
     openMoblie() {
-      if(this.currentSlide ===2) {
-        alert('해당 템플릿은 제작중입니다.')
-        return;
-      }
-
       this.isPopupVisible = true;
     },
     closePopup() {

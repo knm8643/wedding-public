@@ -7,6 +7,8 @@
       <Blooming v-if="dynamicCurrent === 0"/>
       <!-- type 1 -->
       <BloomingOrigin v-if="dynamicCurrent === 1"/>
+      <!-- type 2 -->
+      <SpringMain v-if="dynamicCurrent === 2"/>
     </div>
   </div>
 </template>
@@ -14,9 +16,10 @@
 <script>
 import Blooming from "@/components/blooming/Blooming.vue";
 import BloomingOrigin from "@/components/blooming/BloomingOrigin.vue";
+import SpringMain from "@/components/spring/SpringMain.vue";
 
 export default {
-  components: {Blooming,BloomingOrigin},
+  components: {Blooming,BloomingOrigin,SpringMain},
   name:"MobilePopup",
   props:{
     current: {
