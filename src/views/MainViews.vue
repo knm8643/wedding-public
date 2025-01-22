@@ -442,11 +442,11 @@ export default {
               width: 100%;
               gap: 24px;
               overflow-x: auto;
-              padding: 16px 0;
+              padding: 16px 0 56px;
 
               .box-content {
                 font-size: 18px;
-                min-width: 245px;
+                min-width: 265px;
                 height: 275px;
                 background: #CDC1FF;
                 border-radius: 26px;
