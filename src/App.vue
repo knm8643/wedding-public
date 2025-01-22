@@ -35,5 +35,16 @@ Copyright (c) 충림이 All rights reserved.
   }
 }
 </script>
+<style>
+#app{
+  margin: 0 auto;
+  max-width: 475px;
+  min-width: 320px;
+  width: 100%;
+}
+#app, #app * {
+  font-family: "-apple-system", "BlinkMacSystemFont", "Apple SD Gothic Neo", "Noto Sans KR", "Roboto", "Helvetica Neue", "Arial", sans-serif;
+}
+</style>
 
 

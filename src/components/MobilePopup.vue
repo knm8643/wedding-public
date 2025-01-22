@@ -7,8 +7,6 @@
       <Blooming v-if="dynamicCurrent === 0"/>
       <!-- type 1 -->
       <BloomingOrigin v-if="dynamicCurrent === 1"/>
-      <!-- type 2 -->
-      <SpringMain v-if="dynamicCurrent === 2"/>
     </div>
   </div>
 </template>
