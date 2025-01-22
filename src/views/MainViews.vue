@@ -340,7 +340,7 @@ export default {
               opacity: 0;
 
               img{
-                width: 105px;
+                width: 95px;
               }
 
 
