@@ -442,7 +442,7 @@ export default {
               width: 100%;
               gap: 24px;
               overflow-x: auto;
-              padding: 16px 0 56px;
+              padding: 16px 0 26px;
 
               .box-content {
                 font-size: 18px;
