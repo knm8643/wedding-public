@@ -49,7 +49,6 @@ export default {
       canvas.width = 375;
       canvas.height = 3650;
 
-      console.log(canvas.height)
       const petals = [];
       const cherryImage = new Image();
       cherryImage.src = cherry;
@@ -60,7 +59,7 @@ export default {
           this.y = Math.random() * canvas.height - canvas.height; // 시작 위치 Y
           this.size = Math.random() * 2 + 15; // 벚꽃 크기
           this.speedX = Math.random() * 1 - 0.5; // 좌우 이동
-          this.speedY = Math.random() * 0.5 + 0.5; // 낙하 속도
+          this.speedY = Math.random() * 0.5 + 0.7; // 낙하 속도
           this.angle = Math.random() * Math.PI * 2; // 회전 각도
           this.angularSpeed = Math.random() * 0.02 - 0.01; // 회전 속도
         }

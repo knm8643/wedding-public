@@ -471,11 +471,12 @@ export default {
           .list-wrap {
             text-align: center;
             padding: 0 24px;
-            min-height: 100%;
+            min-height: 100vh; /* 화면 전체 높이 차지 */
             width: 100%;
             flex-direction: column;
             display: flex;
             justify-content: center;
+            padding-bottom: env(safe-area-inset-bottom); /* iOS의 하단 안전 영역에 맞게 패딩 추가 */
 
             .list-header{
               font-size: 17px;
