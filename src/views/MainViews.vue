@@ -12,17 +12,17 @@
         <ul :style="{ height: isMenuOpen ? '100vh' : 'auto' }">
           <li>
             <a @click="sendUrlGit">
-              소스 코드 바로 확인하기
-            </a>
-          </li>
-          <li>
-            <a href="https://pf.kakao.com/_xjmCjn/chat" target="_blank">
-              개발자에게 맞춤 제작 의뢰하기
+              소스코드 바로 확인하기
             </a>
           </li>
           <li>
             <a href="https://torch-knave-705.notion.site/15b6b12f8d3580a395c5ea297195a434?pvs=74" target="_blank">
               개발자 정보 알아보기
+            </a>
+          </li>
+          <li>
+            <a href="https://pf.kakao.com/_xjmCjn/chat" target="_blank">
+              개발자에게 맞춤 제작 의뢰하기
             </a>
           </li>
         </ul>
@@ -36,8 +36,9 @@
               <img src="@/assets/images/favicon.png" alt="Scroll Icon" class="" />
             </div>
             <div class="title-font">
-              누구나 쉽게 이용할 수 있는 <br/>
-              무료 모바일청첩장 <em>충리미</em>입니다
+              손쉽게 만드는<br/>
+              나만의 무료 모바일 초대장<br/>
+              <em>충리미</em>와 함께하세요
             </div>
             <div class="title-footer">
               <img src="@/assets/svg/scroll.svg" alt="Scroll Icon" class="scroll-icon" />
@@ -48,23 +49,22 @@
           <div class="list-wrap">
             <div class="list-font">
               원하는 스타일의 <br/>
-              초대장을 찾아보세요 다양한<br/>
-              <em>초대장</em>을 만나보세요
+              초대장을 클릭하면 <em>템플릿</em> <br/>
+              정보를 볼 수 있어요
             </div>
             <div class="list-container">
               <ul class="box">
-                <li v-for="(item, index) in items" :key="index" class="box-content" :style="{ background: item.background }">
+                <li v-for="(item, index) in items"
+                    @click="openMoblie(index)"
+                    :key="index" class="box-content" :style="{ background: item.background }">
                   <div class="box-font">
                     <button class="header-btn" :style="{ background: item.buttonBackground }">
                       <span>{{ item.buttonText }}</span>
                     </button>
                     <p v-html="item.text"></p>
                     <div class="btn-info">
-                      <button @click="openMoblie(index)">
-                        <span>확인하기</span>
-                      </button>
-                      <button @click="copyLink(index)">
-                        <span>URL복사</span>
+                      <button @click.stop="copyLink(index)">
+                        <span>공유하기</span>
                       </button>
                     </div>
                   </div>
@@ -92,18 +92,19 @@ export default {
       isPopupVisible: false,
       isMenuOpen: false,
       items: [
-        { text: '제작자의 초기<br/> 제작 템플릿1', background: '#CDC1FF', buttonBackground: '#A594F9', buttonText: '심플' },
-        { text: '제작자의 초기<br/> 제작 템플릿2', background: '#FFCDC1', buttonBackground: '#F9A594', buttonText: '모던' },
-        { text: '제작중', background: '#A294F9', buttonBackground: '#CDC1FF', buttonText: '디지털' },
-        { text: '제작중', background: '#D8C4B6', buttonBackground: '#F9A594', buttonText: '화려' },
-        { text: '제작중', background: '#3E5879', buttonBackground: '#F9A5F1', buttonText: '클래식' },
-        { text: '제작중', background: '#DCC1FF', buttonBackground: '#F9DCA5', buttonText: '럭셔리' },
-        { text: '제작중', background: '#CDC1FF', buttonBackground: '#A5F9D9', buttonText: '심플' },
-        { text: '제작중', background: '#213555', buttonBackground: '#A594F9', buttonText: '독특' },
+        { text: '기본이지만<br/> 충분히 예쁜 초대장', background: '#CDC1FF', buttonBackground: '#A594F9', buttonText: '심플' },
+        { text: '세상에서 제일로<br/> 간단한 초대장', background: '#DCC1FF', buttonBackground: '#A594F9', buttonText: '모던' },
+        { text: '잠시 기다려주세요<br/> 곧 오픈합니다!', background: '#A294F9', buttonBackground: '#CDC1FF', buttonText: '공사중' },
+        // { text: '제작중', background: '#D8C4B6', buttonBackground: '#F9A594', buttonText: '화려' },
+        // { text: '제작중', background: '#3E5879', buttonBackground: '#F9A5F1', buttonText: '클래식' },
+        // { text: '제작중', background: '#DCC1FF', buttonBackground: '#F9DCA5', buttonText: '럭셔리' },
+        // { text: '제작중', background: '#CDC1FF', buttonBackground: '#A5F9D9', buttonText: '심플' },
+        // { text: '제작중', background: '#213555', buttonBackground: '#A594F9', buttonText: '독특' },
       ]
     };
   },
   mounted() {
+    this.appCheck();
     this.urlCheck();
 
     const observer = new IntersectionObserver(this.handleIntersection, {
@@ -116,9 +117,56 @@ export default {
     sections.forEach(section => {
       observer.observe(section);
     });
+
+    this.animationCheck();
   },
 
   methods: {
+    animationCheck() {
+      const box = document.querySelector('.box');
+      const items = document.querySelectorAll('.box-content');
+      let currentIndex = 0;
+
+      // 특정 li 태그를 중앙으로 이동하는 함수
+      const scrollToItem = (index) => {
+        const item = items[index];
+        const boxWidth = box.clientWidth;
+        const itemLeft = item.offsetLeft;
+
+        // 스크롤 애니메이션
+        box.scrollTo({
+          left: itemLeft - boxWidth / 2 + item.clientWidth / 2,
+          behavior: 'smooth',
+        });
+      };
+
+      // 순차적으로 li 태그 이동
+      const scrollToNextItem = () => {
+        scrollToItem(currentIndex); // 현재 인덱스의 li 태그로 스크롤
+
+        // 다음 인덱스 계산 (순환)
+        currentIndex = (currentIndex + 1) % items.length; // 마지막 인덱스일 경우 0으로 초기화
+      };
+
+      // 초기 실행
+      scrollToItem(currentIndex);
+
+      // 2초마다 다음 li 태그로 이동
+      setInterval(scrollToNextItem, 2000);
+    },
+    appCheck() {
+      const isMobileApp = () => {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        // 간단한 모바일 앱 환경 감지 (수정 가능)
+        return /android|iphone|ipad|ipod/i.test(userAgent) && window.matchMedia('(display-mode: standalone)').matches;
+      };
+
+      // 앱 환경에서는 스크롤 숨김 클래스 추가
+      if (isMobileApp()) {
+        document.querySelector('.box').classList.add('hide-scroll');
+      }
+    },
     urlCheck() {
       const current = this.$route.query.current;
       const infoKey = this.$route.query.infoKey;
@@ -146,8 +194,9 @@ export default {
       if (index >= 2) {
         return alert('제작중입니다.');
       }
-      this.current = index;
-      this.isPopupVisible = true;
+
+      const redirectUrl = location.href + '?current=' + index + '&infoKey=%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%A0%84%EC%9A%A9';
+      window.location.href = redirectUrl;
     },
 
     copyLink(index) {
@@ -211,7 +260,7 @@ export default {
         img.classList.remove('fade-in');
       }
     },
-  }
+  },
 };
 </script>
 <style scoped lang="scss">
@@ -290,10 +339,13 @@ export default {
         margin: 0;
 
         li {
-          padding: 12px 8px;
+          //padding: 12px 8px;
+          //font-size: 16px;
+          //border-bottom: 0.6px solid #ddd;
+          line-height: 1.8;
+          padding: 12px 0 6px;
           font-size: 16px;
           border-bottom: 0.6px solid #ddd;
-
           &:last-child {
             border-bottom: none;
           }
@@ -340,7 +392,7 @@ export default {
               opacity: 0;
 
               img{
-                width: 95px;
+                width: 75px;
               }
 
 
@@ -425,7 +477,7 @@ export default {
               word-break: keep-all;
               position: relative;
               font-size: 26px;
-              line-height: 1.8;
+              line-height: 1.6;
 
               em {
                 font-style: normal;
@@ -434,7 +486,7 @@ export default {
             }
           }
           .list-container {
-            margin-top: 30px;
+            margin-top: 20px;
             width: 100%; /* 부모 너비 */
 
             .box {
@@ -443,6 +495,20 @@ export default {
               gap: 24px;
               overflow-x: auto;
               padding: 16px 0 26px;
+
+              // 기본적으로 웹에서는 스크롤 표시
+              -ms-overflow-style: auto;
+              scrollbar-width: auto;
+
+              // 앱에서만 스크롤 숨기기
+              &.hide-scroll {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+              }
+
+              &.hide-scroll::-webkit-scrollbar {
+                display: none;
+              }
 
               .box-content {
                 font-size: 18px;
@@ -464,7 +530,7 @@ export default {
                   color: #ffffff;
                   word-break: keep-all;
                   position: relative;
-                  line-height: 1.6;
+                  line-height: 1.4;
                   .header-btn {
                     font-size: 14px;
                     border-radius: 999px;
@@ -472,7 +538,7 @@ export default {
                     padding: 2px 12px;
                   }
                   p{
-                    margin-top: 12px;
+                    margin: 16px 0 24px;
                     font-size: 24px;
                     word-break: keep-all;
                     display: -webkit-box;
@@ -482,12 +548,9 @@ export default {
                   }
                   .btn-info {
                     margin-top: 16px;
-                    display: flex;
-                    justify-content: space-between;
-                    gap: 10px;
 
                     button {
-                      padding: 8px 16px;
+                      padding: 4px 16px;
                       font-size: 14px;
                       border: none;
                       border-radius: 20px;
@@ -505,10 +568,10 @@ export default {
                         }
                       }
                       &:last-child {
-                        background-color: #007bff;
+                        background-color: #9b7cf7;
 
                         &:hover {
-                          background-color: #0056b3;
+                          background-color: #9b7cf7;
                           transform: translateY(-2px);
                         }
                       }
@@ -517,6 +580,10 @@ export default {
                       }
                     }
                   }
+                }
+                &:last-child {
+                  opacity: 0.3;
+                  pointer-events: none;
                 }
                 &:hover {
                   transform: translateY(-10px);

@@ -5,7 +5,7 @@
       ref="banner"
   >
     <div class="content-main-font">
-      <p>2025-02-08</p>
+      <p>25.02.08</p>
     </div>
 
     <div class="image-wrap">

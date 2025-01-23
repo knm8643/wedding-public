@@ -95,24 +95,26 @@ export default {
   }
 
   .gift-info-wrap{
-    padding: 24px 0 12px;
+    padding: 44px 0 12px;
     margin: 12px 24px 24px;
     border-top: 0.6px solid #b0b0b0;
     .font-wrap {
+      position: relative;
       padding: 12px 0;
 
       h3 {
         white-space: nowrap;
         font-size: 18px;
-        color: black;
         font-weight: 500;
-        padding-bottom: 12px;
+        padding-bottom: 16px;
+        color: #E57373;
+
       }
 
       p{
         padding-bottom: 16px;
         font-weight: 500;
-        font-size: 16px;
+        font-size: 14px;
         color: #757575;
         white-space: nowrap;
       }
