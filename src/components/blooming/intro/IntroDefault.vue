@@ -8,7 +8,7 @@
     <div class="scroll-line" :class="{ 'line-visible': isVisible }"></div>
     <!-- 타이틀 제목 -->
     <div class="content-title">
-      초대합니다
+      저희 결혼합니다
     </div>
 
 

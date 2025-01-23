@@ -1,0 +1,155 @@
+<template>
+  <div class="blooming-wrap">
+    <canvas ref="canvas" class="sakura-canvas"></canvas>
+
+    <!-- 빅배너 -->
+    <BigBannerDefault />
+    <!-- 소개말 -->
+    <introDefault />
+    <!-- 사진첩 -->
+    <photoDefault />
+    <!-- 달력 -->
+    <calenderDefault/>
+    <!-- 오시는 길(맵) -->
+    <addressDefault/>
+    <!-- 축의금 -->
+    <giftDefaultInfo/>
+    <!-- 편지보내기 -->
+    <letterDefault/>
+  </div>
+</template>
+
+<script>
+import cherry from "@/assets/svg/cherryBlossoms.svg";
+import BigBannerDefault from "@/components/blooming/bigBanner/BigBannerDefault.vue";
+import IntroDefault from "@/components/blooming/intro/IntroDefault.vue";
+import PhotoDefault from "@/components/blooming/photo/PhotoDefault.vue";
+import CalenderDefault from "@/components/blooming/calender/CalenderDefault.vue";
+import AddressDefault from "@/components/blooming/address/AddressDefault.vue";
+import GiftDefaultInfo from "@/components/blooming/gift/GiftDefaultInfo.vue";
+import LetterDefault from "@/components/blooming/letter/LetterDefault.vue";
+
+export default {
+  name:"BloomingDefault",
+  components: {
+    LetterDefault,
+    GiftDefaultInfo, AddressDefault, CalenderDefault, PhotoDefault, IntroDefault, BigBannerDefault},
+  mounted() {
+    this.startSakuraEffect();
+
+  },
+  methods:{
+    startSakuraEffect() {
+      const canvas = this.$refs.canvas;
+      const ctx = canvas.getContext("2d");
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      canvas.width = 375;
+      canvas.height = 3650;
+
+      console.log(canvas.height)
+      const petals = [];
+      const cherryImage = new Image();
+      cherryImage.src = cherry;
+
+      class Petal {
+        constructor() {
+          this.x = Math.random() * canvas.width; // 시작 위치 X
+          this.y = Math.random() * canvas.height - canvas.height; // 시작 위치 Y
+          this.size = Math.random() * 2 + 15; // 벚꽃 크기
+          this.speedX = Math.random() * 1 - 0.5; // 좌우 이동
+          this.speedY = Math.random() * 0.5 + 0.5; // 낙하 속도
+          this.angle = Math.random() * Math.PI * 2; // 회전 각도
+          this.angularSpeed = Math.random() * 0.02 - 0.01; // 회전 속도
+        }
+
+        draw() {
+          ctx.save();
+          ctx.translate(this.x, this.y);
+          ctx.rotate(this.angle); // 회전
+          ctx.drawImage(cherryImage, -this.size / 2, -this.size / 2, this.size, this.size);
+          ctx.restore();
+        }
+
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          this.angle += this.angularSpeed;
+
+          // 화면 아래로 벗어나면 다시 위에서 시작
+          if (this.y > canvas.height) {
+            this.y = -this.size;
+            this.x = Math.random() * canvas.width;
+          }
+
+          // 화면 좌우로 벗어나면 반대편에서 등장
+          if (this.x > canvas.width) this.x = 0;
+          if (this.x < 0) this.x = canvas.width;
+        }
+      }
+
+      function createPetals() {
+        for (let i = 0; i < 100; i++) {
+          petals.push(new Petal());
+        }
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // 이전 그림 지우기
+
+        petals.forEach((petal) => {
+          petal.update();
+          petal.draw();
+        });
+
+        requestAnimationFrame(animate); // 다음 프레임 요청
+      }
+
+      cherryImage.onload = () => {
+        createPetals(); // 이미지 로드 후 벚꽃 생성
+        animate(); // 애니메이션 시작
+      };
+
+      // 리사이즈 이벤트 처리
+      window.addEventListener("resize", () => {
+        // canvas.width = window.innerWidth;
+        // canvas.height = window.innerHeight;
+        canvas.width = 375;
+        canvas.height = 3650;
+      });
+    },
+  }
+}
+</script>
+<style lang="scss">
+@use 'sass:math';
+
+/* ------------------------------------------------ */
+/* -------------------- POPUP --------------------- */
+/* ------------------------------------------------ */
+.blooming-wrap {
+  position: relative;
+  background-color: #ffffff;
+  min-height: 100%;
+  overflow: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 0 0 6px;
+
+  .sakura-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+</style>

@@ -471,10 +471,11 @@ export default {
           .list-wrap {
             text-align: center;
             padding: 0 24px;
+            min-height: 100%;
             width: 100%;
             flex-direction: column;
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
 
             .list-header{
               font-size: 17px;

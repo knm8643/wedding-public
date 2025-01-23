@@ -12,12 +12,11 @@
 </template>
 
 <script>
-import Blooming from "@/components/blooming/Blooming.vue";
+import Blooming from "@/components/blooming/BloomingDefault.vue";
 import BloomingOrigin from "@/components/blooming/BloomingOrigin.vue";
-import SpringMain from "@/components/spring/SpringMain.vue";
 
 export default {
-  components: {Blooming,BloomingOrigin,SpringMain},
+  components: {Blooming,BloomingOrigin},
   name:"MobilePopup",
   props:{
     current: {
