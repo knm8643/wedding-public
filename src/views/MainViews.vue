@@ -47,6 +47,9 @@
         </section>
         <section class="list" :class="{ 'menu-open': isMenuOpen }">
           <div class="list-wrap">
+            <div class="list-header">
+              <p>둘러보세요!</p>
+            </div>
             <div class="list-font">
               원하는 스타일의 <br/>
               초대장을 클릭하면 <em>템플릿</em> <br/>
@@ -472,6 +475,16 @@ export default {
             flex-direction: column;
             display: flex;
             justify-content: flex-start;
+
+            .list-header{
+              font-size: 17px;
+              line-height: 2;
+              font-weight: 700;
+              text-align: center;
+              margin: 35px 0 10px;
+              color: #9B7EBD;
+            }
+
             .list-font {
               font-weight: 700;
               color: #0b0d0f;
@@ -494,7 +507,7 @@ export default {
                 width: 100%;
                 gap: 24px;
                 overflow-x: auto;
-                padding: 16px 0 26px;
+                padding: 12px 0;
 
                 // 기본적으로 웹에서는 스크롤 표시
                 -ms-overflow-style: auto;
