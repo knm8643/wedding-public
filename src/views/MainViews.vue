@@ -469,7 +469,9 @@ export default {
             text-align: center;
             padding: 0 24px;
             width: 100%;
-
+            flex-direction: column;
+            display: flex;
+            justify-content: flex-start;
             .list-font {
               margin-top: 20px;
               font-weight: 700;
@@ -484,109 +486,109 @@ export default {
                 color: #9B7EBD;
               }
             }
-          }
-          .list-container {
-            margin-top: 20px;
-            width: 100%; /* 부모 너비 */
+            .list-container {
+              margin-top: 20px;
+              width: 100%; /* 부모 너비 */
 
-            .box {
-              display: flex;
-              width: 100%;
-              gap: 24px;
-              overflow-x: auto;
-              padding: 16px 0 26px;
-
-              // 기본적으로 웹에서는 스크롤 표시
-              -ms-overflow-style: auto;
-              scrollbar-width: auto;
-
-              // 앱에서만 스크롤 숨기기
-              &.hide-scroll {
-                -ms-overflow-style: none;
-                scrollbar-width: none;
-              }
-
-              &.hide-scroll::-webkit-scrollbar {
-                display: none;
-              }
-
-              .box-content {
-                font-size: 18px;
-                min-width: 265px;
-                height: 275px;
-                background: #CDC1FF;
-                border-radius: 26px;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-                padding: 16px;
-                transition: transform 0.3s ease;
+              .box {
                 display: flex;
-                justify-content: center;
-                align-items: center;
                 width: 100%;
-                max-width: 305px; /* 최대 너비 제한 */
+                gap: 24px;
+                overflow-x: auto;
+                padding: 16px 0 26px;
 
-                .box-font{
-                  font-weight: 700;
-                  color: #ffffff;
-                  word-break: keep-all;
-                  position: relative;
-                  line-height: 1.4;
-                  .header-btn {
-                    font-size: 14px;
-                    border-radius: 999px;
-                    background: #A594F9;
-                    padding: 2px 12px;
-                  }
-                  p{
-                    margin: 16px 0 24px;
-                    font-size: 24px;
+                // 기본적으로 웹에서는 스크롤 표시
+                -ms-overflow-style: auto;
+                scrollbar-width: auto;
+
+                // 앱에서만 스크롤 숨기기
+                &.hide-scroll {
+                  -ms-overflow-style: none;
+                  scrollbar-width: none;
+                }
+
+                &.hide-scroll::-webkit-scrollbar {
+                  display: none;
+                }
+
+                .box-content {
+                  font-size: 18px;
+                  min-width: 265px;
+                  height: 275px;
+                  background: #CDC1FF;
+                  border-radius: 26px;
+                  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                  padding: 16px;
+                  transition: transform 0.3s ease;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  width: 100%;
+                  max-width: 305px; /* 최대 너비 제한 */
+
+                  .box-font{
+                    font-weight: 700;
+                    color: #ffffff;
                     word-break: keep-all;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 2;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                  }
-                  .btn-info {
-                    margin-top: 16px;
-
-                    button {
-                      padding: 4px 16px;
+                    position: relative;
+                    line-height: 1.4;
+                    .header-btn {
                       font-size: 14px;
-                      border: none;
-                      border-radius: 20px;
-                      cursor: pointer;
-                      transition: background-color 0.3s ease, transform 0.2s ease;
+                      border-radius: 999px;
+                      background: #A594F9;
+                      padding: 2px 12px;
+                    }
+                    p{
+                      margin: 16px 0 24px;
+                      font-size: 24px;
+                      word-break: keep-all;
+                      display: -webkit-box;
+                      -webkit-line-clamp: 2;
+                      -webkit-box-orient: vertical;
+                      overflow: hidden;
+                    }
+                    .btn-info {
+                      margin-top: 16px;
 
-                      span {
-                        color: white;
-                      }
-                      &:first-child {
-                        background-color: #4caf50;
-                        &:hover {
-                          background-color: #45a049;
-                          transform: translateY(-2px);
+                      button {
+                        padding: 4px 16px;
+                        font-size: 14px;
+                        border: none;
+                        border-radius: 20px;
+                        cursor: pointer;
+                        transition: background-color 0.3s ease, transform 0.2s ease;
+
+                        span {
+                          color: white;
                         }
-                      }
-                      &:last-child {
-                        background-color: #9b7cf7;
-
-                        &:hover {
+                        &:first-child {
+                          background-color: #4caf50;
+                          &:hover {
+                            background-color: #45a049;
+                            transform: translateY(-2px);
+                          }
+                        }
+                        &:last-child {
                           background-color: #9b7cf7;
-                          transform: translateY(-2px);
+
+                          &:hover {
+                            background-color: #9b7cf7;
+                            transform: translateY(-2px);
+                          }
                         }
-                      }
-                      &:active {
-                        transform: translateY(1px);
+                        &:active {
+                          transform: translateY(1px);
+                        }
                       }
                     }
                   }
-                }
-                &:last-child {
-                  opacity: 0.3;
-                  pointer-events: none;
-                }
-                &:hover {
-                  transform: translateY(-10px);
+                  &:last-child {
+                    opacity: 0.3;
+                    pointer-events: none;
+                  }
+                  &:hover {
+                    transform: translateY(-10px);
+                  }
                 }
               }
             }
