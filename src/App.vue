@@ -36,6 +36,10 @@ Copyright (c) 충림이 All rights reserved.
 }
 </script>
 <style>
+html,
+body{
+  height: 100%;
+}
 #app{
   margin: 0 auto;
   max-width: 475px;
