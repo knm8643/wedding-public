@@ -473,7 +473,6 @@ export default {
             display: flex;
             justify-content: flex-start;
             .list-font {
-              margin-top: 20px;
               font-weight: 700;
               color: #0b0d0f;
               word-break: keep-all;
