@@ -98,7 +98,7 @@ export default {
         { text: '기본이지만<br/> 충분히 예쁜 초대장', background: '#CDC1FF', buttonBackground: '#A594F9', buttonText: '심플' },
         { text: '세상에서 제일로<br/> 간단한 초대장', background: '#DCC1FF', buttonBackground: '#A594F9', buttonText: '모던' },
         { text: '잠시 기다려주세요<br/> 곧 오픈합니다!', background: '#A294F9', buttonBackground: '#CDC1FF', buttonText: '공사중' },
-        // { text: '제작중', background: '#D8C4B6', buttonBackground: '#F9A594', buttonText: '화려' },
+        // { text: '잠시 기다려주세요<br/> 곧 오픈합니다!', background: '#D8C4B6', buttonBackground: '#F9A594', buttonText: '공사중' },
         // { text: '제작중', background: '#3E5879', buttonBackground: '#F9A5F1', buttonText: '클래식' },
         // { text: '제작중', background: '#DCC1FF', buttonBackground: '#F9DCA5', buttonText: '럭셔리' },
         // { text: '제작중', background: '#CDC1FF', buttonBackground: '#A5F9D9', buttonText: '심플' },
@@ -373,7 +373,7 @@ export default {
       }
 
       section {
-        padding-bottom: 54px;
+        //padding-bottom: 54px;
         width: 100%;
         height: 100vh;
         scroll-snap-type: y mandatory;
@@ -471,12 +471,12 @@ export default {
 
           .list-wrap {
             text-align: center;
-            padding: 0 24px 0;
+            padding: 54px 24px 0;
             min-height: 100vh; /* 화면 전체 높이 차지 */
             width: 100%;
             flex-direction: column;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             padding-bottom: env(safe-area-inset-bottom); /* iOS의 하단 안전 영역에 맞게 패딩 추가 */
 
             .list-header{
