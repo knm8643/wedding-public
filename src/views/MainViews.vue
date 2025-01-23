@@ -48,7 +48,7 @@
         <section class="list" :class="{ 'menu-open': isMenuOpen }">
           <div class="list-wrap">
             <div class="list-header">
-              <p>둘러보세요!</p>
+              <p>둘러보세요</p>
             </div>
             <div class="list-font">
               원하는 스타일의 <br/>
@@ -373,6 +373,7 @@ export default {
       }
 
       section {
+        padding-top: 54px;
         width: 100%;
         height: 100vh;
         scroll-snap-type: y mandatory;
@@ -470,7 +471,7 @@ export default {
 
           .list-wrap {
             text-align: center;
-            padding: 0 24px;
+            padding: 0 24px 0;
             min-height: 100vh; /* 화면 전체 높이 차지 */
             width: 100%;
             flex-direction: column;
@@ -483,7 +484,7 @@ export default {
               line-height: 2;
               font-weight: 700;
               text-align: center;
-              margin: 35px 0 10px;
+              margin: 0 0 10px;
               color: #9B7EBD;
             }
 
@@ -537,7 +538,7 @@ export default {
                   display: flex;
                   justify-content: center;
                   align-items: center;
-                  width: 100%;
+                  width: calc(30%);
                   max-width: 305px; /* 최대 너비 제한 */
 
                   .box-font{
