@@ -201,18 +201,48 @@ export default {
         }
       }
 
-      // Update OG meta tags
-      this.$meta().set({
-        title: metaData.title,
-        meta: [
-          { name: 'description', content: metaData.description },
-          { property: 'og:title', content: metaData.title },
-          { property: 'og:description', content: metaData.description },
-          { property: 'og:image', content: metaData.image },
-          { property: 'og:url', content: metaData.url },
-          { property: 'og:type', content: 'website' },
-        ],
-      });
+      // Meta 태그 업데이트
+      document.title = metaData.title;
+
+      // 기존 meta 태그 삭제 후 새로 추가
+      const existingMetaTags = document.querySelectorAll('meta[name="description"], meta[property="og:title"], meta[property="og:description"], meta[property="og:image"], meta[property="og:url"], meta[property="og:type"]');
+      existingMetaTags.forEach(tag => tag.remove());
+
+      // description
+      const descriptionTag = document.createElement('meta');
+      descriptionTag.setAttribute('name', 'description');
+      descriptionTag.setAttribute('content', metaData.description);
+      document.head.appendChild(descriptionTag);
+
+      // og:title
+      const ogTitleTag = document.createElement('meta');
+      ogTitleTag.setAttribute('property', 'og:title');
+      ogTitleTag.setAttribute('content', metaData.title);
+      document.head.appendChild(ogTitleTag);
+
+      // og:description
+      const ogDescriptionTag = document.createElement('meta');
+      ogDescriptionTag.setAttribute('property', 'og:description');
+      ogDescriptionTag.setAttribute('content', metaData.description);
+      document.head.appendChild(ogDescriptionTag);
+
+      // og:image
+      const ogImageTag = document.createElement('meta');
+      ogImageTag.setAttribute('property', 'og:image');
+      ogImageTag.setAttribute('content', metaData.image);
+      document.head.appendChild(ogImageTag);
+
+      // og:url
+      const ogUrlTag = document.createElement('meta');
+      ogUrlTag.setAttribute('property', 'og:url');
+      ogUrlTag.setAttribute('content', metaData.url);
+      document.head.appendChild(ogUrlTag);
+
+      // og:type
+      const ogTypeTag = document.createElement('meta');
+      ogTypeTag.setAttribute('property', 'og:type');
+      ogTypeTag.setAttribute('content', 'website');
+      document.head.appendChild(ogTypeTag);
 
 
       if(current !== undefined) {
