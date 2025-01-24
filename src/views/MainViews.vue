@@ -173,6 +173,48 @@ export default {
     urlCheck() {
       const current = this.$route.query.current;
       const infoKey = this.$route.query.infoKey;
+
+      let metaData = {
+        title: '모바일초대장 & 충림',
+        description: '모바일초대장으로 특별한 날을 준비하세요. 세련된 디자인과 쉬운 공유!',
+        image: 'favicon.png',
+        url: 'https://chungrimi.com',
+      };
+
+      // 충림이를 통해서 링크 공유하고 싶다면
+      // 아래와 같이 개인설정에 맞게 사용해주세요
+      if (infoKey) {
+        if (infoKey === 'knm8643') {
+          metaData = {
+            title: '충디딥의 결혼에 초대합니다.',
+            description: '우리의 특별한 날, 모바일 초대장 통해 함께해요!',
+            image: '01.jpg',
+            url: 'https://chungrimi.com',
+          };
+        } else if (infoKey === 'yurim95') {
+          metaData = {
+            title: '우리의 특별한 날, 파티 초대장!',
+            description: '이번 결혼식에 함께해주셔서 기쁩니다. 초대장으로 세련되게 초대합니다!',
+            image: '02.jpg',
+            url: 'https://chungrimi.com',
+          };
+        }
+      }
+
+      // Update OG meta tags
+      this.$meta().set({
+        title: metaData.title,
+        meta: [
+          { name: 'description', content: metaData.description },
+          { property: 'og:title', content: metaData.title },
+          { property: 'og:description', content: metaData.description },
+          { property: 'og:image', content: metaData.image },
+          { property: 'og:url', content: metaData.url },
+          { property: 'og:type', content: 'website' },
+        ],
+      });
+
+
       if(current !== undefined) {
         if(current === '이스터에그'){
           this.$router.push({
@@ -342,9 +384,6 @@ export default {
         margin: 0;
 
         li {
-          //padding: 12px 8px;
-          //font-size: 16px;
-          //border-bottom: 0.6px solid #ddd;
           line-height: 1.8;
           padding: 12px 0 6px;
           font-size: 16px;
