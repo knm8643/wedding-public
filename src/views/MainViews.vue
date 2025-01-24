@@ -225,6 +225,12 @@ export default {
 
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
+      const menuBtn = document.querySelector('.menu-btn');
+      if (this.isMenuOpen) {
+        menuBtn.classList.add('open');
+      } else {
+        menuBtn.classList.remove('open');
+      }
     },
 
     handleIntersection(entries) {
@@ -289,12 +295,13 @@ export default {
       z-index: 10;
       width: 100%;
       height: 56px;
+      border-bottom: 0.6px solid #b0b0b0;
       background-color: #ffffff;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0 16px;
-      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+      //box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 
       /* 부모와 동일한 max-width와 margin 설정 */
       max-width: 475px;
@@ -329,7 +336,7 @@ export default {
       margin: 0 auto;
       transform: translateX(-50%); /* 부모 중앙 정렬 */
       background-color: #f8f9fa;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      //box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
       transition: top 0.4s ease-in-out;
       z-index: 9;
 
