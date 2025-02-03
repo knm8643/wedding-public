@@ -46,7 +46,7 @@ export default {
       // canvas.width = window.innerWidth;
       // canvas.height = window.innerHeight;
       canvas.width = 375;
-      canvas.height = 1650;
+      canvas.height = 3050;
 
       const petals = [];
       const cherryImage = new Image();
@@ -89,7 +89,7 @@ export default {
       }
 
       function createPetals() {
-        for (let i = 0; i < 40; i++) {
+        for (let i = 0; i < 90; i++) {
           petals.push(new Petal());
         }
       }
@@ -116,7 +116,7 @@ export default {
         // canvas.width = window.innerWidth;
         // canvas.height = window.innerHeight;
         canvas.width = 375;
-        canvas.height = 1050;
+        canvas.height = 3050;
       });
     },
   }

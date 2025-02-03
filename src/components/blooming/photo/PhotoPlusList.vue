@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import img09 from "@/assets/images/10.jpg";
 import img10 from "@/assets/images/10.jpg";
 import img11 from "@/assets/images/11.jpg";
 import img12 from "@/assets/images/12.jpg";
@@ -22,6 +23,7 @@ export default {
   data() {
     return {
       images: [
+        { src: img09, alt: "첫번째 이미지", text: "첫번째 이미지" },
         { src: img10, alt: "첫번째 이미지", text: "첫번째 이미지" },
         { src: img11, alt: "두번째 이미지", text: "두번째 이미지" },
         { src: img12, alt: "세번째 이미지", text: "세번째 이미지" },
@@ -36,7 +38,7 @@ export default {
   text-align: center;
 }
 img {
-  height: 375px;
-  width: 245px;
+  max-width: 252px;
+  object-fit: cover;
 }
 </style>

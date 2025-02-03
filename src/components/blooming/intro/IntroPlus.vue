@@ -30,10 +30,10 @@ export default {
   transform: translateY(30px);
   transition: opacity 1.5s ease, transform 1.5s ease;
   justify-self: center;
-  padding: 156px 0;
+  padding: 156px 68px;
 
   .content-title {
-    padding: 42px 68px;
+    padding: 42px 0;
     min-width: 233px;
     font-family: 'Love Ya Like A Sister', sans-serif;
     font-style: normal;

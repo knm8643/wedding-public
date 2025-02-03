@@ -84,6 +84,7 @@ export default {
       border: 1px solid #FFC0CB;
       max-height: 507px;
       width: 100%;
+      height: 100%;
       object-fit: cover;
     }
   }

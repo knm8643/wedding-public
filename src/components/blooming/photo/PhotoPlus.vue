@@ -39,7 +39,7 @@ export default {
               this.isSecondImageVisible = true;
               setTimeout(() => {
                 this.isFontVisible = true;
-              }, 500);
+              }, 800);
             }, 1000);
             observer.disconnect();
           }
@@ -103,17 +103,17 @@ export default {
 
 .first-image.animate-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(25px);
 }
 
 .second-image {
-  transform: translateY(-25px);
+  transform: translateY(-30px);
   opacity: 0;
   transition: opacity 1.5s ease, transform 1.5s ease;
 }
 
 .second-image.animate-visible-second {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(-30px);
 }
 </style>
