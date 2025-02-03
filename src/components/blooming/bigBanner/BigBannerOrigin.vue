@@ -52,11 +52,12 @@ export default {
 };
 </script>
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
 .banner-wrap{
   border-radius: 4px;
   padding: 84px 0 64px;
-
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
   .content-main-font{
     width: 140px;
     margin: 0 auto;
@@ -116,13 +117,6 @@ export default {
       }
     }
   }
-}
-
-/* 애니메이션 */
-.banner-wrap {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1.2s ease, transform 1.2s ease;
 }
 
 .banner-wrap.animate-visible {

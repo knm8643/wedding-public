@@ -32,6 +32,7 @@ export default {
     LetterDefault,
     GiftOrigin, AddressOrigin, CalenderOrigin, PhotoOrigin, IntroOrigin, BigBannerOrigin},
   mounted() {
+    // 눈효과
     this.addSnowEffect();
   },
   methods:{

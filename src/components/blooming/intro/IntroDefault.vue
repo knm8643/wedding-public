@@ -68,7 +68,6 @@ export default {
 };
 </script>
 <style scoped>
-/* 애니메이션 */
 .intro-wrap {
   opacity: 0;
   transform: translateY(30px);

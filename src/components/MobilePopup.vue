@@ -1,8 +1,6 @@
 <template>
   <div class="mobile-popup">
     <div class="popup-content">
-      <slot />
-
       <!-- type 0 -->
       <Blooming v-if="dynamicCurrent === 0"/>
       <!-- type 1 -->
@@ -34,7 +32,7 @@ export default {
     if (currentFromQuery !==  undefined) {
       this.dynamicCurrent = Number(currentFromQuery);
 
-      // MobilePopup 제거
+      // 경로 URL 제거
       const queryString = window.location.search;
       const newUrl = `${window.location.origin}${queryString}`;
       window.history.replaceState(null, '', newUrl);

@@ -25,7 +25,7 @@ export default {
 %c
 ※ 문의 knm8643@nate.com
 %c
-Copyright (c) 충림이 All rights reserved.
+Copyright (c) knm8643 All rights reserved.
 `,
         'font-size: 14px; color: #FFB6C1; font-weight: bold;',
         `font-size: 14px; color: ${textColor}; font-weight: 500;`,

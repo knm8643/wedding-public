@@ -1,7 +1,7 @@
 <template>
   <div class="blooming-wrap">
+    <!-- 벚꽃 내리는효과 -->
     <canvas ref="canvas" class="sakura-canvas"></canvas>
-
     <!-- 빅배너 -->
     <BigBannerDefault />
     <!-- 소개말 -->
@@ -35,17 +35,18 @@ export default {
     LetterDefault,
     GiftDefaultInfo, AddressDefault, CalenderDefault, PhotoDefault, IntroDefault, BigBannerDefault},
   mounted() {
+    // 벚꽃내리는 효과
     this.startSakuraEffect();
-
   },
   methods:{
     startSakuraEffect() {
       const canvas = this.$refs.canvas;
       const ctx = canvas.getContext("2d");
 
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
 
+      // ----- 사이즈 전체로 잡을지 고정으로 잡을지 선택해서 화면에 맞게해주세요 -----
+      // canvas.width = window.innerWidth;
+      // canvas.height = window.innerHeight;
       canvas.width = 375;
       canvas.height = 3650;
 
@@ -113,6 +114,7 @@ export default {
 
       // 리사이즈 이벤트 처리
       window.addEventListener("resize", () => {
+        // ----- 사이즈 전체로 잡을지 고정으로 잡을지 선택해서 화면에 맞게해주세요 -----
         // canvas.width = window.innerWidth;
         // canvas.height = window.innerHeight;
         canvas.width = 375;

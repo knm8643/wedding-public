@@ -158,27 +158,17 @@ export default {
                 position: coords
               });
 
-              // 인포윈도우로 장소에 대한 설명을 표시합니다
-              // var infowindow = new kakao.maps.InfoWindow({
-              //   content: '<div style="width:50px;text-align:center;padding:2px 0; color: black">예식장</div>'
-              // });
-              // infowindow.open(this.map, marker);
-
               // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
               this.map.setCenter(coords);
             }
           }.bind(this));
         });
       };
-
-
-
     },
   },
 };
 </script>
 <style scoped>
-/* 애니메이션 */
 .address-wrap {
   opacity: 0;
   transform: translateY(30px);
@@ -282,7 +272,7 @@ export default {
         align-items: center;
         justify-content: center;
         gap: 6px;
-        transition: transform 0.2s ease, box-shadow 0.2s ease; /* 부드러운 애니메이션 */
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
 
         a {
           img {
@@ -298,8 +288,8 @@ export default {
 
 
         &:hover {
-          transform: scale(1.05); /* 살짝 커지게 설정 */
-          box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* 그림자 강화 */
+          transform: scale(1.05);
+          box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
         }
       }
     }

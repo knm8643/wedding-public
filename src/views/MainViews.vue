@@ -61,15 +61,10 @@
                     @click="openMoblie(index)"
                     :key="index" class="box-content" :style="{ background: item.background }">
                   <div class="box-font">
-                    <button class="header-btn" :style="{ background: item.buttonBackground }">
+                    <button @click="copyLink(index, $event)" class="header-btn" :style="{ background: item.buttonBackground }">
                       <span>{{ item.buttonText }}</span>
                     </button>
                     <p v-html="item.text"></p>
-                    <div class="btn-info">
-                      <button @click.stop="copyLink(index)">
-                        <span>공유하기</span>
-                      </button>
-                    </div>
                   </div>
                 </li>
               </ul>
@@ -78,6 +73,7 @@
         </section>
       </div>
     </div>
+    <div class="toast" v-if="showToast">{{ toastMessage }}</div>
   </main>
   <transition name="popup-fade">
     <MobilePopup v-if="isPopupVisible" :current="current">
@@ -91,18 +87,15 @@ export default {
   components: {MobilePopup},
   data() {
     return {
+      showToast: false,
+      toastMessage: '',
       current: 0,
       isPopupVisible: false,
       isMenuOpen: false,
       items: [
-        { text: '기본이지만<br/> 충분히 예쁜 초대장', background: '#CDC1FF', buttonBackground: '#A594F9', buttonText: '심플' },
-        { text: '세상에서 제일로<br/> 간단한 초대장', background: '#DCC1FF', buttonBackground: '#A594F9', buttonText: '모던' },
+        { text: '기본이지만<br/> 충분히 예쁜 초대장', background: '#CDC1FF', buttonBackground: '#A594F9', buttonText: '공유하기' },
+        { text: '세상에서 제일로<br/> 간단한 초대장', background: '#DCC1FF', buttonBackground: '#A594F9', buttonText: '공유하기' },
         { text: '잠시 기다려주세요<br/> 곧 오픈합니다!', background: '#A294F9', buttonBackground: '#CDC1FF', buttonText: '공사중' },
-        // { text: '잠시 기다려주세요<br/> 곧 오픈합니다!', background: '#D8C4B6', buttonBackground: '#F9A594', buttonText: '공사중' },
-        // { text: '제작중', background: '#3E5879', buttonBackground: '#F9A5F1', buttonText: '클래식' },
-        // { text: '제작중', background: '#DCC1FF', buttonBackground: '#F9DCA5', buttonText: '럭셔리' },
-        // { text: '제작중', background: '#CDC1FF', buttonBackground: '#A5F9D9', buttonText: '심플' },
-        // { text: '제작중', background: '#213555', buttonBackground: '#A594F9', buttonText: '독특' },
       ]
     };
   },
@@ -129,6 +122,7 @@ export default {
       const box = document.querySelector('.box');
       const items = document.querySelectorAll('.box-content');
       let currentIndex = 0;
+      let scrollTimer = null;
 
       // 특정 li 태그를 중앙으로 이동하는 함수
       const scrollToItem = (index) => {
@@ -146,16 +140,25 @@ export default {
       // 순차적으로 li 태그 이동
       const scrollToNextItem = () => {
         scrollToItem(currentIndex); // 현재 인덱스의 li 태그로 스크롤
-
-        // 다음 인덱스 계산 (순환)
         currentIndex = (currentIndex + 1) % items.length; // 마지막 인덱스일 경우 0으로 초기화
       };
 
       // 초기 실행
       scrollToItem(currentIndex);
 
-      // 2초마다 다음 li 태그로 이동
-      setInterval(scrollToNextItem, 2000);
+      // 3초마다 다음 li 태그로 이동
+      scrollTimer = setInterval(scrollToNextItem, 3000);
+
+      // 클릭 시 스크롤 애니메이션 일시 중지
+      items.forEach((item, index) => {
+        item.addEventListener('click', () => {
+          clearInterval(scrollTimer); // 스크롤 중단
+          scrollToItem(index); // 클릭한 항목으로 이동
+          setTimeout(() => {
+            scrollTimer = setInterval(scrollToNextItem, 3000); // 3초 후 다시 시작
+          }, 3000);
+        });
+      });
     },
     appCheck() {
       const isMobileApp = () => {
@@ -198,25 +201,39 @@ export default {
       if (index >= 2) {
         return alert('제작중입니다.');
       }
+      const target = document.querySelectorAll('.box-content')[index];
+      this.triggerClickEffect(target);
 
-      const redirectUrl = location.href + '?current=' + index + '&infoKey=%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%A0%84%EC%9A%A9';
-      window.location.href = redirectUrl;
+      setTimeout(() => {
+          const redirectUrl = location.href + '?current=' + index + '&infoKey=%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%A0%84%EC%9A%A9';
+          window.location.href = redirectUrl;
+      }, 300);
     },
 
-    copyLink(index) {
-      if (index >= 2) {
-        return alert('제작중입니다.');
-      }
+    copyLink(index, event) {
+      event.stopPropagation();
+      const target = document.querySelectorAll('.box-content')[index];
+      this.triggerClickEffect(target);
 
-      const urlToCopy = location.href + '?current=' + index + '&infoKey=%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%A0%84%EC%9A%A9';
-      navigator.clipboard.writeText(urlToCopy)
-          .then(() => {
-            alert('URL이 클립보드에 복사되었습니다!');
-          })
-          .catch(err => {
-            alert('URL 복사에 실패했습니다.');
-            console.error('Error copying text: ', err);
-          });
+      setTimeout(() => {
+          const urlToCopy = location.href + '?current=' + index + '&infoKey=%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%A0%84%EC%9A%A9';
+          navigator.clipboard.writeText(urlToCopy)
+              .then(() => {
+                alert('URL이 클립보드에 복사되었습니다!');
+              })
+              .catch(() => {
+                alert('URL 복사에 실패했습니다.');
+              });
+      }, 300);
+    },
+
+    triggerClickEffect(target) {
+      if (!target) return;
+      target.classList.add('clicked');
+
+      setTimeout(() => {
+        target.classList.remove('clicked');
+      }, 500);
     },
 
     sendUrlGit() {
@@ -301,13 +318,10 @@ export default {
       justify-content: space-between;
       align-items: center;
       padding: 0 16px;
-      //box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-
-      /* 부모와 동일한 max-width와 margin 설정 */
       max-width: 475px;
       margin: 0 auto;
       left: 50%;
-      transform: translateX(-50%); /* 완벽하게 중앙 정렬 */
+      transform: translateX(-50%);
 
       .logo {
         font-size: 18px;
@@ -326,22 +340,20 @@ export default {
       }
     }
 
-    /* 메뉴탭 스타일 */
     .menu-tab {
       position: fixed;
       top: -100%;
       left: 50%;
       width: 100%;
-      max-width: 475px; /* 부모 크기에 맞춤 */
+      max-width: 475px;
       margin: 0 auto;
-      transform: translateX(-50%); /* 부모 중앙 정렬 */
+      transform: translateX(-50%);
       background-color: #f8f9fa;
-      //box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
       transition: top 0.4s ease-in-out;
       z-index: 9;
 
       &.open {
-        top: 56px; /* 헤더 바로 아래 */
+        top: 56px;
       }
 
       ul {
@@ -361,7 +373,6 @@ export default {
       }
     }
 
-    /* 메인 컨테이너 */
     .main-container {
       position: relative;
       width: 100%;
@@ -378,7 +389,6 @@ export default {
       }
 
       section {
-        //padding-bottom: 54px;
         width: 100%;
         height: 100vh;
         scroll-snap-type: y mandatory;
@@ -392,7 +402,7 @@ export default {
           .title {
             padding: 0 24px;;
             text-align: center;
-            width: 100%; /* 부모 너비 */
+            width: 100%;
 
             .title-img{
               transition-delay: .65s;
@@ -448,7 +458,6 @@ export default {
                 animation: bounce 1.5s infinite;
               }
 
-              /* 애니메이션 효과 (상하로 움직이거나 깜빡이는 효과) */
               @keyframes bounce {
                 0% {
                   transform: translateY(0);
@@ -477,12 +486,12 @@ export default {
           .list-wrap {
             text-align: center;
             padding: 54px 24px 0;
-            min-height: 100vh; /* 화면 전체 높이 차지 */
+            min-height: 100vh;
             width: 100%;
             flex-direction: column;
             display: flex;
             justify-content: flex-start;
-            padding-bottom: env(safe-area-inset-bottom); /* iOS의 하단 안전 영역에 맞게 패딩 추가 */
+            padding-bottom: env(safe-area-inset-bottom);
 
             .list-header{
               font-size: 17px;
@@ -509,7 +518,7 @@ export default {
             }
             .list-container {
               margin-top: 20px;
-              width: 100%; /* 부모 너비 */
+              width: 100%;
 
               .box {
                 display: flex;
@@ -518,11 +527,9 @@ export default {
                 overflow-x: auto;
                 padding: 12px 0;
 
-                // 기본적으로 웹에서는 스크롤 표시
                 -ms-overflow-style: auto;
                 scrollbar-width: auto;
 
-                // 앱에서만 스크롤 숨기기
                 &.hide-scroll {
                   -ms-overflow-style: none;
                   scrollbar-width: none;
@@ -545,7 +552,7 @@ export default {
                   justify-content: center;
                   align-items: center;
                   width: calc(30%);
-                  max-width: 305px; /* 최대 너비 제한 */
+                  max-width: 305px;
 
                   .box-font{
                     font-weight: 700;
@@ -611,12 +618,14 @@ export default {
                     transform: translateY(-10px);
                   }
                 }
+                .box-content.clicked {
+                  transform: translateY(-10px);
+                }
               }
             }
           }
         }
 
-        /* 딤 효과 레이어 */
         &::before {
           content: "";
           position: absolute;
@@ -631,7 +640,6 @@ export default {
           pointer-events: none;
         }
 
-        /* 메뉴탭이 열렸을 때 딤 효과 활성화 */
         &.menu-open::before {
           opacity: 1;
         }

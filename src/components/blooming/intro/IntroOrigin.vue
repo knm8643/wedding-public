@@ -75,8 +75,6 @@ export default {
 };
 </script>
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
-/* 애니메이션 */
 .intro-wrap {
   opacity: 0;
   transform: translateY(30px);

@@ -261,38 +261,6 @@ export default {
   opacity: 1;
   transform: translateY(0);
 }
-/* 인풋박스 공통 */
-input {
-  text-align: center;
-  width: 100%;
-  font-size: 14px;
-}
-input:hover{
-  border: 0.6px solid #b0b0b0;
-}
-
-/* 스와이퍼 */
-::v-deep(.swiper-pagination) {
-  display: block !important;
-  position: absolute;
-  bottom: 10px;
-  width: 100%;
-  text-align: center;
-  z-index: 10;
-}
-
-::v-deep(.swiper-pagination-bullet) {
-  width: 10px;
-  height: 10px;
-  background: #fff;
-  opacity: 0.7;
-  margin: 0 5px;
-}
-
-::v-deep(.swiper-pagination-bullet-active) {
-  background: #007bff;
-  opacity: 1;
-}
 
 /* 팝업관련 CSS */
 .phone-info {

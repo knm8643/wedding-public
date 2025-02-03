@@ -52,11 +52,11 @@ export default {
     const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            this.isVisible = true; // 애니메이션 활성화
-            observer.disconnect(); // 중복 실행 방지
+            this.isVisible = true;
+            observer.disconnect();
           }
         },
-        { threshold: 0.4 } // 10%가 보이면 트리거
+        { threshold: 0.4 }
     );
 
     observer.observe(this.$refs.gift);
@@ -76,7 +76,6 @@ export default {
 };
 </script>
 <style scoped>
-/* 애니메이션 */
 .gift-wrap {
   opacity: 0;
   transform: translateY(30px);
