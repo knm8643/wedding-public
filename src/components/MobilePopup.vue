@@ -1,10 +1,9 @@
 <template>
   <div class="mobile-popup">
     <div class="popup-content">
-      <!-- type 0 -->
       <Blooming v-if="dynamicCurrent === 0"/>
-      <!-- type 1 -->
       <BloomingOrigin v-if="dynamicCurrent === 1"/>
+      <BloomingPlus v-if="dynamicCurrent === 2"/>
     </div>
   </div>
 </template>
@@ -12,9 +11,10 @@
 <script>
 import Blooming from "@/components/blooming/BloomingDefault.vue";
 import BloomingOrigin from "@/components/blooming/BloomingOrigin.vue";
+import BloomingPlus from "@/components/blooming/BloomingPlus.vue";
 
 export default {
-  components: {Blooming,BloomingOrigin},
+  components: {Blooming,BloomingOrigin,BloomingPlus},
   name:"MobilePopup",
   props:{
     current: {

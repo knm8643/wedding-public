@@ -95,6 +95,7 @@ export default {
       items: [
         { text: '기본이지만<br/> 충분히 예쁜 초대장', background: '#CDC1FF', buttonBackground: '#A594F9', buttonText: '공유하기' },
         { text: '세상에서 제일로<br/> 간단한 초대장', background: '#DCC1FF', buttonBackground: '#A594F9', buttonText: '공유하기' },
+        { text: '신부의 디자인 도움을<br/>받은 세련된 초대장', background: '#3E5879', buttonBackground: '#A594F9', buttonText: '공유하기' },
         { text: '잠시 기다려주세요<br/> 곧 오픈합니다!', background: '#A294F9', buttonBackground: '#CDC1FF', buttonText: '공사중' },
       ]
     };
@@ -198,7 +199,7 @@ export default {
       }
     },
     openMoblie(index) {
-      if (index >= 2) {
+      if (index >= 3) {
         return alert('제작중입니다.');
       }
       const target = document.querySelectorAll('.box-content')[index];
