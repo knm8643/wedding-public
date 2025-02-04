@@ -57,8 +57,21 @@ export default {
           this.x = Math.random() * canvas.width; // 시작 위치 X
           this.y = Math.random() * canvas.height - canvas.height; // 시작 위치 Y
           this.size = Math.random() * 2 + 15; // 벚꽃 크기
-          this.speedX = Math.random() * 1 - 0.5; // 좌우 이동
-          this.speedY = Math.random() * 0.5 + 0.2; // 낙하 속도
+          this.speedX = Math.random() * 0.9 - 0.5; // 좌우 이동
+
+
+          let speedY;
+
+          const userAgent = navigator.userAgent;
+
+          if (/Macintosh|MacIntel|MacPPC|Mac68K/.test(userAgent)) {
+            speedY = Math.random() * 1.4 + 0.6;
+          } else if (/iPhone|iPad|iPod/.test(userAgent)) {
+            speedY = Math.random() * 1.5 + 0.6;
+          } else {
+            speedY = Math.random() * 0.9 + 0.2;
+          }
+          this.speedY = speedY; // 낙하속도
           this.angle = Math.random() * Math.PI * 2; // 회전 각도
           this.angularSpeed = Math.random() * 0.02 - 0.01; // 회전 속도
         }
@@ -89,7 +102,7 @@ export default {
       }
 
       function createPetals() {
-        for (let i = 0; i < 90; i++) {
+        for (let i = 0; i < 80; i++) {
           petals.push(new Petal());
         }
       }
@@ -122,10 +135,13 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 /* ------------------------------------------------ */
 /* -------------------- POPUP --------------------- */
 /* ------------------------------------------------ */
+.blooming-wrap * {
+  font-family: 'Love Ya Like A Sister', sans-serif !important;
+}
 .blooming-wrap {
   position: relative;
   background-color: #ffffff;

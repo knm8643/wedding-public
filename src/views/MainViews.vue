@@ -526,7 +526,7 @@ export default {
                 width: 100%;
                 gap: 24px;
                 overflow-x: auto;
-                padding: 12px 0;
+                padding: 21px 0;
 
                 -ms-overflow-style: auto;
                 scrollbar-width: auto;
@@ -616,6 +616,7 @@ export default {
                     pointer-events: none;
                   }
                   &:hover {
+                    cursor: pointer;
                     transform: translateY(-10px);
                   }
                 }

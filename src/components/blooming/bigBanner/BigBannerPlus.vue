@@ -1,12 +1,11 @@
 <template>
   <div class="banner-wrap">
-    <div class="content-main-font" :class="{ 'animate-text': isTextVisible }">
-      <p>우리의 이야기<br />지금부터 시작됩니다</p>
+    <div class="image-wrap">
+      <img class="content-image" :class="{ 'animate-image': isImageVisible }" src="../../../assets/images/09.jpg" alt="섹션 이미지" />
+      <div class="content-main-font" :class="{ 'animate-text': isTextVisible }">
+        <p>우리의 이야기<br />지금부터 시작됩니다</p>
+      </div>
     </div>
-    <div class="image-wrap" :class="{ 'animate-image': isImageVisible }">
-      <img class="content-image" src="../../../assets/images/09.jpg" alt="섹션 이미지" />
-    </div>
-
     <div class="dim"></div>
   </div>
 </template>
@@ -22,70 +21,69 @@ export default {
   },
   mounted() {
     // 이미지 먼저 표시
-    this.isImageVisible = true;
-
     setTimeout(() => {
-      this.isTextVisible = true;
-    }, 400);
+      this.isImageVisible = true;
+      setTimeout(() => {
+        this.isTextVisible = true;
+      }, 400);
+    }, 200);
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .banner-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  padding: 0 0 4px;
-
-  .content-main-font {
-    position: absolute;
-    z-index: 10;
-    width: 100%;
-    text-align: center;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1.2s ease, transform 1.2s ease;
-
-    &.animate-text {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    p {
-      position: relative;
-      z-index: 10;
-      width: 100%;
-      height: 94px;
-      top: 217px;
-      font-family: 'Love Ya Like A Sister', sans-serif;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 32px;
-      line-height: 145.74%;
-      color: #ffffff;
-      -webkit-text-stroke: 1px #FFC0CB;
-    }
-  }
+  width: 100%;
 
   .image-wrap {
     position: relative;
-    z-index: 5;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1.2s ease, transform 1.2s ease;
+    width: 100%;
+    z-index: 1;
     overflow: hidden;
 
-    &.animate-image {
-      opacity: 1;
-      transform: translateY(0);
+    .content-image {
+      aspect-ratio: 16 / 9;
+      height: 75vh;
+      width: 100%;
+      object-fit: cover;
+      transform: translateY(-20px);
+      opacity: 0;
+      transition: opacity 1.2s ease, transform 1.2s ease;
+      &.animate-image {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .content-image {
-      box-sizing: border-box;
-      border: 1px solid #FFC0CB;
-      max-height: 507px;
+    .content-main-font {
+      position: absolute;
+      top: 40%;
+      z-index: 10;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+
+      &.animate-text {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      p {
+        font-family: 'GamjaFlower-Regular', sans-serif!important;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 1.8;
+        color: #ffffff;
+        -webkit-text-stroke: 1px #FFC0CB;
+        margin: 0;
+      }
     }
   }
 
@@ -93,9 +91,9 @@ export default {
     position: absolute;
     z-index: 7;
     width: 100%;
-    height: 105px;
+    height: 200px;
     left: 0;
-    top: 428px;
+    bottom: 0;
     background: linear-gradient(180deg, rgba(217, 217, 217, 0) 0%, #ffffff 100%);
   }
 }

@@ -3,7 +3,7 @@
       class="photo-wrap"
   >
     <div class="image-wrap first-image" ref="photo" :class="{ 'animate-visible': isVisible }">
-      <img class="content-image" src="../../../assets/images/02.jpg" alt="섹션 이미지" />
+      <img class="content-image" src="../../../assets/images/11.jpg" alt="섹션 이미지" />
       <p>충디딥</p>
     </div>
     <div
@@ -15,7 +15,7 @@
     </div>
 
     <div class="image-wrap-font" :class="{'animate-visible-font' : isFontVisible}">
-      <h2>Gallery</h2>
+      <h2>Marry</h2>
     </div>
   </div>
 </template>
@@ -39,8 +39,8 @@ export default {
               this.isSecondImageVisible = true;
               setTimeout(() => {
                 this.isFontVisible = true;
-              }, 800);
-            }, 1000);
+              }, 600);
+            }, 600);
             observer.disconnect();
           }
         },
@@ -60,16 +60,19 @@ export default {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 
   .content-image {
-    max-width: 252px;
+    max-width: 100%;
+    width: 50%;
+    height: auto;
     object-fit: cover;
   }
 
   p {
-    font-family: 'Love Ya Like A Sister', sans-serif;
+    font-family: 'GamjaFlower-Regular', sans-serif!important;
     font-size: 24px;
+    font-weight: 400;
     color: #FF69B4;
     z-index: 10;
     width: 100%;
@@ -79,7 +82,7 @@ export default {
 
 .image-wrap-font{
   padding: 120px 0 155px;
-  font-size: 32px;
+  font-size: 48px;
   font-weight: 400;
   color: #FFC0CB;
   text-align: center;
@@ -104,6 +107,13 @@ export default {
 .first-image.animate-visible {
   opacity: 1;
   transform: translateY(25px);
+  .content-image{
+    transform: translateX(25px);
+  }
+
+  p{
+    transform: translateY(-25px);
+  }
 }
 
 .second-image {
@@ -115,5 +125,11 @@ export default {
 .second-image.animate-visible-second {
   opacity: 1;
   transform: translateY(-30px);
+  .content-image{
+    transform: translateX(-25px);
+  }
+  p{
+    transform: translateY(25px);
+  }
 }
 </style>

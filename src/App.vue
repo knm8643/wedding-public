@@ -36,6 +36,18 @@ Copyright (c) knm8643 All rights reserved.
 }
 </script>
 <style>
+@font-face {
+  font-family: 'Love Ya Like A Sister';
+  src: url('@/assets/fonts/LoveYaLikeASister-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GamjaFlower-Regular';
+  src: url('@/assets/fonts/GamjaFlower-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 html,
 body{
   height: 100%;

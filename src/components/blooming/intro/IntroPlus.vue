@@ -2,6 +2,7 @@
   <div
       class="intro-wrap"
       :class="{ 'animate-visible': isVisible }"
+      ref="intro"
   >
     <div class="content-title">
       25.11.21
@@ -18,9 +19,16 @@ export default {
     };
   },
   mounted() {
-    setTimeout(() => {
-      this.isVisible = true;
-    }, 900);
+    const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            this.isVisible = true;
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.5 }
+    );
+    observer.observe(this.$refs.intro);
   },
 };
 </script>
