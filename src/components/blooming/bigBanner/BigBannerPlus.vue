@@ -79,7 +79,7 @@ export default {
         font-style: normal;
         font-weight: 400;
         font-size: 28px;
-        line-height: 1.8;
+        line-height: 1.6;
         color: #ffffff;
         -webkit-text-stroke: 1px #FFC0CB;
         margin: 0;

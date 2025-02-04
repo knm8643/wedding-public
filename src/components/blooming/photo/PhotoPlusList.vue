@@ -121,6 +121,9 @@ export default {
   opacity: 0;
   transform: translateY(-25px);
   transition: opacity 1.5s ease, transform 1.5s ease;
+  @media (min-width: 450px) {
+      padding: 0 46px 156px;
+  }
 }
 
 .plus-wrap.animate-visible {
@@ -133,7 +136,7 @@ export default {
   display: flex;
   flex-direction: column;
   position: relative;
-  gap: 46px;
+  gap: 16px;
   z-index: 8;
 }
 
@@ -142,16 +145,15 @@ export default {
   align-items: center;
 
   img {
-    width: 100%;
-    max-width: 305px;
+    width: 80%;
+    min-width: 235px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 6px;
 
     &:hover{
       cursor: pointer;
     }
   }
-
 
   p {
     width: 100%;
@@ -171,7 +173,7 @@ export default {
   button{
     border: 1.6px solid #FF69B4;
     border-radius: 999px;
-    padding: 2px 24px;
+    padding: 4px 24px;
     p {
       font-family: 'GamjaFlower-Regular', sans-serif!important;
       font-weight: 400;
@@ -182,13 +184,13 @@ export default {
 
 
 .line {
-  border: 1px solid #FF69B4;
+  border: 0.6px solid #FF69B4;
   position: absolute;
   z-index: 7;
   width: calc(100% - 50px);
-  height: 1730px;
+  height: 1350px;
   left: 25px;
-  bottom: 60px;
+  bottom: 80px;
 }
 
 .left {
@@ -243,15 +245,11 @@ export default {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   max-width: 800px;
   width: 100%;
-  max-height: 90vh; /* 최대 높이를 설정 */
+  max-height: 60vh;
   overflow-y: auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 항상 3열 */
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
-}
-
-.grid-item {
-  height: 160px; /* 고정된 높이로 3줄 유지 */
 }
 
 .grid-item img {

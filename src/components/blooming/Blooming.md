@@ -19,6 +19,14 @@ Blooming 패키지는 두 가지 버전으로 제공됩니다: **origin**과 **d
 
 ---
 
+## 3. 🌸 Plus 버전(제작중)
+- **특징**: 미련을 못 버리고 신부에 디자인의견을 듣고 만든 추가템플릿
+- **추천 사용 사례**:
+  - ✅ 이 글을 보시게 된다면 아직 제작중이니 특정 사례는 없습니다.
+  - ✅ If you are reading this, the project is still under development, so there are no specific examples yet.
+
+---
+
 ### ⚙️ 선택 방법
 패키지를 설치하거나 사용 시, 원하는 버전을 선택하여 적용하세요.
 ```js

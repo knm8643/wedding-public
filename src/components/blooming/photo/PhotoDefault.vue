@@ -228,7 +228,7 @@ export default {
       }
     }
   }
-  /* 이미지 영역 */
+
   .content-fmInfo{
     padding: 0 24px;
     .fmInfo {

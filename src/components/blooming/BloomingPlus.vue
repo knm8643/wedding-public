@@ -9,8 +9,9 @@
     <!-- 사진첩 -->
     <PhotoPlus/>
     <PhotoPlusList/>
-    <!-- 달력 -->
     <!-- 오시는 길(맵) -->
+    <AddressPlus/>
+    <!-- 달력 -->
     <!-- 축의금 -->
     <!-- 편지보내기 -->
   </div>
@@ -23,15 +24,16 @@ import IntroPlus from "@/components/blooming/intro/IntroPlus.vue";
 import PhotoPlus from "@/components/blooming/photo/PhotoPlus.vue";
 import PhotoPlusList from "@/components/blooming/photo/PhotoPlusList.vue";
 import CalenderDefault from "@/components/blooming/calender/CalenderDefault.vue";
-import AddressDefault from "@/components/blooming/address/AddressDefault.vue";
 import GiftDefaultInfo from "@/components/blooming/gift/GiftDefaultInfo.vue";
 import LetterDefault from "@/components/blooming/letter/LetterDefault.vue";
+import AddressPlus from "@/components/blooming/address/AddressPlus.vue";
 
 export default {
   name:"BloomingPlus",
   components: {
+    AddressPlus,
     LetterDefault,
-    GiftDefaultInfo, AddressDefault, CalenderDefault, PhotoPlusList,PhotoPlus, IntroPlus, BigBannerPlus},
+    GiftDefaultInfo, CalenderDefault, PhotoPlusList,PhotoPlus, IntroPlus, BigBannerPlus},
   mounted() {
     // 벚꽃내리는 효과
     this.startSakuraEffect();
