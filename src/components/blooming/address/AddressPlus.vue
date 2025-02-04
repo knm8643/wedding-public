@@ -24,8 +24,16 @@
         <span>의 딸</span>
         <p>유디딥</p>
       </div>
+      <div class="content-box">
+        <button>
+          <span>신랑 & 신부에게 연락하기</span>
+        </button>
+      </div>
     </div>
 
+    <div class="address-main-font">
+      <p>Address</p>
+    </div>
 
     <div class="address-map">
       <div id="map" ref="map" style="width: 100%; height: 245px;"></div>
@@ -256,11 +264,9 @@ export default {
   }
 
 
-
-
   .address-map {
     #map{
-      border: 1px solid #b0b0b0;
+      border: 1px solid #FFC0CB;
     }
   }
 
@@ -333,6 +339,7 @@ export default {
         justify-content: center;
         gap: 6px;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
+        width: 100%;
 
         a {
           img {

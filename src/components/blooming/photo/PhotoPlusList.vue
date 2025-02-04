@@ -9,7 +9,7 @@
         <img :src="image.src" :alt="image.alt"
              @click="openImageModal(image, $event)"
         />
-        <p>{{ image.text }}</p>
+        <p v-html="image.text"></p>
       </div>
     </div>
     <div class="plus-wrap-font">
@@ -63,9 +63,9 @@ export default {
       isGridModalOpen: false,
       selectedImage: null,
       images: [
-        { src: img5, alt: "첫번째 이미지", text: "" },
-        { src: img10, alt: "두번째 이미지", text: "" },
-        { src: img8, alt: "세번째 이미지", text: "" },
+        { src: img5, alt: "첫번째 이미지", text: "클릭해서<br/> 확인해보세요" },
+        { src: img10, alt: "두번째 이미지", text: "우리<br/> 결혼합니다" },
+        { src: img8, alt: "세번째 이미지", text: "오셔서<br/> 축하해주세요!" },
         { src: img2, alt: "네번째 이미지", text: "" },
         { src: img1, alt: "첫번째 이미지", text: "" },
         { src: img2, alt: "두번째 이미지", text: "" },
@@ -159,9 +159,16 @@ export default {
     width: 100%;
     font-family: 'GamjaFlower-Regular', sans-serif!important;
     font-size: 18px;
-    margin-left: 12px;
-    color: #333;
+    color: #FF69B4;
+    border-radius: 999px;
+    line-height: 1.8;
+    padding: 10px 20px; /* 패딩을 추가하여 여백을 줍니다 */
+    background-color: rgba(255, 105, 180, 0.1); /* 연한 핑크 배경색 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과로 입체감을 추가 */
+    position: relative;
+    display: inline-block;
   }
+
 }
 
 .plus-wrap-font{
@@ -184,7 +191,7 @@ export default {
 
 
 .line {
-  border: 0.6px solid #FF69B4;
+  border: 1px solid #FF69B4;
   position: absolute;
   z-index: 7;
   width: calc(100% - 50px);
@@ -196,11 +203,17 @@ export default {
 .left {
   flex-direction: row;
   justify-content: flex-start;
+  p{
+    transform: translateX(-10px)  rotate(-20deg) translateY(-20px);
+  }
 }
 
 .right {
   flex-direction: row-reverse;
   justify-content: flex-end;
+  p{
+    transform: translateX(10px)  rotate(20deg) translateY(20px);
+  }
 }
 
 // ------------- 모달관련 -------------
