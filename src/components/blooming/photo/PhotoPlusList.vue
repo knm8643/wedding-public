@@ -1,18 +1,20 @@
 <template>
-  <div class="plus-wrap" ref="photoList" :class="{ 'animate-visible': isVisible }">
+  <div class="plus-wrap">
     <div class="plus-wrap-box">
       <div
           v-for="(image, index) in images.slice(0, 3)"
           :key="index"
-          :class="['image-item', index % 2 === 0 ? 'left' : 'right']"
+          :ref="el => imageRefs[index] = el"
+          :class="['image-item', index % 2 === 0 ? 'left' : 'right', { 'animate-visible': isVisible[index] }]"
       >
-        <img :src="image.src" :alt="image.alt"
-             @click="openImageModal(image, $event)"
-        />
+        <img :src="image.src" :alt="image.alt" @click="openImageModal(image, $event)" />
         <p v-html="image.text"></p>
       </div>
     </div>
-    <div class="plus-wrap-font">
+    <div class="plus-wrap-font"
+         ref="moreButtonRef"
+         :class="{ 'animate-visible': isButtonVisible }"
+    >
       <button @click="openGridModal">
         <p class="more-btn">추가 사진 보기</p>
       </button>
@@ -58,14 +60,16 @@ export default {
   name: "PhotoPlusList",
   data() {
     return {
-      isVisible: false,
+      isButtonVisible: false,
+      isVisible: Array(3).fill(false),
+      imageRefs: [],
       isImageModalOpen: false,
       isGridModalOpen: false,
       selectedImage: null,
       images: [
-        { src: img5, alt: "첫번째 이미지", text: "클릭해서<br/> 확인해보세요" },
-        { src: img10, alt: "두번째 이미지", text: "우리<br/> 결혼합니다" },
-        { src: img8, alt: "세번째 이미지", text: "오셔서<br/> 축하해주세요!" },
+        { src: img5, alt: "첫번째 이미지", text: "사진을<br/> 클릭해보세요" },
+        { src: img10, alt: "두번째 이미지", text: "저희<br/> 결혼합니다!" },
+        { src: img8, alt: "세번째 이미지", text: "함께<br/>해주세요!" },
         { src: img2, alt: "네번째 이미지", text: "" },
         { src: img1, alt: "첫번째 이미지", text: "" },
         { src: img2, alt: "두번째 이미지", text: "" },
@@ -84,15 +88,29 @@ export default {
   },
   mounted() {
     const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            this.isVisible = true;
-            observer.disconnect();
-          }
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const index = this.imageRefs.indexOf(entry.target);
+              if (index !== -1) {
+                setTimeout(() => {
+                  this.isVisible[index] = true;
+                }, index * 300);
+                observer.unobserve(entry.target);
+              } else if (entry.target === this.$refs.moreButtonRef) {
+                setTimeout(() => {
+                  this.isButtonVisible = true;
+                }, this.images.slice(0, 3).length * 300);
+                observer.unobserve(entry.target);
+              }
+            }
+          });
         },
         { threshold: 0.1 }
     );
-    observer.observe(this.$refs.photoList);
+
+    this.imageRefs.forEach(item => observer.observe(item));
+    observer.observe(this.$refs.moreButtonRef);
   },
   methods: {
     openImageModal(image,event) {
@@ -118,17 +136,10 @@ export default {
 .plus-wrap {
   text-align: center;
   padding: 0 0 156px;
-  opacity: 0;
-  transform: translateY(-25px);
-  transition: opacity 1.5s ease, transform 1.5s ease;
+
   @media (min-width: 450px) {
       padding: 0 46px 156px;
   }
-}
-
-.plus-wrap.animate-visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 
@@ -143,6 +154,9 @@ export default {
 .image-item {
   display: flex;
   align-items: center;
+  opacity: 0;
+  transform: translateY(20px) rotate(-5deg);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 
   img {
     width: 80%;
@@ -157,41 +171,52 @@ export default {
 
   p {
     width: 100%;
-    font-family: 'GamjaFlower-Regular', sans-serif!important;
+    font-family: 'ownglyph', sans-serif!important;
     font-size: 18px;
     color: #FF69B4;
     border-radius: 999px;
     line-height: 1.8;
-    padding: 10px 20px; /* 패딩을 추가하여 여백을 줍니다 */
-    background-color: rgba(255, 105, 180, 0.1); /* 연한 핑크 배경색 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과로 입체감을 추가 */
+    padding: 10px 20px;
+    //background-color: rgba(255, 105, 180, 0.1);
+    //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
     display: inline-block;
   }
 
 }
+.image-item.animate-visible {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg);
+}
+
 
 .plus-wrap-font{
   z-index: 8;
   position: relative;
   color: #FF69B4;
   margin-top: 68px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 
   button{
     border: 1.6px solid #FF69B4;
     border-radius: 999px;
-    padding: 4px 24px;
+    padding: 6px 24px;
     p {
-      font-family: 'GamjaFlower-Regular', sans-serif!important;
-      font-weight: 400;
+      font-family: 'ownglyph', sans-serif!important;
+      font-weight: 700;
       font-size: 18px;
     }
   }
 }
-
+.plus-wrap-font.animate-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 .line {
-  border: 1px solid #FF69B4;
+  //border: 1px solid #FF69B4;
   position: absolute;
   z-index: 7;
   width: calc(100% - 50px);

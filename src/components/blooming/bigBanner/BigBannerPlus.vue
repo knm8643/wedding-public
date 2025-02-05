@@ -3,7 +3,7 @@
     <div class="image-wrap">
       <img class="content-image" :class="{ 'animate-image': isImageVisible }" src="../../../assets/images/09.jpg" alt="섹션 이미지" />
       <div class="content-main-font" :class="{ 'animate-text': isTextVisible }">
-        <p>우리의 이야기<br />지금부터 시작됩니다</p>
+        <p>Our Story<br/> Begins Here</p>
       </div>
     </div>
     <div class="dim"></div>
@@ -75,11 +75,10 @@ export default {
       }
 
       p {
-        font-family: 'GamjaFlower-Regular', sans-serif!important;
         font-style: normal;
         font-weight: 400;
-        font-size: 28px;
-        line-height: 1.6;
+        font-size: 32px;
+        line-height: 1.8;
         color: #ffffff;
         -webkit-text-stroke: 1px #FFC0CB;
         margin: 0;

@@ -1,35 +1,18 @@
 <template>
   <div class="hello">
     <header class="profil">
-      <!-- 피시전용 -->
-      <article v-if="isMobile" class="description">
+      <article class="description">
         <section>
           <h1>
             안녕하세요<br />
-            개발자 이충재입니다<em>.</em>
+            이충재입니다<em>.</em>
           </h1>
         </section>
         <div>
           <p>
-            저는 다양한 백/프론트 기술을 활용할줄 알고 편리하고 직관적인 사용자
-            중심의 UI/UX 개발을 할줄 아는 함께하고 일하고 싶은 개발자
-            이충재입니다 😀
-          </p>
-        </div>
-      </article>
-      <!-- 모바일전용 -->
-      <article v-else-if="!isMobile" class="description">
-        <section>
-          <h1>
-            안녕하세요<br />
-            개발자 이충재입니다<em>.</em>
-          </h1>
-        </section>
-        <div>
-          <p>
-            저는 다양한 백/프론트 기술을 활용할줄 알고 편리하고 직관적인 사용자
-            중심의 UI/UX 개발을 할줄 아는 함께하고 일하고 싶은 개발자
-            이충재입니다 😀
+            안녕하세요! 저는 백엔드부터 프론트엔드 퍼블까지 이것저것 만지며 재밌는 걸 만드는 개발자 이충재입니다.
+            복잡한 걸 깔끔하게, 불편한 걸 편리하게 만드는 게 제 일입니다.
+            같이 멋진 프로젝트 만들어 갈 수 있으면 좋겠습니다!
           </p>
         </div>
       </article>
@@ -45,80 +28,72 @@
         <div class="row-right">
           <h3>GS칼텍스 백오피스 개발 [3개월]</h3>
           <ul>
-            <li>
-              JAVA, Spring Boot, JSP, MSSQL 를 활용한 GS칼텍스 임직원전용
-              백오피스 제작
-            </li>
+            <li>Java, Spring Boot, JSP, MSSQL을 활용한 GS칼텍스 임직원 전용 백오피스 개발 및 유지보수</li>
+          </ul>
+          <h3>신세계 LNB 와인앤모어 앱 개발 [4개월]</h3>
+          <ul>
+            <li>Java, Spring Boot, Vue2, CSS, SCSS를 활용한 퍼블리싱, 프론트엔드 및 백엔드 기능 개발</li>
           </ul>
         </div>
       </section>
+
       <section>
         <div class="row-left">
-          <h2>트라이씨클<em>LF.</em></h2>
-          <p>2022.04 - 2023.05(1년)</p>
+          <h2>스페이드컴퍼니<em>.</em></h2>
+          <p>2023.12 - 2024.03</p>
+          <p>웹퍼블리셔</p>
+        </div>
+        <div class="row-right">
+          <h3>삼성 모니모 프로젝트 마크업 구축 [3개월]</h3>
+          <ul>
+            <li>Vue2, Vuetify, SCSS, CSS 기반 마크업 구조 설계 및 인프라 설비 과정 초기 투입</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <div class="row-left">
+          <h2>트라이씨클<em>.</em></h2>
+          <p>2022.04 - 2023.04</p>
           <p>IT개발본부 서비스플랫폼팀</p>
+          <a href="https://www.halfclub.com/" target="_blank">https://www.halfclub.com</a>
+          <a href="https://m.boribori.co.kr/" target="_blank">https://m.boribori.co.kr</a>
         </div>
         <div class="row-right">
-          <h4>트라이씨클 백오피스 기능개발</h4>
+          <h3>백오피스 기능 개발 [1년 1개월]</h3>
           <ul>
-            <li>
-              Vue2, Spring Boot, JSP, JAVA, MYSQL 를 이용한 백오피스내
-              신규컨텐츠 영역개발
-            </li>
+            <li>Vue2, Spring Boot, JSP, Java, MySQL을 활용하여 신규 콘텐츠 영역 개발 및 기능 확장</li>
           </ul>
-          <h4>신규 상품전시구좌 / 리뉴얼 페이지 기능개발</h4>
+          <h3>상품 전시 구좌 및 리뉴얼 페이지 기능 개발</h3>
           <ul>
-            <li>Angular2 를 이용한 페이지내 프론트기능 추가</li>
+            <li>Angular2 기반 신규 페이지 기능 추가 및 리뉴얼 구현</li>
           </ul>
-          <h4>자사몰 매출 데이터집계 기능개발</h4>
+          <h3>자사몰 매출 데이터 집계 기능 개발</h3>
           <ul>
-            <li>구글애널리틱스를 활용하여 자사 디비에 데이터 별도집계 처리</li>
+            <li>Google Analytics, MySQL을 활용한 매출 데이터 분석 및 처리</li>
           </ul>
-          <h4>자사몰내 오류수집 집계 기능개발</h4>
+          <h3>자사몰 오류 수집 및 집계 기능 개발</h3>
           <ul>
-            <li>Sentry 템플릿을 이용한 사이트로그 기록추적</li>
+            <li>Sentry 기반 사이트 오류 추적 및 모니터링 시스템 구축</li>
           </ul>
-          <h4>차세대 프레임워크 전환진행</h4>
+          <h3>차세대 프레임워크 전환</h3>
           <ul>
-            <li>
-              기존 Angular 프레임워크에서 Vue3로 전환을 하기 위한 리팩토링
-              작업진행
-            </li>
+            <li>Angular에서 Vue3로의 프레임워크 전환 리팩토링 진행</li>
           </ul>
         </div>
       </section>
-      <section>
-        <div class="row-left">
-          <h2>정보교육원<em>KH.</em></h2>
-          <p>2021.09 - 2022.02(6개월)</p>
-          <p>웹개발자 교육</p>
-        </div>
-        <div class="row-right">
-          <h3>웹개발 전문 교육 과정이수</h3>
-          <ul>
-            <li>
-              Java, Tomcat, Spring, Oracle, JSP, CSS, Git 등과 기초적인 IT 지식
-              교육
-            </li>
-          </ul>
-        </div>
-      </section>
+
       <section>
         <div class="row-left">
           <h2>서울특별시사회복지협의회<em>.</em></h2>
-          <p>2019.03 - 2021.08(2년 6개월)</p>
+          <p>2019.03 - 2021.08</p>
           <p>대외협력사업부</p>
         </div>
         <div class="row-right">
-          <h3>기업사회공헌 활동담당</h3>
+          <h3>기업사회공헌 활동 담당 [2년 6개월]</h3>
           <ul>
-            <li>
-              희망마차(이마트), 이동푸드마켓(BC카드), 1동 1푸드마켓 등 기업과
-              연계된 사회봉사활동 주도
-            </li>
-            <li>
-              피코크 봉사단, 싱싱봉사단 등 대규모 임직원, 시민자원봉사단 운영
-            </li>
+            <li>희망마차(이마트), 이동푸드마켓(BC카드) 등 기업 연계 사회 봉사 활동 주도</li>
+            <li>피코크 봉사단, 싱싱봉사단 등 대규모 임직원·시민 자원봉사단 운영</li>
           </ul>
         </div>
       </section>
@@ -132,15 +107,19 @@
           <ul>
             <li>
               <h4>JAVA, Spring Boot, Oracle, MSSQL, MYSQL</h4>
+              <p>백엔드 쪽은 메인은 아니지만 자신 있습니다! GS칼텍스나 신세계 LNB 프로젝트에서 API 설계부터 데이터 처리까지 꽤 복잡한 작업들을 해결하면서 경험을 쌓았습니다!</p>
             </li>
             <li>
               <h4>JSP, Nuxt, Vue, Angular, JavaScript, TypeScript</h4>
+              <p>다양한 프레임워크들을 써봤는데, 상황에 맞게 뭘 써야 최적화될지 고민하는 걸 좋아합니다. UI/UX도 신경 많이 쓰며 작업하는 편입니다!</p>
             </li>
             <li>
               <h4>CSS, SCSS, Vuetify, BootStrap, Figma, Zeplin</h4>
+              <p>삼성모니모 프로젝트에서 초기 퍼블리싱 구조 잡았던 경험이 있습니다!. 디자인을 직접 만드는건 힘들지만 감각은 살짝(?) 있다고 자부합니다.</p>
             </li>
             <li>
               <h4>GitHub, GitLab, bitBucket, Redmine</h4>
+              <p>GitLab이든 GitHub이든 잘 다루고 팀원들과 코드 충돌 없이 일하는 데 익숙합니다.</p>
             </li>
           </ul>
         </div>
@@ -149,19 +128,35 @@
         <div class="row-center">
           <h2>자격사항<em>.</em></h2>
           <ul>
-            <li><h4>2024년 3회 정보처리기사 필기 합격</h4></li>
+            <li>
+              <h4>2024년 3회 정보처리기사 필기 합격</h4>
+              <p>죽기 살기로 시험봤습니다. 회사와 가정을 이루며 실기도 반드시 따오겠습니다!</p>
+            </li>
             <li><h4>2018년 컴퓨터활용능력 2급</h4></li>
-            <li><h4>2018년 사회복지사 2급</h4></li>
-            <li><h4>2018년 대형면허 1종</h4></li>
+            <li><h4>2018년 사회복지사 2급</h4>
+              <p>사회복지사의 10년의 꿈을 모은 자격증이고 밥벌이 수단이였습니다.</p>
+            </li>
+            <li>
+              <h4>2018년 대형면허 1종</h4>
+              <p>직무와는 상관은 없지만 남자의 상징이라서 작성했습니다.</p>
+            </li>
           </ul>
         </div>
       </section>
     </article>
     <article class="contact">
-      <h1>통신보안<em>.</em></h1>
+      <h1>연락처<em>.</em></h1>
       <section>
-        <h2>연락망 <em> : </em> 010. 5696. 1909</h2>
-        <h2>언제든 당신을 기다립니다 주저하지말고 연락주세요 감사합니다.</h2>
+        <p>좋은 개발자 찾으시나요? 언제든 편하게 연락 주세요! 함께 재밌게 일해봐요
+          성실함과 책임감을 바탕으로 최선을 다해 함께 성장하는 개발자가 되겠습니다.</p>
+        <ul>
+          <li>
+            <p><a href="https://github.com/knm8643/">깃허브</a></p>
+          </li>
+          <li>
+            <p><a href="https://chungrimi.com/">충림이 방문하기</a></p>
+          </li>
+        </ul>
       </section>
     </article>
   </div>
@@ -170,19 +165,8 @@
 <script>
 export default {
   name:"EasterEgg",
-  data() {
-    return {
-      isMobile: ''
-    }
-  },
   mounted() {
     document.body.style.overflow = "visible";
-    if (location.href.includes("reset")) {
-      this.$router.push("/pacman");
-    } else {
-      this.checkIfMobile();
-      window.addEventListener("resize", this.checkIfMobile);
-    }
   },
   created() {
     const currentFromQuery = this.$route.query.current;
@@ -192,15 +176,6 @@ export default {
       window.history.replaceState(null, '', newUrl);
     }
   },
-  methods: {
-    checkIfMobile() {
-      if (window.innerWidth >= 414) {
-        this.isMobile = true;
-      } else {
-        this.isMobile = false;
-      }
-    }
-  }
 }
 </script>
 
@@ -221,9 +196,19 @@ $mobile-width: 414px;
   font-style: normal;
 }
 
+#app {
+  font-family: "TTWanjudaedunsancheB", sans-serif!important;
+}
+
+.hello {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 7rem 2rem;
+}
+
 .profil {
   animation: fadein 2s ease-in-out;
-  padding: 0 2rem 2rem;
+  padding: 0 2rem 15.5rem;
   @media (max-width: $mobile-width) {
     padding: 0 2rem 2rem;
   }
@@ -266,18 +251,33 @@ $mobile-width: 414px;
 .experience {
   animation: fadein 3s ease-in-out;
   padding: 2.5rem 2rem;
-  font-family: "TTWanjunuricheR";
   h1 {
+    border-top: 1px solid rgb(224, 226, 231);
+    width: 100%;
     display: inline-block;
-    padding: 0.2rem 1rem;
-    background-color: #00d2ff;
+    padding: 2rem 1rem 0.2rem 0;
     font-size: 3rem;
+    font-family: "TTWanjudaedunsancheB";
+
     @media (max-width: $mobile-width) {
       font-size: 2rem;
     }
     em {
       color: #4e56e8;
       font-style: normal;
+    }
+  }
+  a{
+    padding-top: 1rem;
+    display: block;
+    color: rgb(78, 86, 232);
+    &:after{
+      margin-left: 0.5em;
+      font-weight: 400;
+      content: "↗️";
+      @media (max-width: $mobile-width) {
+        content:none;
+      }
     }
   }
   section {
@@ -290,6 +290,8 @@ $mobile-width: 414px;
         padding-bottom: 1rem;
         font-size: 1.4rem;
         margin: 0;
+        font-weight: 700;
+
         em {
           font-style: normal;
           color: #4e56e8;
@@ -306,15 +308,18 @@ $mobile-width: 414px;
     }
     .row-right {
       h3 {
-        padding-bottom: 1rem;
+        padding: 0 0 1rem;
         font-size: 1.4rem;
         margin: 0;
+        font-weight: 700;
       }
       ul {
         margin: 0;
         padding: 0 1rem;
+        line-height: 1.8;
         li {
-          padding: 0 0 1rem 0;
+          padding: 0 0 1rem;
+          list-style-type: disc !important;
           &::marker {
             list-style: disc;
             color: #4e56e8;
@@ -327,12 +332,11 @@ $mobile-width: 414px;
 .skills {
   animation: fadein 3s ease-in-out;
   padding: 2.5rem 2rem;
-  font-family: "TTWanjunuricheR";
   h1 {
     display: inline-block;
-    padding: 0.2rem 1rem;
-    background-color: #00d2ff;
+    padding: 3rem 0;
     font-size: 3rem;
+    font-family: "TTWanjudaedunsancheB";
     @media (max-width: $mobile-width) {
       font-size: 2rem;
     }
@@ -348,8 +352,9 @@ $mobile-width: 414px;
       line-height: 0.3;
       border-bottom: 6px solid #00d2ff52;
       display: inline-block;
-      font-size: 2rem;
+      font-size: 1.6rem;
       margin: 0;
+      font-weight: 700;
       em {
         color: #4e56e8;
         font-style: normal;
@@ -359,14 +364,18 @@ $mobile-width: 414px;
       padding: 0 1rem;
       margin: 0;
       li {
+        padding: 1.2rem 0;
         margin: 0;
+        list-style-type: disc !important;
         &::marker {
           list-style: disc;
           color: #4e56e8;
         }
-        h4 {
+        h4{
           margin-bottom: 1rem;
+          font-weight: 700;
         }
+
         p {
           line-height: 1.5;
           padding-bottom: 0.5rem;
@@ -378,12 +387,11 @@ $mobile-width: 414px;
 }
 .portfolio {
   padding: 2rem 2rem;
-  font-family: "TTWanjunuricheR";
   h1 {
     display: inline-block;
-    padding: 0.2rem 1rem;
-    background-color: #00d2ff;
+    padding: 0.2rem 1rem 0.2rem 0;
     font-size: 3rem;
+    font-family: "TTWanjudaedunsancheB";
     @media (max-width: $mobile-width) {
       font-size: 2rem;
     }
@@ -458,12 +466,12 @@ $mobile-width: 414px;
 .contact {
   animation: fadein 3s ease-in-out;
   padding: 2rem 2rem;
-  font-family: "TTWanjunuricheR";
   h1 {
     display: inline-block;
-    padding: 0.2rem 1rem;
-    background-color: #00d2ff;
+    padding: 0.2rem 1rem 0.2rem 0;
     font-size: 3rem;
+    font-family: "TTWanjudaedunsancheB";
+
     @media (max-width: $mobile-width) {
       font-size: 2rem;
     }
@@ -486,13 +494,16 @@ $mobile-width: 414px;
       }
     }
     ul {
-      padding: 0 1rem 0 0;
+      padding: 0 1rem;
       margin: 0;
       li {
         margin: 0;
+        list-style-type: disc !important;
+        padding: 1rem 0 0;
         &::marker {
           list-style: disc;
           color: #4e56e8;
+
         }
         h4 {
           margin: 0;
@@ -503,6 +514,7 @@ $mobile-width: 414px;
           padding-bottom: 0.5rem;
           color: #4e56e8;
           a {
+            font-size: 1.6rem;
             text-decoration: none;
             color: #4e56e8;
             &:after {

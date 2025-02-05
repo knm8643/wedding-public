@@ -48,19 +48,30 @@ Copyright (c) knm8643 All rights reserved.
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'ownglyph';
+  src: url('@/assets/fonts/ownglyph.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TTWanjudaedunsancheB';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/TTWanjudaedunsancheB.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TTWanjunuricheR';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/TTWanjunuricheR.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
 html,
 body{
   height: 100%;
 }
-#app{
-  margin: 0 auto;
-  max-width: 475px;
-  min-width: 320px;
-  width: 100%;
-}
-#app, #app * {
-  font-family: "-apple-system", "BlinkMacSystemFont", "Apple SD Gothic Neo", "Noto Sans KR", "Roboto", "Helvetica Neue", "Arial", sans-serif;
-}
+
 </style>
 
 

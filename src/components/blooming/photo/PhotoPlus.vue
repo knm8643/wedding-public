@@ -70,9 +70,9 @@ export default {
   }
 
   p {
-    font-family: 'GamjaFlower-Regular', sans-serif!important;
-    font-size: 24px;
-    font-weight: 400;
+    font-family: 'ownglyph', sans-serif!important;
+    font-size: 26px;
+    font-weight: 700;
     color: #FF69B4;
     z-index: 10;
     width: 100%;

@@ -1,6 +1,6 @@
 # 🌸 Blooming 패키지 안내 🌸
 
-Blooming 패키지는 두 가지 버전으로 제공됩니다: **origin**과 **default**.  
+Blooming 패키지는 세 가지 버전으로 제공됩니다: **origin**과 **default** 그리고 **plus** 버전 
 각 컴포넌트는 사용자의 필요에 따라 선택할 수 있도록 설계되었습니다. ✨
 
 ## 1. 🌟 Origin 버전

@@ -17,12 +17,17 @@
           </li>
           <li>
             <a href="https://torch-knave-705.notion.site/15b6b12f8d3580a395c5ea297195a434?pvs=74" target="_blank">
-              개발자 정보 알아보기
+              제작자 노션 경력기술서 보기
+            </a>
+          </li>
+          <li>
+            <a @click="goPush">
+              제작자 이력서 보기
             </a>
           </li>
           <li>
             <a href="https://pf.kakao.com/_xjmCjn/chat" target="_blank">
-              개발자에게 맞춤 제작 의뢰하기
+              제작자에게 맞춤 제작 의뢰하기
             </a>
           </li>
         </ul>
@@ -241,6 +246,18 @@ export default {
       window.open('https://github.com/knm8643/wedding-public', '_blank');
     },
 
+    goPush() {
+      const current = '이스터에그';
+      const infoKey = '';
+      this.$router.push({
+        name: 'EasterEgg',
+        query: {
+          current,
+          infoKey
+        }
+      });
+    },
+
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
       const menuBtn = document.querySelector('.menu-btn');
@@ -293,6 +310,8 @@ export default {
 </script>
 <style scoped lang="scss">
 .main {
+  margin: 0 auto;
+  font-family: "-apple-system", "BlinkMacSystemFont", "Apple SD Gothic Neo", "Noto Sans KR", "Roboto", "Helvetica Neue", "Arial", sans-serif;
   position: relative;
   max-width: 475px;
   min-width: 320px;

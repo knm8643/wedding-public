@@ -6,32 +6,6 @@
   >
 
     <div class="address-main-font">
-      <p>wellcome</p>
-      <div class="font-wrap">
-        <span>서로에게 흔들림 없는 믿음으로 <br/> 사랑을 함께 키워  <br/> 두 사람은 결실을 맺으려 합니다</span><br/>
-        <span>서로에게 따뜻한 마음으로 <br/>  행복한 미래를 그리는 저희에게 응원과  <br/> 축복을 부탁드립니다</span>
-      </div>
-    </div>
-
-    <div class="content-fmInfo">
-      <div class="fmInfo">
-        <p>김두환 · 홍길동</p>
-        <span>의 아들</span>
-        <p>충디딥</p>
-      </div>
-      <div class="fmInfo">
-        <p>이두환</p>
-        <span>의 딸</span>
-        <p>유디딥</p>
-      </div>
-      <div class="content-box">
-        <button>
-          <span>신랑 & 신부에게 연락하기</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="address-main-font">
       <p>Address</p>
     </div>
 
@@ -52,7 +26,7 @@
 
       <div class="address-item">
         <p><strong>내비게이션</strong></p>
-        <span>내비게이션에 '로얄파크컨벤션'을 검색 후 길 안내를 받으세요.</span>
+        <span>내비게이션에 " 로얄파크컨벤션 " 을 검색 후 길 안내를 받으세요.</span>
       </div>
     </div>
 
@@ -202,30 +176,11 @@ export default {
   transform: translateY(30px);
   transition: opacity 1.5s ease, transform 1.5s ease;
   justify-self: center;
-  padding: 115px 0 42px;
+  padding: 20px 0 42px;
   width: 100%;
 
   .address-main-font{
-    padding: 0 0 68px;
-    .font-wrap {
-      text-align: center;
-      padding: 106px 20px 0;
-      span {
-        color: #E57373;
-        -webkit-text-stroke: 1px #FFC0CB;
-        font-weight: 400;
-        font-size: 21px;
-        font-family: 'GamjaFlower-Regular', sans-serif !important;
-        line-height: 1.8;
-        margin-bottom: 6px;
-        letter-spacing: 1px;
-        display: block;
-
-        &:nth-child(n+3) {
-          margin-top: 16px;
-        }
-      }
-    }
+    padding: 0 0 106px;
 
     p {
       font-size: 36px;
@@ -236,33 +191,6 @@ export default {
       -webkit-text-stroke: 1px #FF69B4;
     }
   }
-
-  .content-fmInfo{
-    padding: 0 24px 68px;
-    .fmInfo {
-      display: flex;
-      line-height: 1.8;
-      gap: 9px;
-      align-items: center;
-      justify-content: center;
-      padding-top: 4px;
-      p{
-        font-family: 'GamjaFlower-Regular', sans-serif !important;
-        color: #FFC0CB;
-        font-weight: 700;
-        font-size: 21px;
-        -webkit-text-stroke: 1px #FF69B4;
-      }
-      span {
-        font-family: 'GamjaFlower-Regular', sans-serif !important;
-        color: #b0b0b0;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 1.8;
-      }
-    }
-  }
-
 
   .address-map {
     #map{
@@ -286,19 +214,18 @@ export default {
   }
 
   .address-item span {
-    font-weight: 400;
-    font-size: 18px;
+    font-weight: 700;
+    font-size: 21px;
     color: #E57373;
-    -webkit-text-stroke: 1px #FFC0CB;
-    font-family: 'GamjaFlower-Regular', sans-serif !important;
+    font-family: 'ownglyph', sans-serif !important;
     line-height: 1.8;
   }
 
   .address-item strong {
     color: #E57373;
     -webkit-text-stroke: 1px #FF69B4;
-    font-family: 'GamjaFlower-Regular', sans-serif !important;
-    font-weight: 400;
+    font-family: 'ownglyph', sans-serif !important;
+    font-weight: 700;
     font-size: 21px;
   }
 
@@ -350,8 +277,10 @@ export default {
         }
 
         button {
-          font-family: 'GamjaFlower-Regular', sans-serif!important;
+          font-family: 'ownglyph', sans-serif!important;
           height: 100%;
+          font-weight: 700;
+          font-size: 18px;
         }
 
 

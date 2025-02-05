@@ -10,6 +10,7 @@
     <PhotoPlus/>
     <PhotoPlusList/>
     <!-- 오시는 길(맵) -->
+    <IntroPlusFont/>
     <AddressPlus/>
     <!-- 달력 -->
     <!-- 축의금 -->
@@ -27,10 +28,12 @@ import CalenderDefault from "@/components/blooming/calender/CalenderDefault.vue"
 import GiftDefaultInfo from "@/components/blooming/gift/GiftDefaultInfo.vue";
 import LetterDefault from "@/components/blooming/letter/LetterDefault.vue";
 import AddressPlus from "@/components/blooming/address/AddressPlus.vue";
+import IntroPlusFont from "@/components/blooming/intro/IntroPlusFont.vue";
 
 export default {
   name:"BloomingPlus",
   components: {
+    IntroPlusFont,
     AddressPlus,
     LetterDefault,
     GiftDefaultInfo, CalenderDefault, PhotoPlusList,PhotoPlus, IntroPlus, BigBannerPlus},
@@ -65,11 +68,10 @@ export default {
           let speedY;
 
           const userAgent = navigator.userAgent;
-
           if (/Macintosh|MacIntel|MacPPC|Mac68K/.test(userAgent)) {
-            speedY = Math.random() * 1.4 + 0.6;
-          } else if (/iPhone|iPad|iPod/.test(userAgent)) {
-            speedY = Math.random() * 1.5 + 0.6;
+            speedY = Math.random() * 0.9 + 0.1;
+          } else if (/iPhone|iPad|iPod|/.test(userAgent)) {
+            speedY = Math.random() * 1.2 + 0.6;
           } else {
             speedY = Math.random() * 0.9 + 0.2;
           }
