@@ -283,6 +283,7 @@ export default {
   z-index: 9998;
   padding: 40px 25px;
   overflow: auto;
+
 }
 
 .grid-content {
@@ -293,6 +294,19 @@ export default {
   max-width: 800px;
   width: 100%;
   overflow-y: auto;
+  transition: opacity 0.3s ease;
+  animation: fadeInScale 0.4s ease forwards;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .grid-header {

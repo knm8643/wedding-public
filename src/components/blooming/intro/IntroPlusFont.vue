@@ -256,6 +256,9 @@ export default {
   border-radius: 12px;
   text-align: left;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease;
+  animation: fadeInScale 0.4s ease forwards;
+
   .pop-wrap{
     font-family: 'ownglyph', sans-serif !important;
     padding-bottom: 12px;
@@ -304,6 +307,17 @@ export default {
       }
 
     }
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
