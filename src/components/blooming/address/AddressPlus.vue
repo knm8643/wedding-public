@@ -413,45 +413,76 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  animation: fadeIn 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .gift-info-wrap {
   background: white;
-  padding: 24px;
+  padding: 30px;
   border-radius: 16px;
-  max-width: 400px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
   width: 90%;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  transform: translateY(20px);
-  animation: slideUp 0.4s ease forwards;
+  animation: fadeInScale 0.4s ease forwards;
 }
 
-@keyframes fadeIn {
-  from {
-    background: rgba(0, 0, 0, 0);
-  }
-  to {
-    background: rgba(0, 0, 0, 0.5);
-  }
+.font-wrap {
+  margin-bottom: 20px;
+  text-align: left;
 }
 
-@keyframes slideUp {
+.font-wrap h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: #E57373;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.font-wrap p {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 16px;
+  color: #555;
+  line-height: 1.8;
+  position: relative;
+  padding-right: 30px;
+}
+
+.copy-icon {
+  cursor: pointer;
+  color: #fa8ea8;
+  transition: color 0.3s ease, transform 0.2s ease;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.copy-icon:hover {
+  color: #E57373;
+  transform: scale(1.1);
+}
+
+@keyframes fadeInScale {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: scale(0.8);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1);
   }
+}
+
+.gift-modal-overlay:hover {
+  cursor: pointer;
 }
 
 .address-wrap.animate-visible {
