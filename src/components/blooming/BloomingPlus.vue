@@ -11,9 +11,12 @@
     <PhotoPlusList/>
     <!-- 오시는 길(맵) -->
     <IntroPlusFont/>
-    <AddressPlus/>
+
     <!-- 달력 -->
-    <!-- 축의금 -->
+    <CalenderPlus/>
+
+    <!-- 맵 -->
+    <AddressPlus/>
     <!-- 편지보내기 -->
   </div>
 </template>
@@ -24,7 +27,7 @@ import BigBannerPlus from "@/components/blooming/bigBanner/BigBannerPlus.vue";
 import IntroPlus from "@/components/blooming/intro/IntroPlus.vue";
 import PhotoPlus from "@/components/blooming/photo/PhotoPlus.vue";
 import PhotoPlusList from "@/components/blooming/photo/PhotoPlusList.vue";
-import CalenderDefault from "@/components/blooming/calender/CalenderDefault.vue";
+import CalenderPlus from "@/components/blooming/calender/CalenderPlus.vue";
 import GiftDefaultInfo from "@/components/blooming/gift/GiftDefaultInfo.vue";
 import LetterDefault from "@/components/blooming/letter/LetterDefault.vue";
 import AddressPlus from "@/components/blooming/address/AddressPlus.vue";
@@ -36,7 +39,7 @@ export default {
     IntroPlusFont,
     AddressPlus,
     LetterDefault,
-    GiftDefaultInfo, CalenderDefault, PhotoPlusList,PhotoPlus, IntroPlus, BigBannerPlus},
+    GiftDefaultInfo, CalenderPlus, PhotoPlusList,PhotoPlus, IntroPlus, BigBannerPlus},
   mounted() {
     // 벚꽃내리는 효과
     this.startSakuraEffect();
@@ -51,7 +54,7 @@ export default {
       // canvas.width = window.innerWidth;
       // canvas.height = window.innerHeight;
       canvas.width = 375;
-      canvas.height = 3050;
+      canvas.height = 3550;
 
       const petals = [];
       const cherryImage = new Image();
@@ -133,7 +136,7 @@ export default {
         // canvas.width = window.innerWidth;
         // canvas.height = window.innerHeight;
         canvas.width = 375;
-        canvas.height = 3050;
+        canvas.height = 3550;
       });
     },
   }
@@ -144,7 +147,7 @@ export default {
 /* -------------------- POPUP --------------------- */
 /* ------------------------------------------------ */
 .blooming-wrap * {
-  font-family: 'Love Ya Like A Sister', sans-serif !important;
+  font-family: 'ownglyph', sans-serif !important;
 }
 .blooming-wrap {
   position: relative;

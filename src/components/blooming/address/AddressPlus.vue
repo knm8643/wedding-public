@@ -52,6 +52,46 @@
         </div>
       </div>
     </div>
+
+    <!-- 후원금 -->
+    <div class="content-box">
+      <button @click="isPopOpen = true">
+        <span>신랑 & 신부에게 마음전달하기</span>
+      </button>
+    </div>
+
+    <teleport to="body">
+      <div v-if="isPopOpen" class="gift-modal-overlay" @click="closePopup">
+        <div class="gift-info-wrap">
+          <div class="font-wrap">
+            <h3>신부측</h3>
+            <p>
+              신부 : 0111-212312213-21 (신한은행)
+              <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-21')"></i>
+            </p>
+            <p>
+              신부 어머니 : 0111-212312213-22 (신한은행)
+              <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-22')"></i>
+            </p>
+          </div>
+          <div class="font-wrap">
+            <h3>신랑측</h3>
+            <p>
+              신랑 : 0111-212312213-21 (카카오뱅크)
+              <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-21')"></i>
+            </p>
+            <p>
+              신랑 어머니 : 0111-212312213-22 (카카오뱅크)
+              <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-22')"></i>
+            </p>
+            <p>
+              신랑 아버지 : 0111-212312213-23 (카카오뱅크)
+              <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-23')"></i>
+            </p>
+          </div>
+        </div>
+      </div>
+    </teleport>
   </div>
 </template>
 
@@ -61,6 +101,7 @@ export default {
   name: "AddressPlus",
   data() {
     return {
+      isPopOpen:false,
       isVisible: false, // 애니메이션 트리거
       isEditing: false,
       editedSection: {}, // 수정된 데이터
@@ -88,6 +129,18 @@ export default {
   },
 
   methods: {
+    closePopup(){
+      this.isPopOpen = false;
+    },
+    copyToClipboard(number) {
+      const textArea = document.createElement('textarea');
+      textArea.value = number;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      alert("복사되었습니다.")
+    },
     // 내비게이션 실행
     startNavigation(param) {
       const lat = this.latitude;  // 목적지 위도
@@ -210,15 +263,15 @@ export default {
   }
 
   .address-item p {
-    margin-bottom: 16px;
+    margin-bottom: 6px;
   }
 
   .address-item span {
     font-weight: 700;
-    font-size: 21px;
+    font-size: 18px;
     color: #E57373;
     font-family: 'ownglyph', sans-serif !important;
-    line-height: 1.8;
+    letter-spacing: 1px;
   }
 
   .address-item strong {
@@ -245,7 +298,7 @@ export default {
 
   .address-nav-wrap{
     color: #FF69B4;
-    padding: 24px 24px 24px;
+    padding: 24px 20px 0;
     position: relative;
 
     .kakao-wrap {
@@ -264,6 +317,7 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
+        border-radius: 999px;
         gap: 6px;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
         width: 100%;
@@ -290,6 +344,113 @@ export default {
         }
       }
     }
+  }
+}
+
+.content-box {
+  z-index: 8;
+  position: relative;
+  color: #FF69B4;
+  margin-top: 24px;
+  padding: 0 20px 24px;
+  button{
+    border: 1px solid #FF69B4;
+    border-radius: 999px;
+    padding: 6px 24px;
+    width: 100%;
+
+    span {
+      font-family: 'ownglyph', sans-serif!important;
+      font-weight: 700;
+      font-size: 18px;
+    }
+  }
+}
+
+.gift-info-wrap{
+  padding: 44px 0 12px;
+  margin: 12px 24px 24px;
+  border-top: 0.6px solid #b0b0b0;
+  .font-wrap {
+    position: relative;
+    padding: 12px 0;
+
+    h3 {
+      font-family: 'ownglyph', sans-serif !important;
+      font-weight: 700;
+      padding-bottom: 16px;
+      white-space: nowrap;
+      font-size: 16px;
+      color: #FF69B4;
+    }
+    p {
+      font-family: 'ownglyph', sans-serif !important;
+      font-weight: 700;
+      font-size: 15px;
+      color: #E57373;
+      margin-bottom: 10px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      max-width: calc(100% - 30px);
+      line-height: 1.6;
+    }
+
+    .copy-icon {
+      cursor: pointer;
+      color: #fa8ea8;
+      transition: color 0.3s;
+      margin-left: 10px;
+      position: absolute;
+      right: 10px;
+    }
+
+    .copy-icon:hover {
+      color: #E57373;
+    }
+  }
+}
+.gift-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+}
+
+.gift-info-wrap {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transform: translateY(20px);
+  animation: slideUp 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    background: rgba(0, 0, 0, 0);
+  }
+  to {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

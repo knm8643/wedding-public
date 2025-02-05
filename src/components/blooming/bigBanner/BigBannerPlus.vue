@@ -77,7 +77,7 @@ export default {
       p {
         font-style: normal;
         font-weight: 400;
-        font-size: 32px;
+        font-size: 38px;
         line-height: 1.8;
         color: #ffffff;
         -webkit-text-stroke: 1px #FFC0CB;

@@ -98,9 +98,9 @@ export default {
       isPopupVisible: false,
       isMenuOpen: false,
       items: [
+        { text: '신부만의<br/> 디자인 감각이 더한<br/>세련된 초대장', background: '#3E5879', buttonBackground: '#A594F9', buttonText: '공유하기' },
         { text: '기본이지만<br/> 충분히 예쁜 초대장', background: '#CDC1FF', buttonBackground: '#A594F9', buttonText: '공유하기' },
         { text: '세상에서 제일로<br/> 간단한 초대장', background: '#DCC1FF', buttonBackground: '#A594F9', buttonText: '공유하기' },
-        { text: '신부의 디자인 도움을<br/>받은 세련된 초대장', background: '#3E5879', buttonBackground: '#A594F9', buttonText: '공유하기' },
         { text: '잠시 기다려주세요<br/> 곧 오픈합니다!', background: '#A294F9', buttonBackground: '#CDC1FF', buttonText: '공사중' },
       ]
     };
@@ -249,13 +249,21 @@ export default {
     goPush() {
       const current = '이스터에그';
       const infoKey = '';
-      this.$router.push({
-        name: 'EasterEgg',
-        query: {
-          current,
-          infoKey
-        }
-      });
+
+      // 사용자 에이전트를 통해 PC인지 체크
+      const isPC = !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+      if (isPC) {
+        this.$router.push({
+          name: 'EasterEgg',
+          query: {
+            current,
+            infoKey
+          }
+        });
+      } else {
+        alert('PC 환경에서 확인해 주세요');
+      }
     },
 
     toggleMenu() {
@@ -591,7 +599,7 @@ export default {
                       font-size: 24px;
                       word-break: keep-all;
                       display: -webkit-box;
-                      -webkit-line-clamp: 2;
+                      -webkit-line-clamp: 3;
                       -webkit-box-orient: vertical;
                       overflow: hidden;
                     }

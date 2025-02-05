@@ -30,14 +30,23 @@
     <!-- 그리드 형식 팝업 -->
     <teleport to="body">
       <div v-if="isGridModalOpen" class="grid-modal" @click="closeGridModal">
-        <div class="grid-container">
-          <div v-for="(image, index) in images.slice(4, images.length) " :key="index" class="grid-item" @click="openImageModal(image, $event)">
-            <img :src="image.src" :alt="image.alt" />
+        <div class="grid-content">
+          <!-- 헤더 영역 -->
+          <header class="grid-header">
+            <h2>갤러리</h2>
+            <p>아무데나 터치하면 닫혀요!</p>
+          </header>
+
+          <!-- 그리드 이미지 컨테이너 -->
+          <div class="grid-container">
+            <div v-for="(image, index) in images.slice(4, images.length)" :key="index" class="grid-item" @click="openImageModal(image, $event)">
+              <img :src="image.src" :alt="image.alt" />
+            </div>
           </div>
         </div>
       </div>
     </teleport>
-    <div class="line"></div>
+<!--    <div class="line"></div>-->
   </div>
 </template>
 
@@ -200,7 +209,7 @@ export default {
   transition: opacity 0.8s ease, transform 0.8s ease;
 
   button{
-    border: 1.6px solid #FF69B4;
+    border: 1px solid #FF69B4;
     border-radius: 999px;
     padding: 6px 24px;
     p {
@@ -270,21 +279,43 @@ export default {
   background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   z-index: 9998;
-  padding: 25px;
+  padding: 40px 25px;
   overflow: auto;
 }
 
-.grid-container {
+.grid-content {
   background: white;
-  padding: 20px;
+  padding: 24px;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   max-width: 800px;
   width: 100%;
-  max-height: 60vh;
   overflow-y: auto;
+}
+
+.grid-header {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'ownglyph', sans-serif !important;
+
+}
+
+.grid-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #FF69B4;
+  margin: 0 0 8px;
+}
+
+.grid-header p {
+  font-size: 18px;
+  letter-spacing: 1px;
+  color:  #df8585;
+}
+
+.grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;

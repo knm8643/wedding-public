@@ -72,7 +72,7 @@ export default {
   p {
     font-family: 'ownglyph', sans-serif!important;
     font-size: 26px;
-    font-weight: 700;
+    font-weight: 400;
     color: #FF69B4;
     z-index: 10;
     width: 100%;

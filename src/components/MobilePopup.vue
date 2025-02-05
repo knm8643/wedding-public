@@ -1,9 +1,9 @@
 <template>
   <div class="mobile-popup">
     <div class="popup-content">
-      <Blooming v-if="dynamicCurrent === 0"/>
-      <BloomingOrigin v-if="dynamicCurrent === 1"/>
-      <BloomingPlus v-if="dynamicCurrent === 2"/>
+      <Blooming v-if="dynamicCurrent === 1"/>
+      <BloomingOrigin v-if="dynamicCurrent === 2"/>
+      <BloomingPlus v-if="dynamicCurrent === 0"/>
     </div>
   </div>
 </template>
@@ -61,7 +61,6 @@ export default {
     width: 100%;
     overflow-y: scroll;
     max-width: 475px;
-    border-radius: 8px;
     position: relative;
 
     scrollbar-width: none;
