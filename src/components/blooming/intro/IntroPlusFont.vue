@@ -330,8 +330,9 @@ export default {
   background-color: #ff91a4;
   border-radius: 6px;
   color: #fff;
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 500;
+  font-family: 'ownglyph', sans-serif !important;
 }
 
 .close-popup:hover {

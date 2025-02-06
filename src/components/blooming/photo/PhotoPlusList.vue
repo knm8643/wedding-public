@@ -269,7 +269,6 @@ export default {
   max-height: 100%;
   object-fit: contain;
 }
-
 .grid-modal {
   position: fixed;
   top: 0;
@@ -282,38 +281,26 @@ export default {
   align-items: flex-start;
   z-index: 9998;
   padding: 40px 25px;
-  overflow: auto;
-
 }
 
 .grid-content {
   background: white;
-  padding: 24px;
+  padding: 24px 18px;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   max-width: 800px;
   width: 100%;
-  overflow-y: auto;
+  max-height: 80vh; /* 고정된 컨텐츠 높이 */
+  display: flex;
+  flex-direction: column;
   transition: opacity 0.3s ease;
   animation: fadeInScale 0.4s ease forwards;
-}
-
-@keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
 }
 
 .grid-header {
   text-align: center;
   margin-bottom: 20px;
   font-family: 'ownglyph', sans-serif !important;
-
 }
 
 .grid-header h2 {
@@ -326,13 +313,16 @@ export default {
 .grid-header p {
   font-size: 18px;
   letter-spacing: 1px;
-  color:  #df8585;
+  color: #df8585;
 }
 
 .grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 4px;
+  height: 100%;
+  overflow-y: auto;
+  flex: 1;
 }
 
 .grid-item img {
@@ -347,5 +337,16 @@ export default {
 .grid-item img:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 </style>

@@ -89,6 +89,7 @@
               <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-23')"></i>
             </p>
           </div>
+          <p class="close-popup">닫기</p>
         </div>
       </div>
     </teleport>
@@ -378,9 +379,9 @@ export default {
     h3 {
       font-family: 'ownglyph', sans-serif !important;
       font-weight: 700;
-      padding-bottom: 16px;
+      padding-bottom: 6px;
       white-space: nowrap;
-      font-size: 16px;
+      font-size: 18px;
       color: #FF69B4;
     }
     p {
@@ -391,8 +392,8 @@ export default {
       margin-bottom: 10px;
       word-wrap: break-word;
       overflow-wrap: break-word;
-      max-width: calc(100% - 30px);
-      line-height: 1.6;
+      max-width: 100%;
+      line-height: 1.4;
     }
 
     .copy-icon {
@@ -434,12 +435,11 @@ export default {
 }
 
 .font-wrap {
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   text-align: left;
 }
 
 .font-wrap h3 {
-  font-family: 'Playfair Display', serif;
   font-size: 20px;
   color: #E57373;
   font-weight: bold;
@@ -447,7 +447,6 @@ export default {
 }
 
 .font-wrap p {
-  font-family: 'Noto Serif KR', serif;
   font-size: 16px;
   color: #555;
   line-height: 1.8;
@@ -479,6 +478,20 @@ export default {
     opacity: 1;
     transform: scale(1);
   }
+}
+
+.close-popup {
+  width: 100%;
+  padding: 6px 0;
+  text-align: center;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  background-color: #ff91a4;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+  font-family: 'ownglyph', sans-serif !important;
 }
 
 .gift-modal-overlay:hover {
