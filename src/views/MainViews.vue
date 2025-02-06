@@ -30,6 +30,11 @@
               맞춤 제작 의뢰하기
             </a>
           </li>
+          <li>
+            <a @click="goEaster">
+              제작자의 외전 플레이하기
+            </a>
+          </li>
         </ul>
       </div>
 
@@ -248,7 +253,11 @@ export default {
     sendUrlGit() {
       window.open('https://github.com/knm8643/wedding-public', '_blank');
     },
-
+    goEaster() {
+      this.$router.push({
+        name: 'EasterGame',
+      });
+    },
     goPush() {
       const current = '이스터에그';
       const infoKey = '';
@@ -433,7 +442,7 @@ export default {
         justify-content: center;
 
         &.intro {
-          background-color: #fff;
+          background-color: #f5f5f5;
           .title {
             padding: 0 24px;;
             text-align: center;

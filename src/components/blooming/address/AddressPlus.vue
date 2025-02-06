@@ -67,26 +67,26 @@
             <h3>신부측</h3>
             <p>
               신부 : 0111-212312213-21 (신한은행)
-              <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-21')"></i>
+              <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-21', $event)"></i>
             </p>
             <p>
               신부 어머니 : 0111-212312213-22 (신한은행)
-              <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-22')"></i>
+              <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-22', $event)"></i>
             </p>
           </div>
           <div class="font-wrap">
             <h3>신랑측</h3>
             <p>
               신랑 : 0111-212312213-21 (카카오뱅크)
-              <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-21')"></i>
+              <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-21', $event)"></i>
             </p>
             <p>
               신랑 어머니 : 0111-212312213-22 (카카오뱅크)
-              <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-22')"></i>
+              <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-22', $event)"></i>
             </p>
             <p>
               신랑 아버지 : 0111-212312213-23 (카카오뱅크)
-              <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-23')"></i>
+              <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-23', $event)"></i>
             </p>
           </div>
           <p class="close-popup">닫기</p>
@@ -133,7 +133,8 @@ export default {
     closePopup(){
       this.isPopOpen = false;
     },
-    copyToClipboard(number) {
+    copyToClipboard(number, event) {
+      event.stopPropagation();
       const textArea = document.createElement('textarea');
       textArea.value = number;
       document.body.appendChild(textArea);
@@ -459,14 +460,8 @@ export default {
   color: #fa8ea8;
   transition: color 0.3s ease, transform 0.2s ease;
   position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.copy-icon:hover {
-  color: #E57373;
-  transform: scale(1.1);
+  right: 0;
+  top: 10%;
 }
 
 @keyframes fadeInScale {
