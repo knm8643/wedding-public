@@ -17,17 +17,17 @@
           </li>
           <li>
             <a href="https://torch-knave-705.notion.site/15b6b12f8d3580a395c5ea297195a434?pvs=74" target="_blank">
-              제작자 노션 경력기술서 보기
+              경력 기술서 자세히 보기
             </a>
           </li>
           <li>
             <a @click="goPush">
-              제작자 이력서 보기
+              제작자 이력서 확인하기
             </a>
           </li>
           <li>
             <a href="https://pf.kakao.com/_xjmCjn/chat" target="_blank">
-              제작자에게 맞춤 제작 의뢰하기
+              맞춤 제작 의뢰하기
             </a>
           </li>
         </ul>
