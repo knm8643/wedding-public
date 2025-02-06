@@ -130,38 +130,41 @@ export default {
       let currentIndex = 0;
       let scrollTimer = null;
 
-      // 특정 li 태그를 중앙으로 이동하는 함수
       const scrollToItem = (index) => {
         const item = items[index];
+        if(item !== undefined) {
+          const boxWidth = box.clientWidth;
+          const itemLeft = item.offsetLeft;
+
+          box.scrollTo({
+            left: itemLeft - boxWidth / 2 + item.clientWidth / 2,
+            behavior: 'smooth',
+          });
+        }
+      };
+
+      const calculateCurrentIndex = () => {
         const boxWidth = box.clientWidth;
-        const itemLeft = item.offsetLeft;
-
-        // 스크롤 애니메이션
-        box.scrollTo({
-          left: itemLeft - boxWidth / 2 + item.clientWidth / 2,
-          behavior: 'smooth',
-        });
+        const scrollLeft = box.scrollLeft;
+        return Math.round(scrollLeft / boxWidth);
       };
 
-      // 순차적으로 li 태그 이동
       const scrollToNextItem = () => {
-        scrollToItem(currentIndex); // 현재 인덱스의 li 태그로 스크롤
-        currentIndex = (currentIndex + 1) % items.length; // 마지막 인덱스일 경우 0으로 초기화
+        currentIndex = calculateCurrentIndex();
+        currentIndex = (currentIndex + 1) % items.length;
+        scrollToItem(currentIndex);
       };
 
-      // 초기 실행
       scrollToItem(currentIndex);
-
-      // 3초마다 다음 li 태그로 이동
       scrollTimer = setInterval(scrollToNextItem, 3000);
 
-      // 클릭 시 스크롤 애니메이션 일시 중지
       items.forEach((item, index) => {
         item.addEventListener('click', () => {
-          clearInterval(scrollTimer); // 스크롤 중단
-          scrollToItem(index); // 클릭한 항목으로 이동
+          clearInterval(scrollTimer);
+          currentIndex = calculateCurrentIndex();
+          scrollToItem(index);
           setTimeout(() => {
-            scrollTimer = setInterval(scrollToNextItem, 3000); // 3초 후 다시 시작
+            scrollTimer = setInterval(scrollToNextItem, 3000);
           }, 3000);
         });
       });
@@ -331,9 +334,13 @@ export default {
     position: relative;
     width: 100%;
     height: 100%;
-
+    border-left: 0.6px solid #b0b0b0;
+    border-right: 0.6px solid #b0b0b0;
     /* 헤더 스타일 */
     .main-header {
+      border-left: 0.6px solid #b0b0b0;
+      border-right: 0.6px solid #b0b0b0;
+
       position: fixed;
       top: 0;
       left: 0;
@@ -426,7 +433,7 @@ export default {
         justify-content: center;
 
         &.intro {
-          background-color: #F5EFFF;
+          background-color: #fff;
           .title {
             padding: 0 24px;;
             text-align: center;
