@@ -254,8 +254,12 @@ export default {
       window.open('https://github.com/knm8643/wedding-public', '_blank');
     },
     goEaster() {
+      const current = '게임';
       this.$router.push({
         name: 'EasterGame',
+        query: {
+          current,
+        }
       });
     },
     goPush() {

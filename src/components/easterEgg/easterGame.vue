@@ -137,8 +137,7 @@ export default {
    ( o   o)
    (  -   )
 ￣￣￣￣￣￣￣￣￣￣￣￣￣|
-아, 도저히 말이 통하지  |
-않는 멍청이가 나타났다!  |
+
 
 
 “그는 그저 웹 페이지 속 또 다른 개발자일 뿐일까요…?”
@@ -151,8 +150,8 @@ export default {
 결정을 내려야 합니다.
   `,
           choices: [
-            {text: "코드의 틈을 뚫고 앞으로 나아간다", nextScene: 999},
-            {text: "방어하며 문제의 근원을 추적한다", nextScene: 999}
+            { text: "코드 괴물과 맞서 싸운다", nextScene: 10 },
+            { text: "이 틈을 타 빠르게 탈출한다", nextScene: 7 }
           ]
         },
         {
@@ -251,8 +250,9 @@ export default {
   -　-       그저 친절한 방문자는
                   아니군요　　　
 
-  -　-　         하지만 제겐 다른
-           선택지가 없는 것 같습니다.　　-　-　-
+  -　-　           하지만 제겐 다른
+               선택지가 없는 것
+                  같습니다.　　
 
   　　╱　       우리는 이 자리에서
                끝을 봐야겠군요.　  　
@@ -268,6 +268,32 @@ export default {
           choices: [
             {text: "이게 끝이라니.. 당신의 비밀은?", nextScene: 999},
             {text: "하, 결국 폭력인가? 상대해 주지.", nextScene: 999}
+          ]
+        },
+        {
+          id: 10,
+          description: `
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ ∧＿∧  　        —̳͟͞͞⚾️
+( · ·)つ   —̳͟͞͞⚾️     —̳͟͞͞⚾️
+(つ　 <
+｜　 _つ
+\`し´
+
+“당신의 공격은 적중했지만…”
+코드 괴물은 스스로 재구성되며 다시 완전해집니다.
+
+“공격은 무의미했습니다.”
+
+그 순간, 화면 속 메시지가 떠오릅니다:
+“다른 방법을 찾아야 합니다.”
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  `,
+          choices: [
+            {text: "개발자 도대체... 어째서 이런괴물을..", nextScene: 999},
+            {text: "주변을 둘러본다", nextScene: 999}
           ]
         },
         {
@@ -370,6 +396,15 @@ export default {
   },
   mounted() {
     this.startGame();
+  },
+  created() {
+    const currentFromQuery = this.$route.query.current;
+    if (currentFromQuery !==  undefined) {
+      // 경로 URL 제거
+      const queryString = window.location.search;
+      const newUrl = `${window.location.origin}${queryString}`;
+      window.history.replaceState(null, '', newUrl);
+    }
   }
 };
 </script>
