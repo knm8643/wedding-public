@@ -192,7 +192,7 @@ export default {
       const infoKey = this.$route.query.infoKey;
 
       if(current !== undefined) {
-        if(current === '이스터에그'){
+        if (current === '이스터에그') {
           this.$router.push({
             name: 'EasterEgg',
             query: {
@@ -200,7 +200,14 @@ export default {
               infoKey
             }
           });
-        } else {
+      } else if(current === '게임') {
+          this.$router.push({
+            name: 'EasterGame',
+            query: {
+              current,
+            }
+          });
+      }else {
           this.$router.push({
             name: 'MobilePopup',
             query: {
