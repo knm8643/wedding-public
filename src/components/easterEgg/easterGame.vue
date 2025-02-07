@@ -1,6 +1,6 @@
 <template>
   <div class="game-container" v-if="!gameOver">
-    <pre class="scene-text">
+    <pre class="scene-text" ref="textContainer" :class="{ 'twist-effect': isTwisting }">
       <span v-for="(char, index) in visibleText" :key="index">{{ char }}</span>
     </pre>
     <div v-if="showChoices" class="choices" :class="{ show: showChoices }">
@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="game-container" v-else>
-    <pre class="scene-text">
+    <pre class="scene-text" ref="textContainer">
       <span v-for="(char, index) in visibleText" :key="index">{{ char }}</span>
     </pre>
     <div v-if="showChoices" class="choices" :class="{ show: showChoices }">
@@ -66,8 +66,8 @@ export default {
 퍼블리셔일까요? 백엔드 개발자일까요? 아니면 프론트엔드 개발자일까요?
 `,
           choices: [
-            {text: "더 많은 정보를 찾아본다", nextScene: 4},
-            {text: "지금 당장은 지나치고, 나아간다", nextScene: 5}
+            {text: "주변에 더 많은 정보를 찾아본다", nextScene: 4},
+            {text: "지금 당장은 관심 없다", nextScene: 5}
           ]
         },
         {
@@ -98,12 +98,20 @@ export default {
     `,
           choices: [
             {text: "코드를 수정해본다", nextScene: 6},
-            {text: "서둘러 처음으로 돌아간다", nextScene: 1},
+            {text: "서둘러 처음으로 돌아간다", nextScene: 7},
           ]
         },
         {
           id: 4,
           description: `
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ ( ◔‸◔)
+＿(__つ/￣￣￣/＿
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 당신은 웹 페이지 속에서 더 많은 정보를 찾아보기로 결심합니다.
 
 코드 속에서 눈에 띄는 구문이 있습니다. 그의 작업 로그, 디버깅 코드들, 그리고 메시지들이 그를 추적하는 듯한 느낌을 줍니다.
@@ -111,27 +119,40 @@ export default {
 그는 분명히 이 웹 페이지 안에서 중요한 작업을 진행하고 있습니다. 그가 남긴 흔적을 더 찾아보면, 그의 정체가 조금씩 드러날지도 모르겠군요.
   `,
           choices: [
-            {text: "로그 파일을 열어본다", nextScene: 999},
-            {text: "자세히 조사하지 않고, 바로 나아간다", nextScene: 999}
+            {text: "로그 파일을 열어본다", nextScene: 7},
+            {text: "자세히 조사하지 않고, 돌아간다", nextScene: 5}
           ]
         },
         {
           id: 5,
           description: `
-그는 그저 웹 페이지 속의 또 다른 개발자가 아닐까요?
+＿＿＿＿＿＿＿
 
-당신은 지금 그를 계속 추적할 이유가 없다고 생각하며, 그 일을 잠시 잊고 앞으로 나아가기로 합니다.
+ 코드뭉텅이… Lv.???    ┌(┌＾o＾)┐
+ HP ⊂＝＝＝⊃　       ┌console.log┐
 
-그러나 그 선택이 잘못된 걸까…?
+￣￣￣￣￣￣￣
 
-한참을 지나, 머리속에서 그 개발자가 여전히 떠오릅니다.
-그는 분명 어떤 비밀을 숨기고 있을지도 모릅니다. 하지만 이제는 그냥 지나치기로 합니다.
+    /\\__/\\
+   ( o   o)
+   (  -   )
+￣￣￣￣￣￣￣￣￣￣￣￣￣|
+아, 도저히 말이 통하지  |
+않는 멍청이가 나타났다!  |
 
-어쩌면, 이 웹 페이지는 단순한 작업 공간이 아닐지도 모른다는 생각이 듭니다. 이곳에서 더 많은 진실이 기다리고 있을지도…
+
+“그는 그저 웹 페이지 속 또 다른 개발자일 뿐일까요…?”
+발걸음을 돌리지만, 머릿속에서 그의 흔적이 사라지지 않습니다.
+
+그 순간, 화면이 뒤틀리며 코드가 폭주합니다.
+당신을 공격하는 듯한 소스 코드의 소용돌이.
+
+이곳은 단순한 공간이 아니었습니다.
+결정을 내려야 합니다.
   `,
           choices: [
-            {text: "이제 나아간다", nextScene: 999},
-            {text: "잠시 돌아가 다른 방법을 모색한다", nextScene: 999}
+            {text: "코드의 틈을 뚫고 앞으로 나아간다", nextScene: 999},
+            {text: "방어하며 문제의 근원을 추적한다", nextScene: 999}
           ]
         },
         {
@@ -147,22 +168,116 @@ export default {
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-코드를 수정하려 애썼지만, 오히려 상황은 더 꼬여만 갑니다.
+코드를 고칠수록 상황은 더 꼬입니다.
 
-한 줄씩 수정할 때마다 새로운 오류가 쏟아지고, 결국 화면은 멈춰버립니다.
+오류는 쏟아지고 화면은 멈춰버립니다.
 
-“무언가 잘못된 걸까?”
+“무엇이 잘못된 걸까?”
 
-그때, 화면이 깜빡이며 오류 메시지가 떠오릅니다.
-
+그때 깜빡이는 메시지,
 “오류 발생. 수정 실패.”
 
-여기서 벗어나기엔 너무 늦어버린 걸까요? 이제 선택의 여지가 없어 보입니다...
+여기서 벗어나기엔 너무 늦어버린 걸까요?
+이제 선택의 여지가 없어 보입니다...
   `,
         },
         {
+          id: 7,
+          description: `
+.            |
+　╲　　　　　　　　　　╱
+　　　　　　　　/
+
+　　　╲　　　  　　　╱
+
+　　╲　　    설마...　　　╱
+
+-　-　　　제 목소리가　　-　-　-
+
+　　╱　   들리시나요?　　╲
+
+　╱　　
+    /                .
+　　╱　　　　　　　　╲
+　　　　　/　|　　　
+　　　　　　　.
+  `,
+          choices: [
+            {text: "당신은 누구시죠..?", nextScene: 8},
+            {text: "뭐야?! 당장 꺼져!!", nextScene: 9}
+          ]
+        },
+        {
+          id: 8,
+          description: `
+.            |
+  　╲　　　　　　　　　    　╱
+
+　     ╲
+
+　　　　　　　   　/
+　　　╲　　　  　　     　╱
+
+　　╲　　 믿기 어려우시겠지만,　　　╱
+
+-　-　　당신과 소통 할 수 있는  -　-　-
+
+　　╱　   힘이 제게 있습니다.　　╲
+
+    ╱　　              ╲
+              /           ╲
+   ╱
+                        .
+  　　  ╱　　　　　　　　   ╲
+  　　　　  　 　|　　　
+　　　　    .
+  `,
+          choices: [
+            {text: "누구시죠? 이 상황을 설명해 주십시오", nextScene: 999},
+            {text: "믿을 수 없다. 당장 응징한다", nextScene: 999}
+          ]
+        },
+        {
+          id: 9,
+          description: `
+    .            |
+     　╲　　　　　　　　    　　╱
+  　　　　　　╲　　       　/
+
+  　　　　╲　　  　　     　    ╱
+
+  　　╲　　
+                  당신은...       ╱
+  -　-       그저 친절한 방문자는
+                  아니군요　　　
+
+  -　-　         하지만 제겐 다른
+           선택지가 없는 것 같습니다.　　-　-　-
+
+  　　╱　       우리는 이 자리에서
+               끝을 봐야겠군요.　  　
+                                  ╲
+
+    　 ╱　　
+         //                     .
+        　 　╱　　　　　　　　    ╲
+             /
+        　　　　 　　|　　　
+　　　　　　　.
+  `,
+          choices: [
+            {text: "이게 끝이라니.. 당신의 비밀은?", nextScene: 999},
+            {text: "하, 결국 폭력인가? 상대해 주지.", nextScene: 999}
+          ]
+        },
+        {
           id: 999,
-          description: `스토리 제작 중 입니다.`,
+          description: `
+. ∧_∧    잠깐 아직 완성이 안됐잖아!
+ (･ω･)       다음에 이용해주세요.
+　｜⊃／(＿＿＿
+／└-(＿＿＿_／
+￣￣￣￣￣￣`,
           choices: []
         },
       ],
@@ -171,7 +286,8 @@ export default {
       gameOver: false,
       visibleText: "",
       textIndex: 0,
-      showChoices: false
+      showChoices: false,
+      isTwisting: false,
     };
   },
   methods: {
@@ -184,21 +300,45 @@ export default {
       this.showChoices = false;
       this.typeWriterEffect();
     },
+
     typeWriterEffect() {
       const text = this.currentScene.description;
+      this.textIndex = 0;
+      this.visibleText = ""; // Reset visible text
+      this.showChoices = false; // Hide choices until typing is finished
+
       const interval = setInterval(() => {
         this.visibleText += text[this.textIndex];
         this.textIndex++;
         if (this.textIndex === text.length) {
           clearInterval(interval);
-          this.showChoices = true;
+          this.showChoices = true; // Show choices after typing is finished
         }
       }, 10);
+
+      // 사용자 클릭 시 즉시 타이핑 멈추고 텍스트 출력
+      this.$refs.textContainer.addEventListener('click', () => {
+        if (this.textIndex < text.length) {
+          clearInterval(interval); // 타이핑 중지
+          this.visibleText = text; // 전체 텍스트 즉시 출력
+          this.showChoices = true; // 선택지 표시
+        }
+      });
+    },
+    triggerTwistEffect() {
+      this.isTwisting = true;
+      setTimeout(() => {
+        this.isTwisting = false;
+      }, 1000);
     },
     makeChoice(choice) {
       const nextScene = this.scenes.find(scene => scene.id === choice.nextScene);
       if (nextScene.id === 999 || nextScene.id === 6) {
         this.gameOver = true;
+      }
+
+      if (nextScene.id === 5) {
+        this.triggerTwistEffect();
       }
 
       if (nextScene) {
@@ -212,9 +352,11 @@ export default {
         this.gameOver = true;
       }
     },
+
     restartGame() {
       this.startGame();
     },
+
     goBack() {
       if (this.previousScenes.length) {
         this.currentScene = this.previousScenes.pop();
@@ -293,5 +435,24 @@ button {
 button:active {
   background: white;
   color: black;
+}
+
+.twist-effect {
+  animation: twist 0.6s ease-in-out;
+}
+
+@keyframes twist {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  45% {
+    transform: rotate(30deg) scale(1.2);
+  }
+  75% {
+    transform: rotate(-30deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
 }
 </style>
