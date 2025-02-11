@@ -1,89 +1,61 @@
 <template>
-  <main class="main">
-    <div class="main-wrap">
-      <!-- 헤더 영역 -->
-      <header class="main-header">
-        <div class="logo">CHUNGRIMI</div>
-        <button class="menu-btn" @click="toggleMenu">알아보기</button>
-      </header>
 
-      <!-- 메뉴탭 영역 -->
-      <div class="menu-tab" :class="{ open: isMenuOpen }">
-        <ul :style="{ height: isMenuOpen ? '100vh' : 'auto' }">
-          <li>
-            <a @click="sendUrlGit">
-              소스코드 바로 확인하기
-            </a>
-          </li>
-          <li>
-            <a href="https://torch-knave-705.notion.site/15b6b12f8d3580a395c5ea297195a434?pvs=74" target="_blank">
-              경력 기술서 자세히 보기
-            </a>
-          </li>
-          <li>
-            <a @click="goPush">
-              제작자 이력서 확인하기
-            </a>
-          </li>
-          <li>
-            <a href="https://pf.kakao.com/_xjmCjn/chat" target="_blank">
-              맞춤 제작 의뢰하기
-            </a>
-          </li>
-          <li>
-            <a @click="goEaster">
-              제작자의 외전 플레이하기
-            </a>
-          </li>
-        </ul>
+  <main>
+    <!-- Header -->
+    <header class="header">
+      <h1 class="site-title text_01">초대장 사용하기</h1>
+      <p class="site-description text_02">
+        결혼준비에 필요한 모바일청첩장을 직접<br/>
+        만들어 보시고 사용하세요
+      </p>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero_wrap">
+        <h2 class="text_03">이용방법</h2>
+        <label for="steps-toggle" class="steps-label text_04">확인하기</label>
       </div>
 
-      <!-- 메인 컨테이너 -->
-      <div class="main-container">
-        <section class="intro" :class="{ 'menu-open': isMenuOpen }">
-          <div class="title">
-            <div class="title-img">
-              <img src="@/assets/images/favicon.png" alt="Scroll Icon" class="" />
-            </div>
-            <div class="title-font">
-              손쉽게 만드는<br/>
-              나만의 무료 모바일 초대장<br/>
-              <em>충리미</em>와 함께하세요
-            </div>
-            <div class="title-footer">
-              <img src="@/assets/svg/scroll.svg" alt="Scroll Icon" class="scroll-icon" />
-            </div>
-          </div>
-        </section>
-        <section class="list" :class="{ 'menu-open': isMenuOpen }">
-          <div class="list-wrap">
-            <div class="list-header">
-              둘러보세요
-            </div>
-            <div class="list-font">
-              원하는 스타일의 <br/>
-              초대장을 클릭하면 <em>템플릿</em> <br/>
-              정보를 볼 수 있어요
-            </div>
-            <div class="list-container">
-              <ul class="box">
-                <li v-for="(item, index) in items"
-                    @click="openMoblie(index)"
-                    :key="index" class="box-content" :style="{ background: item.background }">
-                  <div class="box-font">
-                    <button @click="copyLink(index, $event)" class="header-btn" :style="{ background: item.buttonBackground }">
-                      <span>{{ item.buttonText }}</span>
-                    </button>
-                    <p v-html="item.text"></p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
+      <input type="checkbox" id="steps-toggle" class="steps-toggle">
+      <ul class="steps">
+        <li>
+          <span class="step-number">1</span>
+          <p></p>
+
+          템플릿 선택
+        - 직접 선택뒤 뭐시기뭐시기~</li>
+        <li><span class="step-number">2</span> 내용 작성</li>
+        <li><span class="step-number">3</span> 공유하기</li>
+      </ul>
+    </section>
+
+    <!-- Template List Section -->
+    <section class="template-list">
+      <div class="template-cards">
+        <div class="template-card" v-for="template in templates" :key="template.id">
+          <img v-if="template.image" :src="template.image" alt="Template Image" class="template-image">
+          <p class="template-name text_03">{{ template.name }}</p>
+        </div>
       </div>
-    </div>
-    <div class="toast" v-if="showToast">{{ toastMessage }}</div>
+    </section>
+
+    <footer class="footer">
+      <ul class="footer-container">
+        <li>
+          문의하기
+        </li>
+        <li>
+          <p>Developed by knm8643 in 2025</p>
+          <a href="mailto:knm8643@nate.com" class="contact-link">
+            <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 496 512">
+              <path
+                  d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </footer>
   </main>
   <transition name="popup-fade">
     <MobilePopup v-if="isPopupVisible" :current="current">
@@ -102,30 +74,29 @@ export default {
       current: 0,
       isPopupVisible: false,
       isMenuOpen: false,
-      items: [
-        { text: '신부만의<br/> 디자인 감각이 더한<br/>세련된 초대장', background: '#3E5879', buttonBackground: '#A594F9', buttonText: '공유하기' },
-        { text: '기본이지만<br/> 충분히 예쁜 초대장', background: '#CDC1FF', buttonBackground: '#A594F9', buttonText: '공유하기' },
-        { text: '세상에서 제일로<br/> 간단한 초대장', background: '#DCC1FF', buttonBackground: '#A594F9', buttonText: '공유하기' },
-        { text: '잠시 기다려주세요<br/> 곧 오픈합니다!', background: '#A294F9', buttonBackground: '#CDC1FF', buttonText: '공사중' },
-      ]
+      templates: [
+        {id: 1, name: '모던 초대장', description: '', image: null},
+        {id: 2, name: '심플 초대장', description: '', image: null},
+        {id: 3, name: '클래식 초대장', description : '', image: null},
+      ],
     };
   },
   mounted() {
-    this.appCheck();
-    this.urlCheck();
-
-    const observer = new IntersectionObserver(this.handleIntersection, {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.5,
-    });
-
-    const sections = document.querySelectorAll('.main-container section');
-    sections.forEach(section => {
-      observer.observe(section);
-    });
-
-    this.animationCheck();
+    // this.appCheck();
+    // this.urlCheck();
+    //
+    // const observer = new IntersectionObserver(this.handleIntersection, {
+    //   root: null,
+    //   rootMargin: '0px',
+    //   threshold: 0.5,
+    // });
+    //
+    // const sections = document.querySelectorAll('.main-container section');
+    // sections.forEach(section => {
+    //   observer.observe(section);
+    // });
+    //
+    // this.animationCheck();
   },
 
   methods: {
@@ -137,7 +108,7 @@ export default {
 
       const scrollToItem = (index) => {
         const item = items[index];
-        if(item !== undefined) {
+        if (item !== undefined) {
           const boxWidth = box.clientWidth;
           const itemLeft = item.offsetLeft;
 
@@ -191,7 +162,7 @@ export default {
       const current = this.$route.query.current;
       const infoKey = this.$route.query.infoKey;
 
-      if(current !== undefined) {
+      if (current !== undefined) {
         if (current === '이스터에그') {
           this.$router.push({
             name: 'EasterEgg',
@@ -200,14 +171,14 @@ export default {
               infoKey
             }
           });
-      } else if(current === '게임') {
+        } else if (current === '게임') {
           this.$router.push({
             name: 'EasterGame',
             query: {
               current,
             }
           });
-      }else {
+        } else {
           this.$router.push({
             name: 'MobilePopup',
             query: {
@@ -226,8 +197,8 @@ export default {
       this.triggerClickEffect(target);
 
       setTimeout(() => {
-          const redirectUrl = location.href + '?current=' + index + '&infoKey=%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%A0%84%EC%9A%A9';
-          window.location.href = redirectUrl;
+        const redirectUrl = location.href + '?current=' + index + '&infoKey=%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%A0%84%EC%9A%A9';
+        window.location.href = redirectUrl;
       }, 300);
     },
 
@@ -237,14 +208,14 @@ export default {
       this.triggerClickEffect(target);
 
       setTimeout(() => {
-          const urlToCopy = location.href + '?current=' + index + '&infoKey=%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%A0%84%EC%9A%A9';
-          navigator.clipboard.writeText(urlToCopy)
-              .then(() => {
-                alert('URL이 클립보드에 복사되었습니다!');
-              })
-              .catch(() => {
-                alert('URL 복사에 실패했습니다.');
-              });
+        const urlToCopy = location.href + '?current=' + index + '&infoKey=%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%A0%84%EC%9A%A9';
+        navigator.clipboard.writeText(urlToCopy)
+            .then(() => {
+              alert('URL이 클립보드에 복사되었습니다!');
+            })
+            .catch(() => {
+              alert('URL 복사에 실패했습니다.');
+            });
       }, 300);
     },
 
@@ -340,365 +311,193 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.main {
+main {
   margin: 0 auto;
-  font-family: "-apple-system", "BlinkMacSystemFont", "Apple SD Gothic Neo", "Noto Sans KR", "Roboto", "Helvetica Neue", "Arial", sans-serif;
   position: relative;
   max-width: 475px;
   min-width: 320px;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
+  padding: 1rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
 
-  .main-wrap {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    border-left: 0.6px solid #b0b0b0;
-    border-right: 0.6px solid #b0b0b0;
-    /* 헤더 스타일 */
-    .main-header {
-      border-left: 0.6px solid #b0b0b0;
-      border-right: 0.6px solid #b0b0b0;
+.header {
+  text-align: left;
+  margin: 2.5rem 0;
 
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 10;
-      width: 100%;
-      height: 56px;
-      border-bottom: 0.6px solid #b0b0b0;
-      background-color: #ffffff;
+  .site-description {
+    margin-top: 1rem;
+  }
+}
+
+.hero {
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  text-align: center;
+  transition: padding 0.3s ease;
+
+  .steps-toggle {
+    display: none;
+  }
+
+  .hero_wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    .steps-label {
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .steps-label:hover{
+      text-decoration: underline;
+    }
+  }
+
+
+  .steps {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+
+    li {
+      font-size: 1.1rem;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-      padding: 0 16px;
-      max-width: 475px;
-      margin: 0 auto;
-      left: 50%;
-      transform: translateX(-50%);
+      gap: 1rem;
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+      line-height: 1.6;
+      padding: 1rem;
 
-      .logo {
-        font-size: 18px;
-        font-weight: bold;
-      }
-
-      .menu-btn {
-        background: none;
-        border: none;
-        font-size: 16px;
-        cursor: pointer;
-
-        &:hover {
-          opacity: 0.8;
-        }
-      }
-    }
-
-    .menu-tab {
-      position: fixed;
-      top: -100%;
-      left: 50%;
-      width: 100%;
-      max-width: 475px;
-      margin: 0 auto;
-      transform: translateX(-50%);
-      background-color: #f8f9fa;
-      transition: top 0.4s ease-in-out;
-      z-index: 9;
-
-      &.open {
-        top: 56px;
-      }
-
-      ul {
-        list-style: none;
-        padding: 16px;
-        margin: 0;
-
-        li {
-          line-height: 1.8;
-          padding: 12px 0 6px;
-          font-size: 16px;
-          border-bottom: 0.6px solid #ddd;
-          &:last-child {
-            border-bottom: none;
-          }
-        }
-      }
-    }
-
-    .main-container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      overflow-y: scroll;
-      scroll-snap-type: y mandatory;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      transition: background-color 0.2s ease;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-
-      section {
-        width: 100%;
-        height: 100vh;
-        scroll-snap-type: y mandatory;
-        scroll-snap-align: start;
+      .step-number {
+        background: #A594F9;
+        color: white;
+        font-size: 2rem;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
         display: flex;
-        align-items: center;
         justify-content: center;
+        align-items: center;
+      }
 
-        &.intro {
-          background-color: #f5f5f5;
-          .title {
-            padding: 0 24px;;
-            text-align: center;
-            width: 100%;
+      /* 설명 텍스트 스타일 */
+      span {
+        font-weight: 600;
+        color: #555;
+      }
 
-            .title-img{
-              transition-delay: .65s;
-              transition-duration: .8s;
-              transition-timing-function: ease-in-out;
-              opacity: 0;
+      /* 부가설명 추가 스타일 */
+      p {
+        font-size: 1rem;
+        color: #777;
+        margin-top: 0.5rem;
+        text-align: center;
+        line-height: 1.5;
+      }
+    }
+  }
 
-              img{
-                width: 75px;
-              }
 
+  .steps-toggle:checked ~ .steps {
+    max-height: 500px;
+  }
 
-              &.fade-in {
-                opacity: 1;
-              }
-            }
+  .steps-toggle:checked ~ .steps li {
+    opacity: 1;
+  }
+}
 
-            .title-font {
-              margin-top: 20px;
-              font-weight: 700;
-              color: #0b0d0f;
-              word-break: keep-all;
-              position: relative;
-              font-size: 26px;
-              line-height: 1.8;
-              transition-delay: 1.1s;
-              transition-duration: .8s;
-              transition-timing-function: ease-in-out;
-              opacity: 0;
+.template-list {
+  margin: 2rem 0;
+  .template-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.25rem;
+  }
 
-              em{
-                font-style: normal;
-                color: #9B7EBD;
-              }
+  .template-card {
+    border: 1px solid #ddd;
+    border-radius: 0.2rem;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-              &.fade-in {
-                opacity: 1;
-              }
-            }
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
 
-            .title-footer {
-              margin-top: 52px;
-              transition-delay: 1.6s;
-              transition-duration: .8s;
-              transition-timing-function: ease-in-out;
-              opacity: 0;
+    .template-image {
+      width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      object-fit: cover;
+    }
 
-              .scroll-icon {
-                display: block;
-                margin: 20px auto;
-                width: 36px;
-                opacity: 1;
-                animation: bounce 1.5s infinite;
-              }
+    .url-wrap{
+      display: flex;
+      padding: 0.6rem 0 0;
+      border-top: 1px solid #ddd;
+    }
+  }
+}
 
-              @keyframes bounce {
-                0% {
-                  transform: translateY(0);
-                  opacity: 1;
-                }
-                50% {
-                  transform: translateY(10px);
-                  opacity: 0.5;
-                }
-                100% {
-                  transform: translateY(0);
-                  opacity: 1;
-                }
-              }
+.footer {
+  padding: 1rem 0;
+  text-align: right;
+  margin-bottom: 1rem;
 
-              &.fade-in {
-                opacity: 1;
-              }
-            }
-          }
+  .footer-container {
+    li:last-child{
+      font-style: italic;
+      margin-top: 0.6rem;
+      display: flex;
+      justify-content: right;
+      align-items: flex-end;
+      gap: 6px;
+    }
+
+    li {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .contact-link {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-left: 0.2rem;
+
+      .footer-icon {
+        fill: #666;
+        transition: fill 0.3s;
+        &:hover {
+          fill: #007bff;
         }
+      }
 
-        &.list {
-          background-color: #f9f9f9;
-
-          .list-wrap {
-            text-align: center;
-            padding: 54px 24px 0;
-            min-height: 100vh;
-            width: 100%;
-            flex-direction: column;
-            display: flex;
-            justify-content: flex-start;
-            padding-bottom: env(safe-area-inset-bottom);
-
-            .list-header{
-              font-size: 17px;
-              line-height: 2;
-              font-weight: 700;
-              text-align: center;
-              color: #9B7EBD;
-              margin: 62px 0 10px;
-
-            }
-
-            .list-font {
-              font-weight: 700;
-              color: #0b0d0f;
-              word-break: keep-all;
-              position: relative;
-              font-size: 26px;
-              line-height: 1.6;
-
-              em {
-                font-style: normal;
-                color: #9B7EBD;
-              }
-            }
-            .list-container {
-              margin-top: 20px;
-              width: 100%;
-
-              .box {
-                display: flex;
-                width: 100%;
-                gap: 24px;
-                overflow-x: auto;
-                padding: 21px 0;
-
-                -ms-overflow-style: auto;
-                scrollbar-width: auto;
-
-                &.hide-scroll {
-                  -ms-overflow-style: none;
-                  scrollbar-width: none;
-                }
-
-                &.hide-scroll::-webkit-scrollbar {
-                  display: none;
-                }
-
-                .box-content {
-                  font-size: 18px;
-                  min-width: 265px;
-                  height: 275px;
-                  background: #CDC1FF;
-                  border-radius: 26px;
-                  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-                  padding: 16px;
-                  transition: transform 0.3s ease;
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  width: calc(30%);
-                  max-width: 305px;
-
-                  .box-font{
-                    font-weight: 700;
-                    color: #ffffff;
-                    word-break: keep-all;
-                    position: relative;
-                    line-height: 1.4;
-                    .header-btn {
-                      font-size: 14px;
-                      border-radius: 999px;
-                      background: #A594F9;
-                      padding: 2px 12px;
-                    }
-                    p{
-                      margin: 16px 0 24px;
-                      font-size: 24px;
-                      word-break: keep-all;
-                      display: -webkit-box;
-                      -webkit-line-clamp: 3;
-                      -webkit-box-orient: vertical;
-                      overflow: hidden;
-                    }
-                    .btn-info {
-                      margin-top: 16px;
-
-                      button {
-                        padding: 4px 16px;
-                        font-size: 14px;
-                        border: none;
-                        border-radius: 20px;
-                        cursor: pointer;
-                        transition: background-color 0.3s ease, transform 0.2s ease;
-
-                        span {
-                          color: white;
-                        }
-                        &:first-child {
-                          background-color: #4caf50;
-                          &:hover {
-                            background-color: #45a049;
-                            transform: translateY(-2px);
-                          }
-                        }
-                        &:last-child {
-                          background-color: #9b7cf7;
-
-                          &:hover {
-                            background-color: #9b7cf7;
-                            transform: translateY(-2px);
-                          }
-                        }
-                        &:active {
-                          transform: translateY(1px);
-                        }
-                      }
-                    }
-                  }
-                  &:last-child {
-                    opacity: 0.3;
-                    pointer-events: none;
-                  }
-                  &:hover {
-                    cursor: pointer;
-                    transform: translateY(-10px);
-                  }
-                }
-                .box-content.clicked {
-                  transform: translateY(-10px);
-                }
-              }
-            }
-          }
-        }
-
-        &::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 1000%;
-          background-color: rgba(0, 0, 0, 0.5);
-          opacity: 0;
-          z-index: 2;
-          transition: opacity 0.3s ease;
-          pointer-events: none;
-        }
-
-        &.menu-open::before {
-          opacity: 1;
-        }
+      &:hover {
+        text-decoration: underline;
       }
     }
   }
