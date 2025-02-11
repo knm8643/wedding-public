@@ -87,7 +87,7 @@ Copyright (c) knm8643 All rights reserved.
 코드에 오류가 일어난 것 같습니다. 뒤로 가야 할지도 모릅니다.
 
 탈출은, 시간이 더 필요할 것 같습니다.
-    `,choices:[{text:"코드를 수정해본다",nextScene:6},{text:"서둘러 처음으로 돌아간다",nextScene:7}]},{id:4,description:`
+    `,choices:[{text:"코드를 수정해본다",nextScene:6},{text:"서둘러 처음으로 돌아간다",nextScene:11}]},{id:4,description:`
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -180,12 +180,11 @@ Copyright (c) knm8643 All rights reserved.
 　　╱　   힘이 제게 있습니다.　　╲
 
     ╱　　              ╲
-              /           ╲
+              /          ╲
    ╱
-
-                        .
+                       .
   　　  ╱　　　　　　　　
-                      ╲
+                     ╲
 
   　　　　  　 　|　　　
 　　　　    .
@@ -212,7 +211,9 @@ Copyright (c) knm8643 All rights reserved.
     　 ╱　　
          //                     .
         　 　╱　　　　　　　　    ╲
-             /
+
+              /
+
         　　　　 　　|　　　
 　　　　　　　.
   `,choices:[{text:"이게 끝이라니.. 당신의 비밀은?",nextScene:999},{text:"하, 결국 폭력인가? 상대해 주지.",nextScene:999}]},{id:10,description:`
@@ -233,11 +234,35 @@ Copyright (c) knm8643 All rights reserved.
 
 그 순간, 화면 속 메시지가 떠오릅니다:
 “다른 방법을 찾아야 합니다.”
-  `,choices:[{text:"개발자 도대체... 어째서 이런괴물을..",nextScene:999},{text:"주변을 둘러본다",nextScene:999}]},{id:999,description:`
+  `,choices:[{text:"개발자 도대체... 어째서 이런괴물을..",nextScene:999},{text:"주변을 둘러본다",nextScene:999}]},{id:11,description:`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+⠀⠀⢠⡤⢺⣿⣿⣿⣿⣿⣶⣄
+⠀⠀⠉⠀⠘⠛⠉⣽⣿⣿⣿⣿⡇
+⠀⠀⠀⠀⠀⠀⠀⢉⣿⣿⣿⣿⡗
+⠀⢀⣀⡀⢀⣀⣤⣤⣽⣿⣼⣿⢇⡄
+⠀⠀⠙⠗⢸⣿⠁⠈⠋⢨⣏⡉⣳
+⠀⠀⠀⠀⢸⣿⡄⢠⣴⣿⣿⣿
+⠀⠀⠀⠀⠉⣻⣿⣿⣿⣿⣿⡟⡀
+⠀⠀⠀⠀⠐⠘⣿⣶⡿⠟⠁⣴⣿⣄
+⠀⠀⠀⠀⠀⠘⠛⠉⣠⣴⣾⣿⣿⣿⡦
+⠀⠀⢀⣴⣠⣄⠸⠿⣻⣿⣿⣿⣿⠏
+⠀⣠⣿⣿⠟⠁
+
+
+처음으로 돌아가려 했으나...
+
+빛이 일렁이며 화면이 왜곡됩니다
+
+낯선 속삭임이 귓가를 맴돌며 문자가 떠오릅니다
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  `,choices:[{text:"이게 무슨..상황이지",nextScene:7},{text:"(화면에 집중하며 버튼을 클릭한다)",nextScene:7}]},{id:999,description:`
 . ∧_∧    잠깐 아직 완성이 안됐잖아!
  (･ω･)       다음에 이용해주세요.
 　｜⊃／(＿＿＿
 ／└-(＿＿＿_／
-￣￣￣￣￣￣`,choices:[]}],currentScene:{},previousScenes:[],gameOver:!1,visibleText:"",textIndex:0,showChoices:!1,isTwisting:!1}},methods:{startGame(){this.currentScene=this.scenes[0],this.previousScenes=[],this.gameOver=!1,this.visibleText="",this.textIndex=0,this.showChoices=!1,this.typeWriterEffect()},typeWriterEffect(){const e=this.currentScene.description;this.textIndex=0,this.visibleText="",this.showChoices=!1;const t=setInterval(()=>{this.visibleText+=e[this.textIndex],this.textIndex++,this.textIndex===e.length&&(clearInterval(t),this.showChoices=!0)},10);this.$refs.textContainer.addEventListener("click",()=>{this.textIndex<e.length&&(clearInterval(t),this.visibleText=e,this.showChoices=!0)})},triggerTwistEffect(){this.isTwisting=!0,setTimeout(()=>{this.isTwisting=!1},1e3)},makeChoice(e){const t=this.scenes.find(n=>n.id===e.nextScene);(t.id===999||t.id===6)&&(this.gameOver=!0),t.id===5&&this.triggerTwistEffect(),t?(this.previousScenes.push(this.currentScene),this.currentScene=t,this.visibleText="",this.textIndex=0,this.showChoices=!1,this.typeWriterEffect()):this.gameOver=!0},restartGame(){this.startGame()},goBack(){this.previousScenes.length&&(this.currentScene=this.previousScenes.pop(),this.gameOver=!1,this.visibleText="",this.textIndex=0,this.showChoices=!1,this.typeWriterEffect())}},mounted(){this.startGame()},created(){if(this.$route.query.current!==void 0){const t=window.location.search,n=`${window.location.origin}${t}`;window.history.replaceState(null,"",n)}}},v1={key:0,class:"game-container"},b1=["onClick"],y1={key:1,class:"game-container"},_1={class:"scene-text",ref:"textContainer"};function w1(e,t,n,s,i,r){return e.gameOver?(S(),I("div",y1,[a("pre",_1,[t[4]||(t[4]=Z("      ")),(S(!0),I(he,null,Re(e.visibleText,(o,l)=>(S(),I("span",{key:l},Ae(o),1))),128)),t[5]||(t[5]=Z(`
+￣￣￣￣￣￣`,choices:[]}],currentScene:{},previousScenes:[],gameOver:!1,visibleText:"",textIndex:0,showChoices:!1,isTwisting:!1}},methods:{startGame(){this.currentScene=this.scenes[0],this.previousScenes=[],this.gameOver=!1,this.visibleText="",this.textIndex=0,this.showChoices=!1,this.typeWriterEffect()},typeWriterEffect(){const e=this.currentScene.description;this.textIndex=0,this.visibleText="",this.showChoices=!1;const t=setInterval(()=>{this.visibleText+=e[this.textIndex],this.textIndex++,this.textIndex===e.length&&(clearInterval(t),this.showChoices=!0)},10);this.$refs.textContainer.addEventListener("click",()=>{this.textIndex<e.length&&(clearInterval(t),this.visibleText=e,this.showChoices=!0)})},triggerTwistEffect(){this.isTwisting=!0,setTimeout(()=>{this.isTwisting=!1},1e3)},makeChoice(e){const t=this.scenes.find(n=>n.id===e.nextScene);(t.id===999||t.id===6)&&(this.gameOver=!0),(t.id===5||t.id===11)&&this.triggerTwistEffect(),t?(this.previousScenes.push(this.currentScene),this.currentScene=t,this.visibleText="",this.textIndex=0,this.showChoices=!1,this.typeWriterEffect()):this.gameOver=!0},restartGame(){this.startGame()},goBack(){this.previousScenes.length&&(this.currentScene=this.previousScenes.pop(),this.gameOver=!1,this.visibleText="",this.textIndex=0,this.showChoices=!1,this.typeWriterEffect())}},mounted(){this.startGame()},created(){if(this.$route.query.current!==void 0){const t=window.location.search,n=`${window.location.origin}${t}`;window.history.replaceState(null,"",n)}}},v1={key:0,class:"game-container"},b1=["onClick"],y1={key:1,class:"game-container"},_1={class:"scene-text",ref:"textContainer"};function w1(e,t,n,s,i,r){return e.gameOver?(S(),I("div",y1,[a("pre",_1,[t[4]||(t[4]=Z("      ")),(S(!0),I(he,null,Re(e.visibleText,(o,l)=>(S(),I("span",{key:l},Ae(o),1))),128)),t[5]||(t[5]=Z(`
     `))],512),e.showChoices?(S(),I("div",{key:0,class:q(["choices",{show:e.showChoices}])},[a("button",{onClick:t[0]||(t[0]=(...o)=>r.restartGame&&r.restartGame(...o))},"처음으로 돌아가기"),e.previousScenes.length?(S(),I("button",{key:0,onClick:t[1]||(t[1]=(...o)=>r.goBack&&r.goBack(...o))},"바로 전으로 돌아가기")):_e("",!0)],2)):_e("",!0)])):(S(),I("div",v1,[a("pre",{class:q(["scene-text",{"twist-effect":e.isTwisting}]),ref:"textContainer"},[t[2]||(t[2]=Z("      ")),(S(!0),I(he,null,Re(e.visibleText,(o,l)=>(S(),I("span",{key:l},Ae(o),1))),128)),t[3]||(t[3]=Z(`
-    `))],2),e.showChoices?(S(),I("div",{key:0,class:q(["choices",{show:e.showChoices}])},[(S(!0),I(he,null,Re(e.currentScene.choices,(o,l)=>(S(),I("button",{key:l,onClick:c=>r.makeChoice(o)},Ae(o.text),9,b1))),128))],2)):_e("",!0)]))}const C1=re(g1,[["render",w1],["__scopeId","data-v-ae4079e0"]]),x1=[{path:"/",name:"MainView",component:f1},{path:"/MobilePopup",name:"MobilePopup",component:ia},{path:"/EasterEgg",name:"EasterEgg",component:m1},{path:"/EasterGame",name:"EasterGame",component:C1}],S1=D0({history:d0(),routes:x1}),ra=$c(B0);ra.use(S1);ra.mount("#app");
+    `))],2),e.showChoices?(S(),I("div",{key:0,class:q(["choices",{show:e.showChoices}])},[(S(!0),I(he,null,Re(e.currentScene.choices,(o,l)=>(S(),I("button",{key:l,onClick:c=>r.makeChoice(o)},Ae(o.text),9,b1))),128))],2)):_e("",!0)]))}const C1=re(g1,[["render",w1],["__scopeId","data-v-47c40188"]]),x1=[{path:"/",name:"MainView",component:f1},{path:"/MobilePopup",name:"MobilePopup",component:ia},{path:"/EasterEgg",name:"EasterEgg",component:m1},{path:"/EasterGame",name:"EasterGame",component:C1}],S1=D0({history:d0(),routes:x1}),ra=$c(B0);ra.use(S1);ra.mount("#app");
