@@ -116,7 +116,6 @@ export default {
 
 <style scoped lang="scss">
 .calendar-wrap-sub {
-  font-family: Arial, sans-serif;
   max-width: 400px;
   margin: 20px auto;
   text-align: center;

@@ -123,7 +123,6 @@ export default {
 
 <style scoped lang="scss">
 .calendar-wrap-sub {
-  font-family: 'Spoqa Han Sans Neo', sans-serif;
   max-width: 400px;
   margin: 20px auto;
   text-align: center;
@@ -139,7 +138,6 @@ export default {
     font-weight: 700;
     font-size: 19px;
     padding-bottom: 12px;
-    font-family: 'Playfair Display', serif;
   }
 }
 

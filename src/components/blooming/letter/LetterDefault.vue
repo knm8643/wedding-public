@@ -255,7 +255,6 @@ export default {
       border-radius: 5px;
       padding: 10px;
       resize: none;
-      font-family: inherit;
       font-size: 14px;
     }
 
@@ -267,7 +266,6 @@ export default {
       border-radius: 5px;
       padding: 10px;
       resize: none;
-      font-family: inherit;
       font-size: 14px;
     }
     .letter-body input:hover,

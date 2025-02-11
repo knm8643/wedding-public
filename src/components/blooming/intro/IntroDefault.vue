@@ -90,7 +90,6 @@ export default {
   }
 
   .content-title {
-    font-family: 'Playfair Display', serif;
     color: #191c21;
     font-weight: 700;
     font-size: 24px;
@@ -104,7 +103,6 @@ export default {
   }
 
   .content p {
-    font-family: 'Noto Serif KR', serif;
     white-space: nowrap;
     color: #191c21;
     text-align: center;

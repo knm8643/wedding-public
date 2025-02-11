@@ -215,6 +215,7 @@ export default {
     position: relative;
     color: #FF69B4;
     margin-top: 28px;
+    padding: 0 50px;
 
     button{
       border: 1px solid #FF69B4;

@@ -123,7 +123,6 @@ export default {
 
 <style scoped lang="scss">
 .calendar-wrap-sub {
-  font-family: 'Spoqa Han Sans Neo', sans-serif;
   max-width: 400px;
   margin: 20px auto;
   text-align: center;
@@ -139,7 +138,6 @@ export default {
     font-weight: 500;
     font-size: 19px;
     padding-bottom: 12px;
-    font-family: 'Playfair Display', serif;
   }
 }
 
@@ -153,7 +151,6 @@ export default {
 }
 
 .calendar-day {
-  font-family: 'Noto Serif KR', serif;
   padding: 9px;
   text-align: center;
   font-size: 14px;
@@ -176,7 +173,6 @@ export default {
 }
 
 .calender-footer {
-  font-family: 'Noto Serif KR', serif;
   padding-top: 34px;
   color: #b0b0b0;
   text-align: left;

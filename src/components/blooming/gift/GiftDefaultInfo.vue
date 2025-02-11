@@ -86,7 +86,6 @@ export default {
 
   .gift-title {
     h3{
-      font-family: 'Playfair Display', serif;
       text-align: center;
       color:  #191c21;
       font-size: 21px;
@@ -104,7 +103,6 @@ export default {
       padding: 12px 0;
 
       h3 {
-        font-family: 'Playfair Display', serif;
         font-weight: 700;
         padding-bottom: 16px;
         white-space: nowrap;
@@ -112,7 +110,6 @@ export default {
         color: #E57373;
       }
       p {
-        font-family: 'Noto Serif KR', serif;
         font-weight: 500;
         font-size: 14px;
         color: #555;

@@ -183,7 +183,6 @@ export default {
     font-size: 18px;
     font-weight: 400;
     span{
-      font-family: 'Noto Serif KR', serif;
       white-space: nowrap;
       color: #191c21;
       text-align: center;
@@ -194,7 +193,6 @@ export default {
     }
 
     p{
-      font-family: 'Playfair Display', serif;
       color:  #191c21;
       font-size: 21px;
       font-weight: 700;
@@ -213,7 +211,6 @@ export default {
     margin-top: 24px;
     font-size: 14px;
     color: #333;
-    font-family: 'Noto Serif KR', serif;
   }
 
   .address-item {
@@ -225,7 +222,6 @@ export default {
     font-size: 16px;
     font-weight: 700;
     margin-bottom: 8px;
-    font-family: 'Playfair Display', serif;
   }
 
   .address-item span {
@@ -261,7 +257,6 @@ export default {
       align-items: center;
       justify-content: flex-start;
       display: flex;
-      font-family: 'Playfair Display', serif;
       .google-main,
       .kakao-main{
         padding: 2px 16px;

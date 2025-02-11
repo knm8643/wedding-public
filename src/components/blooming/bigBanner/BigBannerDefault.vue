@@ -60,7 +60,6 @@ export default {
   transition: opacity 1.2s ease, transform 1.2s ease;
 
   .content-main-font{
-    font-family: 'Playfair Display', serif;
     margin: 0 auto;
     padding-bottom: 16px;
     text-align: center;
@@ -91,7 +90,6 @@ export default {
   }
 
   .content-description {
-    font-family: 'Noto Sans KR', sans-serif;
     margin-top: 8px;
     font-size: 16px;
     color: #333;

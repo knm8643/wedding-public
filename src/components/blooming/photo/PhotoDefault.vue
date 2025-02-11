@@ -232,7 +232,6 @@ export default {
   .content-fmInfo{
     padding: 0 24px;
     .fmInfo {
-      font-family: 'Nanum Myeongjo', serif;
       display: flex;
       line-height: 1.8;
       gap: 9px;
@@ -275,7 +274,6 @@ export default {
     font-size: 16px;
     font-weight: 700;
     transition: background-color 0.3s ease;
-    font-family: 'Nanum Myeongjo', serif;
 
   }
 
@@ -304,7 +302,6 @@ export default {
   text-align: left;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   .pop-wrap{
-    font-family: 'Nanum Myeongjo', serif;
     padding-bottom: 12px;
     h3{
       font-weight: 700;
