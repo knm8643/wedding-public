@@ -284,7 +284,7 @@ main {
         align-items: center;
       }
       .li-font{
-        margin-top: 1rem;
+        margin-top: 0.3rem;
         text-align: left;
       }
     }
