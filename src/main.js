@@ -2,7 +2,9 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 
+// ------------------
 // 공통스타일
+// ------------------
 import './assets/css/reset.css'
 import './assets/css/common.css'
 

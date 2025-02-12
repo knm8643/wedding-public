@@ -44,7 +44,9 @@ export default {
       const ctx = canvas.getContext("2d");
 
 
-      // ----- 사이즈 전체로 잡을지 고정으로 잡을지 선택해서 화면에 맞게해주세요 -----
+      // ------------------------------------
+      // ----- 커스텀시 화면에 맞게 설정해주세요
+      // ------------------------------------
       // canvas.width = window.innerWidth;
       // canvas.height = window.innerHeight;
       canvas.width = 375;
@@ -114,7 +116,9 @@ export default {
 
       // 리사이즈 이벤트 처리
       window.addEventListener("resize", () => {
-        // ----- 사이즈 전체로 잡을지 고정으로 잡을지 선택해서 화면에 맞게해주세요 -----
+        // ------------------------------------
+        // ----- 커스텀시 화면에 맞게 설정해주세요
+        // ------------------------------------
         // canvas.width = window.innerWidth;
         // canvas.height = window.innerHeight;
         canvas.width = 375;
@@ -125,9 +129,9 @@ export default {
 }
 </script>
 <style lang="scss">
-/* ------------------------------------------------ */
-/* -------------------- POPUP --------------------- */
-/* ------------------------------------------------ */
+// ------------------------------------
+// --- Blooming 벚꽃효과
+// ------------------------------------
 .blooming-wrap {
   position: relative;
   background-color: #ffffff;

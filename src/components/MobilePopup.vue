@@ -32,7 +32,9 @@ export default {
     if (currentFromQuery !==  undefined) {
       this.dynamicCurrent = Number(currentFromQuery);
 
-      // 경로 URL 제거
+      // ------------------
+      // --- 경로 URL 제거
+      // ------------------
       const queryString = window.location.search;
       const newUrl = `${window.location.origin}${queryString}`;
       window.history.replaceState(null, '', newUrl);
@@ -42,6 +44,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+// ------------------
+// --- 팝업창 전용
+// ------------------
 .mobile-popup {
   position: fixed;
   top: 0;

@@ -27,7 +27,7 @@ Blooming 패키지는 세 가지 버전으로 제공됩니다: **origin**과 **d
 ---
 
 ### ⚙️ 선택 방법
-패키지를 설치하거나 사용 시, 원하는 버전을 선택하여 적용하세요.
+원하는 버전을 선택하여 적용하세요.
 ```js
 import BigBannerOrigin from "@/components/blooming/bigBanner/BigBannerOrigin.vue";
 // 또는

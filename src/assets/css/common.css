@@ -1,3 +1,4 @@
+/* 텍스트 폰트패밀리 */
 @font-face {
     font-family: 'Love Ya Like A Sister';
     src: url('@/assets/fonts/LoveYaLikeASister-Regular.ttf') format('truetype');
@@ -35,14 +36,14 @@ body{
     height: 100%;
 }
 
-/*텍스트 클래스*/
+/* 텍스트 클래스 */
 .text_01 {
     font-size: 1.65em;
     line-height: 1.8rem;
     font-weight: 700;
 }
 .text_02 {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #555;
     line-height: 1.8rem;
 }
@@ -54,10 +55,9 @@ body{
 }
 .text_04 {
     color: rgb(37 99 235);
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 .text_05{
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #868e96;
+    font-size: 1.2rem;
+    font-weight: 700;
 }

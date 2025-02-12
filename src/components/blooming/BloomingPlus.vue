@@ -11,13 +11,10 @@
     <PhotoPlusList/>
     <!-- 오시는 길(맵) -->
     <IntroPlusFont/>
-
     <!-- 달력 -->
     <CalenderPlus/>
-
     <!-- 맵 -->
     <AddressPlus/>
-    <!-- 편지보내기 -->
   </div>
 </template>
 
@@ -49,8 +46,9 @@ export default {
       const canvas = this.$refs.canvas;
       const ctx = canvas.getContext("2d");
 
-
-      // ----- 사이즈 전체로 잡을지 고정으로 잡을지 선택해서 화면에 맞게해주세요 -----
+      // ------------------------------------
+      // ----- 커스텀시 화면에 맞게 설정해주세요
+      // ------------------------------------
       // canvas.width = window.innerWidth;
       // canvas.height = window.innerHeight;
       canvas.width = 375;
@@ -132,7 +130,9 @@ export default {
 
       // 리사이즈 이벤트 처리
       window.addEventListener("resize", () => {
-        // ----- 사이즈 전체로 잡을지 고정으로 잡을지 선택해서 화면에 맞게해주세요 -----
+        // ------------------------------------
+        // ----- 커스텀시 화면에 맞게 설정해주세요
+        // ------------------------------------
         // canvas.width = window.innerWidth;
         // canvas.height = window.innerHeight;
         canvas.width = 375;
@@ -143,9 +143,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-/* ------------------------------------------------ */
-/* -------------------- POPUP --------------------- */
-/* ------------------------------------------------ */
+// ------------------------------------
+// --- Blooming 벚꽃효과
+// ------------------------------------
 .blooming-wrap * {
   font-family: 'ownglyph', sans-serif !important;
 }
