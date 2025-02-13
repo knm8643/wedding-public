@@ -48,20 +48,24 @@ export default {
     this.startSakuraEffect();
 
     window.addEventListener('wheel', this.handleScroll);
-    this.setBodyOverflow(); // body overflow 설정
+    this.setBodyOverflow();
+
     // 모바일 터치 이벤트
-    window.addEventListener('touchstart', this.handleTouchStart);
-    window.addEventListener('touchmove', this.handleTouchMove);
-    window.addEventListener('touchend', this.handleTouchEnd);
+    window.addEventListener('touchstart', this.handleTouchStart, { passive: false });
+    window.addEventListener('touchmove', this.handleTouchMove, { passive: false });
+    window.addEventListener('touchend', this.handleTouchEnd, { passive: false });
   },
+
   destroyed() {
     window.removeEventListener('wheel', this.handleScroll);
     window.removeEventListener('touchstart', this.handleTouchStart);
     window.removeEventListener('touchmove', this.handleTouchMove);
     window.removeEventListener('touchend', this.handleTouchEnd);
   },
+
   methods: {
     handleScroll(event) {
+      event.preventDefault(); // 🚀 추가
       if (event.deltaY > 0 && this.showSection < this.sections.length - 1) {
         this.showSection++;
       } else if (event.deltaY < 0 && this.showSection > 0) {
@@ -69,9 +73,11 @@ export default {
       }
     },
     handleTouchStart(event) {
+      event.preventDefault(); // 🚀 추가
       this.touchStartY = event.touches[0].clientY;
     },
     handleTouchMove(event) {
+      event.preventDefault(); // 🚀 추가
       this.touchEndY = event.touches[0].clientY;
     },
     handleTouchEnd() {
@@ -83,6 +89,7 @@ export default {
     },
     setBodyOverflow() {
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     },
     startSakuraEffect() {
       const canvas = this.$refs.canvas;
@@ -219,7 +226,7 @@ export default {
   left: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   opacity: 0;
   transform: translateY(100%);
   transition: opacity 0.6s ease, transform 0.6s ease;

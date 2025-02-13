@@ -80,6 +80,7 @@ export default {
   transition: opacity 1.5s ease, transform 1.5s ease;
   justify-self: center;
   width: 100%;
+  margin-top: 5rem;
 
   .content-title {
     color: #191c21;
