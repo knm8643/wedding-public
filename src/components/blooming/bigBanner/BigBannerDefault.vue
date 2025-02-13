@@ -4,24 +4,25 @@
       :class="{ 'animate-visible': isVisible }"
       ref="banner"
   >
+
+    <div class="image-wrap">
+      <img class="content-image" src="../../../assets/images/08.jpg" alt="섹션 이미지" />
+    </div>
+
     <div class="content-main-font">
-      <p>2025. 02. 08</p>
+      <p class="text_02">2025. 02. 08</p>
     </div>
 
     <div class="content-description">
-      <div class="description-header">
+      <div class="description-header text_03">
         <h2>충디딥</h2>
-        <p>그리고</p>
+        <p>·</p>
         <h2>유디딥</h2>
       </div>
-      <div class="description-info">
+      <div class="description-info text_02">
         <span>서울 용산구 이태원로 29</span>
         <p>로얄파크컨벤션(홀) 1층 13시 00분</p>
       </div>
-    </div>
-
-    <div class="image-wrap">
-      <img class="content-image" src="../../../assets/images/01.jpg" alt="섹션 이미지" />
     </div>
   </div>
 </template>
@@ -44,7 +45,6 @@ export default {
         },
         { threshold: 0.1 }
     );
-
     observer.observe(this.$refs.banner);
   },
   methods: {
@@ -54,38 +54,49 @@ export default {
 <style scoped>
 .banner-wrap{
   border-radius: 4px;
-  padding: 64px 0 4px;
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 1.2s ease, transform 1.2s ease;
+  width: 100%;
 
   .content-main-font{
     margin: 0 auto;
-    padding-bottom: 16px;
+    padding: 2rem 5rem 2rem;
     text-align: center;
-
     p{
+      padding: 0.75rem 0;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
       color: #191c21;
-      font-weight: 700;
-      font-size: 18px;
+      letter-spacing: -0.5px;
+
       white-space: nowrap;
-      padding: 0 12px;
     }
   }
 
   .image-wrap{
-    padding: 24px 0 52px;
-    overflow: hidden;
-    margin: 0 12px;
+    background-color: #ddd;
+    padding-top: 20rem;
+    position: relative;
+    width: 100%;
 
     .content-image {
-      border: 1px solid #666;
       outline: double 0.6px #666;
-      outline-offset: -5px;
-      border-radius: 4px;
-      max-height: 475px;
+      position: absolute;
+      height: 100%;
       width: 100%;
+      inset: 0;
+      color: transparent;
+      display: block;
       object-fit: cover;
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: inherit;
+        mix-blend-mode: multiply;
+      }
     }
   }
 
@@ -100,22 +111,16 @@ export default {
       justify-content: center;
       display: flex;
       align-items: flex-end;
-      padding-bottom: 46px;
+      padding-bottom: 26px;
       h2{
         font-weight: 500;
         font-size: 24px;
         color: #191c21;
       }
-      p{
-        color: #b0b0b0;
-      }
+
     }
 
     .description-info {
-      color: #191c21;
-      line-height: 1.6;
-      font-size: 14px;
-      font-weight: 300;
       p{
         padding-bottom: 4px;
       }

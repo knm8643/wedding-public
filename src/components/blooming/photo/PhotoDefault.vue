@@ -1,136 +1,30 @@
 <template>
-  <div
-      class="photo-wrap"
-      :class="{ 'animate-visible': isVisible }"
-      ref="photo"
-  >
-    <div class="swiper-container">
-      <div class="main-image-wrap">
-        <img
-            :src="selectedImage"
-            alt="대표 이미지"
-            class="main-image"
-        >
-      </div>
-
-      <!-- 이미지 리스트 -->
-      <div class="img-wrap">
-        <img
+  <div class="photo-wrap" ref="photo">
+    <div class="swiper-container" ref="swiperContainer">
+      <div class="swiper-wrapper">
+        <div
             v-for="(image, index) in imagePath"
             :key="index"
-            :src="image"
-            :class="{ selected: selectedIndex === index }"
-            @click="selectImage(index)"
-            class="photo-image"
-        />
-      </div>
-    </div>
-    <div class="content-fmInfo">
-      <div class="fmInfo">
-        <p>김두환 · 홍길동</p>
-        <span>의 아들</span>
-        <p>충디딥</p>
-      </div>
-      <div class="fmInfo">
-        <p>이두환</p>
-        <span>의 딸</span>
-        <p>유디딥</p>
-      </div>
-    </div>
-
-    <!-- 전화번호 영역 -->
-    <div class="phone-info">
-      <button @click="openPopup">연락처 확인</button>
-    </div>
-
-    <!-- 팝업 영역 -->
-    <teleport to="body">
-      <div v-if="showPopup" class="popup-overlay">
-        <div class="popup">
-          <!-- 신랑측 -->
-          <div class="pop-wrap">
-            <h3>&lt;신랑측&gt;</h3>
-            <div class="pop-sub-wrap">
-              <span>신랑에게 연락하기</span>
-              <p>
-                <!-- 전화 아이콘 -->
-                <a :href="'tel:' + '010-5696-1909'" class="contact-link">
-                  <i class="fas fa-phone-alt"></i>
-                </a>
-                <!-- 문자 아이콘 -->
-                <a :href="'sms:' + '010-5696-1909'" class="contact-link">
-                  <i class="fas fa-sms"></i>
-                </a>
-              </p>
-            </div>
-            <div class="pop-sub-wrap">
-              <span>신랑측 혼주 아버지 연락하기</span>
-              <p>
-                <!-- 전화 아이콘 -->
-                <a :href="'tel:' + '010-5696-1909'" class="contact-link">
-                  <i class="fas fa-phone-alt"></i>
-                </a>
-                <!-- 문자 아이콘 -->
-                <a :href="'sms:' + '010-5696-1909'" class="contact-link">
-                  <i class="fas fa-sms"></i>
-                </a>
-              </p>
-            </div>
-            <div class="pop-sub-wrap">
-              <span>신랑측 혼주 어머니 연락하기</span>
-              <p>
-                <!-- 전화 아이콘 -->
-                <a :href="'tel:' + '010-5696-1909'" class="contact-link">
-                  <i class="fas fa-phone-alt"></i>
-                </a>
-                <!-- 문자 아이콘 -->
-                <a :href="'sms:' + '010-5696-1909'" class="contact-link">
-                  <i class="fas fa-sms"></i>
-                </a>
-              </p>
-            </div>
-          </div>
-
-          <!-- 신부측 -->
-          <div class="pop-wrap">
-            <h3>&lt;신부측&gt;</h3>
-            <div class="pop-sub-wrap">
-              <span>신부에게 연락하기</span>
-              <p>
-                <!-- 전화 아이콘 -->
-                <a :href="'tel:' + '010-5696-1909'" class="contact-link">
-                  <i class="fas fa-phone-alt"></i>
-                </a>
-                <!-- 문자 아이콘 -->
-                <a :href="'sms:' + '010-5696-1909'" class="contact-link">
-                  <i class="fas fa-sms"></i>
-                </a>
-              </p>
-            </div>
-            <div class="pop-sub-wrap">
-              <span>신부측 혼주 어머니 연락하기</span>
-              <p>
-                <!-- 전화 아이콘 -->
-                <a :href="'tel:' + '010-5696-1909'" class="contact-link">
-                  <i class="fas fa-phone-alt"></i>
-                </a>
-                <!-- 문자 아이콘 -->
-                <a :href="'sms:' + '010-5696-1909'" class="contact-link">
-                  <i class="fas fa-sms"></i>
-                </a>
-              </p>
-            </div>
-          </div>
-
-          <!-- 닫기 버튼 -->
-          <p class="close-popup" @click="closePopup">닫기</p>
+            class="swiper-slide"
+        >
+          <img :src="image" class="image-item" />
         </div>
       </div>
-    </teleport>
+
+      <div class="scroll-instruction text_02">
+        <svg class="scroll-arrow" width="24" height="24" viewBox="0 0 50 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 10H45M45 10L38 4M45 10L38 16" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>좌측으로 이미지를 넘겨서 확인하세요</div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import Swiper from 'swiper';
+import 'swiper/swiper-bundle.css';
+
 import img2 from "@/assets/images/02.jpg";
 import img3 from "@/assets/images/03.jpg";
 import img4 from "@/assets/images/04.jpg";
@@ -147,222 +41,79 @@ export default {
   name: "photoDefault",
   data() {
     return {
-      imagePath: [img2, img3,img4,img5,img6,img7,img8,img9,img10,img11,img12],
-      isVisible: false,
-      selectedIndex: 0,
-      selectedImage: img2,
-      showPopup: false,
+      imagePath: [img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12],
+      swiper: null
     };
   },
   mounted() {
-    const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            this.isVisible = true;
-            setTimeout(() => {
-              observer.disconnect();
-            }, 500);
-          }
-        },
-        { threshold: 0.2 }
-    );
-
-    observer.observe(this.$refs.photo);
+    this.initializeSwiper();
   },
   methods: {
-    selectImage(index) {
-      this.selectedIndex = index;
-      this.selectedImage = this.imagePath[index];
-    },
-    openPopup() {
-      this.showPopup = true;
-    },
-    closePopup() {
-      this.showPopup = false;
-    },
-
-  },
+    initializeSwiper() {
+      this.swiper = new Swiper(this.$refs.swiperContainer, {
+        direction: 'horizontal',
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 0,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        }
+      });
+    }
+  }
 };
 </script>
+
 <style scoped>
-/* 애니메이션 */
 .photo-wrap {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-
-
-  /* 이미지 영역 */
-  .swiper-container {
-    width: 100%;
-    height: auto;
-    margin: 16px auto 72px;
-
-    .main-image-wrap{
-      .main-image{
-        border: 1px solid #b0b0b0;
-        outline: double 1px #b0b0b0;
-        outline-offset: -5px;
-        min-height: 475px;
-        aspect-ratio: 16 / 9;
-        object-fit: cover;
-        width: 100%;
-      }
-    }
-
-    .img-wrap {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    }
-
-    .photo-image {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      cursor: pointer;
-      border: 2px solid transparent;
-      transition: border-color 0.3s ease;
-
-      &.selected {
-        border-color: #ff91a4;
-      }
-    }
-  }
-
-  .content-fmInfo{
-    padding: 0 24px;
-    .fmInfo {
-      display: flex;
-      line-height: 1.8;
-      gap: 9px;
-      align-items: center;
-      padding-top: 4px;
-      p{
-        color: #191c21;
-        font-weight: 600;
-        font-size: 21px;
-        transition: font-size 0.2s ease;
-      }
-      span {
-        color: #b0b0b0;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 1.8;
-      }
-    }
-  }
-}
-
-.photo-wrap.animate-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* 팝업관련 CSS */
-.phone-info {
-  padding: 16px 24px 0;
-  text-align: center;
-
-  button {
-    width: 100%;
-    padding: 6px 16px;
-    background-color: #ff91a4;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 700;
-    transition: background-color 0.3s ease;
-
-  }
-
-  button:hover {
-    background-color: #ff7086;
-  }
-}
-
-.popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.popup {
-  background-color: #fff;
-  padding: 24px;
-  border-radius: 12px;
-  text-align: left;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  .pop-wrap{
-    padding-bottom: 12px;
-    h3{
-      font-weight: 700;
-      font-size: 17px;
-      padding-bottom: 12px;
-    }
-
-    .pop-sub-wrap{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-      padding-bottom: 5px;
-
-      p{
-        display: flex;
-        gap: 12px;
-        .contact-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          margin: 10px 0;
-          color: #E57373;
-          font-size: 16px;
-          text-decoration: none;
-          transition: color 0.3s ease;
-        }
-
-        .contact-link:hover {
-          color: #ff91a4;
-        }
-
-        .contact-link i {
-          font-size: 18px;
-        }
-      }
-
-      span{
-        font-weight: 500;
-        color: #757575;
-        font-size: 14px;
-      }
-
-    }
-  }
-}
-
-.close-popup {
+  margin-bottom: 5rem;
   width: 100%;
-  padding: 6px 0;
-  text-align: center;
-  cursor: pointer;
-  transition: color 0.3s ease;
-  background-color: #ff91a4;
-  border-radius: 6px;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 500;
+  position: relative;
 }
 
-.close-popup:hover {
-  background-color: #E57373;
+.swiper-container {
+  width: 100%;
+  height: 100%;
 }
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-item {
+  max-width: 100%;
+  height: 80%;
+  object-fit: cover;
+}
+
+.scroll-instruction {
+  text-align: center;
+  width: 100%;
+  padding: 24px ;
+}
+.scroll-instruction {
+  align-items: center;
+  gap: 8px;
+}
+
+.scroll-arrow {
+  animation: moveLeftRight 1s infinite alternate ease-in-out;
+}
+
+@keyframes moveLeftRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
+}
+
 </style>

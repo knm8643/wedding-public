@@ -5,7 +5,6 @@
       ref="intro"
   >
 
-    <div class="scroll-line" :class="{ 'line-visible': isVisible }"></div>
     <!-- 타이틀 제목 -->
     <div class="content-title">
       저희 결혼합니다
@@ -13,31 +12,38 @@
 
 
     <!-- 내용 -->
-    <div class="content">
+    <div class="content text_02">
       <p>
-        사랑이 깊어 결실을 맺고
+        사랑이 깊어 결실을
+      </p>
+      <p >
+        맺고 저희 두 사람이 새로운 여정을
       </p>
       <p style="padding-bottom: 24px">
-        저희 두 사람이
-      </p>
-      <p>
-        새로운 여정을 함께 시작하려 합니다.
+        함께 시작하려 합니다.
       </p>
       <p>
         세상에서 가장 특별한 이 날,
       </p>
-      <p style="padding-bottom: 24px">
-        소중한 당신을
-      </p>
       <p>
-        기쁜 마음으로 초대합니다.
-      </p>
-      <p>
-        저희의 새로운 시작을 밝혀 주시길 바랍니다.
+        소중한 당신을 기쁜 마음으로 초대합니다.
       </p>
       <p>
         당신을 기다리겠습니다.
       </p>
+    </div>
+
+    <div class="content-fmInfo text_03">
+      <div class="fmInfo">
+        <p>김두환 · 홍길동</p>
+        <span>의 아들</span>
+        <p>충디딥</p>
+      </div>
+      <div class="fmInfo">
+        <p>이두환</p>
+        <span>의 딸</span>
+        <p>유디딥</p>
+      </div>
     </div>
   </div>
 </template>
@@ -73,43 +79,37 @@ export default {
   transform: translateY(30px);
   transition: opacity 1.5s ease, transform 1.5s ease;
   justify-self: center;
-  padding-bottom: 32px;
-
-  /* 스크롤 라인 */
-  .scroll-line {
-    margin: 0 auto;
-    width: 0.6px;
-    height: 0;
-    background: #b0b0b0;
-    border-radius: 2px;
-    transition: height 1.5s ease;
-  }
-
-  .scroll-line.line-visible {
-    height: 52px;
-  }
+  width: 100%;
 
   .content-title {
     color: #191c21;
     font-weight: 700;
     font-size: 24px;
     text-align: center;
-    padding: 56px 0;
+    padding: 1rem 0 26px ;
   }
 
-  /* 컨텐츠 영역 */
   .content {
     padding: 24px 24px 0;
   }
 
-  .content p {
+  .content p{
     white-space: nowrap;
-    color: #191c21;
     text-align: center;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.8;
     margin-bottom: 6px;
+  }
+
+  .content-fmInfo{
+    margin: 2.5rem 2rem 2rem;
+    padding: 1rem;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+
+    .fmInfo{
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+    }
   }
 }
 

@@ -54,14 +54,15 @@ export default {
   width: 100%;
   height: 100%;
   backdrop-filter: blur(8px);
-  background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
 
+
   .popup-content {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 -4px 6px rgba(0, 0, 0, 0.1);
     height: 100%;
     width: 100%;
     overflow-y: scroll;

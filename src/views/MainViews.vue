@@ -13,8 +13,11 @@
     <!-- 이용방법 -->
     <section class="hero">
       <div class="hero_wrap">
-        <h2 class="text_03">이용방법</h2>
-        <label for="steps-toggle" class="steps-label text_04">확인하기</label>
+        <h2 class="text_03">
+          이용방법
+        </h2>
+        <label for="steps-toggle" class="steps-label text_04">확인하기
+        </label>
       </div>
 
       <input type="checkbox" id="steps-toggle" class="steps-toggle">
@@ -25,7 +28,7 @@
           </div>
           <div class="li-font">
             <p class="text_02">
-              하단에 원하는 타이틀을 선택한 뒤 디자인을 확인해 주세요
+              원하는 타이틀을 선택하고 디자인을 확인하세요.
             </p>
           </div>
         </li>
@@ -35,18 +38,24 @@
           </div>
           <div class="li-font">
             <p class="text_02">
-              하단 깃 로고를 클릭해 소스를 받아 직접 수정 및 추가해 주세요
+              하단 깃 로고를 눌러 소스를 받아 직접 수정하세요.
             </p>
           </div>
         </li>
         <li>
           <div class="li-wrap">
-            <h2 class="text_05">제작문의</h2>
+            <h2 class="text_05">제작문의
+              <svg @click="goPush" width="14" height="14" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="22" stroke="#555" stroke-width="4" fill="none"/>
+                <line x1="24" y1="14" x2="24" y2="28" stroke="#555" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="24" cy="34" r="2.5" fill="#555"/>
+              </svg>
+            </h2>
           </div>
           <div class="li-font">
             <p class="text_02">
-              직접 수정이 어렵다면 하단의 문의하기를 클릭하세요.
-              맞춤 제작 및 수정 방법을 안내해 드립니다.
+              직접 수정이 어렵다면 하단 문의하기를 클릭하세요.
+              맞춤 제작을 도와드립니다.
             </p>
           </div>
         </li>
@@ -59,8 +68,14 @@
         <div class="template-card" v-for="(template, index) in templates" :key="template.id"
              @click="openMoblie(index)"
         >
-          <img v-if="template.image" :src="template.image" alt="Template Image" class="template-image">
-          <p class="template-name text_03">{{ template.name }}</p>
+          <div v-if="template.image" class="img-wrap">
+            <img :src="template.image" alt="Template Image" class="template-image">
+          </div>
+          <div class="img-font-wrap" :style="template.image ? { padding: '2rem 0 2rem' } : {}">
+<!--          <div class="img-font-wrap" >-->
+            <p class="template-name text_05">{{ template.name }}</p>
+            <span class="text_02">{{ template.description }}</span>
+          </div>
         </div>
       </div>
     </section>
@@ -72,11 +87,6 @@
           <a href="https://pf.kakao.com/_xjmCjn/chat" target="_blank">
           카카오톡 문의하기
           </a>
-          <svg @click="goPush" width="14" height="14" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="24" cy="24" r="22" stroke="#555" stroke-width="4" fill="none"/>
-            <line x1="24" y1="14" x2="24" y2="28" stroke="#555" stroke-width="4" stroke-linecap="round"/>
-            <circle cx="24" cy="34" r="2.5" fill="#555"/>
-          </svg>
         </li>
         <li>
           <p>Developed by knm8643 in 2025</p>
@@ -99,6 +109,7 @@
 </template>
 <script>
 import MobilePopup from "@/components/MobilePopup.vue";
+import img from "@/assets/images/10.jpg";
 export default {
   components: {MobilePopup},
   data() {
@@ -109,9 +120,9 @@ export default {
       isPopupVisible: false,
       isMenuOpen: false,
       templates: [
-        {id: 1, name: '모던 초대장', description: '', image: null},
-        {id: 2, name: '심플 초대장', description: '', image: null},
-        {id: 3, name: '클래식 초대장', description : '', image: null},
+        { id: 1, name: '모던 초대장', description: '깔끔하고 세련된 디자인의 초대장', image: null },
+        { id: 2, name: '심플 초대장', description: '최소한의 디자인으로 감성을 더한 초대장', image: null },
+        { id: 3, name: '클래식 초대장', description: '우아하고 전통적인 스타일의 초대장', image: null },
       ],
     };
   },
@@ -295,7 +306,7 @@ main {
       margin-top: 1rem;
     }
     li:last-child {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
   }
 
@@ -317,15 +328,13 @@ main {
   .template-cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.25rem;
+    gap: 0.9rem;
   }
 
   .template-card {
-    border: 1px solid #ddd;
-    border-radius: 0.2rem;
+    border-radius: 0.1rem;
     background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -333,9 +342,8 @@ main {
     align-items: center;
     text-align: center;
 
-    &:active {
+    &:hover {
       transform: translateY(-5px);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
     &:hover{
@@ -350,14 +358,37 @@ main {
     }
 
     .template-name {
-      margin-top: 0.5rem;
-      font-weight: bold;
+      margin: 0.5rem 0;
     }
 
-    .url-wrap {
-      display: flex;
-      padding: 0.6rem 0 0;
-      border-top: 1px solid #ddd;
+    .img-wrap {
+      padding-top: 52.1921%;
+      width: 100%;
+      position: relative;
+      background-color: #ddd;
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: inherit;
+        mix-blend-mode: multiply;
+      }
+      img {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        inset: 0;
+        color: transparent;
+        display: block;
+        object-fit: cover;
+      }
+    }
+
+    .img-font-wrap{
+      width: 100%;
+      text-align: left;
+      padding: 1rem 0 2rem;
     }
   }
 }
