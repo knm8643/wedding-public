@@ -193,7 +193,7 @@ export default {
 
       .google-main,
       .kakao-main{
-        padding: 0.5rem 16px;
+        padding: 0.4rem 16px;
         background-color: #eee;
         border: 1px solid #ddd;
         border-radius: 999px;
