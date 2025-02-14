@@ -11,11 +11,16 @@
         </div>
       </div>
 
-      <div class="scroll-instruction text_02">
-        <svg class="scroll-arrow" width="24" height="24" viewBox="0 0 50 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 10H45M45 10L38 4M45 10L38 16" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <div class="scroll-instruction big_02">
+        <svg class="scroll-arrow" width="24" height="24" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- 원 -->
+          <circle cx="25" cy="25" r="24" stroke="black" stroke-width="2" fill="none"/>
+          <!-- 오른쪽 화살표 -->
+          <g transform="translate(12, 15)"> <!-- 화살표를 원의 중앙으로 이동 -->
+            <path d="M10 0L20 10L10 20" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
         </svg>
-        <div>좌측으로 이미지를 넘겨서 확인하세요</div>
+        <p>좌측으로 이미지를 넘겨서 확인하세요</p>
       </div>
     </div>
   </div>
@@ -69,51 +74,54 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .photo-wrap {
   margin-bottom: 5rem;
   width: 100%;
   position: relative;
-}
 
-.swiper-container {
-  width: 100%;
-  height: 100%;
-}
-
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.image-item {
-  max-width: 100%;
-  height: 80%;
-  object-fit: cover;
-}
-
-.scroll-instruction {
-  text-align: center;
-  width: 100%;
-  padding: 24px ;
-}
-.scroll-instruction {
-  align-items: center;
-  gap: 8px;
-}
-
-.scroll-arrow {
-  animation: moveLeftRight 1s infinite alternate ease-in-out;
-}
-
-@keyframes moveLeftRight {
-  0% {
-    transform: translateX(0);
+  .swiper-container {
+    width: 100%;
+    height: 100%;
   }
-  100% {
-    transform: translateX(-10px);
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .image-item {
+    width: 100%;
+    height: 70vh;
+    object-fit: cover;
+  }
+
+  .scroll-instruction {
+    text-align: center;
+    width: 100%;
+    padding: 24px;
+
+
+    .scroll-arrow {
+      animation: moveLeftRight 1.5s infinite alternate ease-in-out;
+    }
+
+    p {
+      padding-top: 0.9rem;
+    }
+  }
+
+  @keyframes moveLeftRight {
+    0% {
+      transform: translateX(0) scale(1);
+    }
+    50% {
+      transform: translateX(-15px) scale(1.05);
+    }
+    100% {
+      transform: translateX(15px) scale(1);
+    }
   }
 }
-
 </style>

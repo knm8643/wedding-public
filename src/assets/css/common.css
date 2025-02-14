@@ -67,3 +67,17 @@ body{
     font-size: 1.2rem;
     font-weight: 700;
 }
+
+.big_01{
+    font-size: 1.6rem;
+    line-height: 1.8rem;
+    font-weight: 400;
+    letter-spacing: -1px;
+}
+.big_02{
+    letter-spacing: 1px;
+    font-size: 1.3rem;
+    color: #555;
+    line-height: 2rem;
+    font-weight: 400;
+}

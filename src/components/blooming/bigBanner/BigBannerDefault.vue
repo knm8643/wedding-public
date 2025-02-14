@@ -1,27 +1,20 @@
 <template>
-  <div
-      class="banner-wrap"
-      :class="{ 'animate-visible': isVisible }"
-      ref="banner"
-  >
-
+  <div class="banner-wrap" :class="{ 'animate-visible': isVisible }" ref="banner">
     <div class="image-wrap">
-      <img class="content-image" src="../../../assets/images/08.jpg" alt="섹션 이미지" />
-    </div>
-
-    <div class="content-main-font">
-      <p class="text_02">2025. 02. 08</p>
+      <img class="content-image" src="../../../assets/images/05.jpg" alt="섹션 이미지" />
     </div>
 
     <div class="content-description">
-      <div class="description-header text_03">
+      <div class="description-header big_01">
         <h2>충디딥</h2>
         <p>·</p>
         <h2>유디딥</h2>
       </div>
       <div class="description-info text_02">
-        <span>서울 용산구 이태원로 29</span>
-        <p>로얄파크컨벤션(홀) 1층 13시 00분</p>
+        <span class="location">
+          2025년 11월 21일 토요일 오후 2시 00분
+        </span>
+        <p class="animated-underline">서울 로얄파크컨벤션 1층 일반 홀</p>
       </div>
     </div>
   </div>
@@ -51,6 +44,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .banner-wrap{
   border-radius: 4px;
@@ -59,49 +53,28 @@ export default {
   transition: opacity 1.2s ease, transform 1.2s ease;
   width: 100%;
 
-  .content-main-font{
-    margin: 0 auto;
-    padding: 2rem 5rem 2rem;
-    text-align: center;
-    p{
-      padding: 0.75rem 0;
-      border-top: 1px solid #ddd;
-      border-bottom: 1px solid #ddd;
-      color: #191c21;
-      letter-spacing: -0.5px;
-
-      white-space: nowrap;
-    }
-  }
-
-  .image-wrap{
-    background-color: #ddd;
-    padding-top: 20rem;
+  .image-wrap {
     position: relative;
     width: 100%;
+    height: 50vh;
+    aspect-ratio: 16 / 9;
+    background-color: transparent;
+    overflow: hidden;
 
     .content-image {
       outline: double 0.6px #666;
       position: absolute;
-      height: 100%;
       width: 100%;
-      inset: 0;
-      color: transparent;
-      display: block;
+      height: 100%;
       object-fit: cover;
-
-      &::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-color: inherit;
-        mix-blend-mode: multiply;
-      }
+      object-position: center;
+      -webkit-mask-image: radial-gradient(ellipse 80% 100% at 50% 0, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+      mask-image: radial-gradient(ellipse 80% 100% at 50% 0, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
     }
   }
 
   .content-description {
-    margin-top: 8px;
+    margin-top: 4rem;
     font-size: 16px;
     color: #333;
     text-align: center;
@@ -112,15 +85,10 @@ export default {
       display: flex;
       align-items: flex-end;
       padding-bottom: 26px;
-      h2{
-        font-weight: 500;
-        font-size: 24px;
-        color: #191c21;
-      }
-
     }
 
     .description-info {
+      line-height: 2.4rem;
       p{
         padding-bottom: 4px;
       }

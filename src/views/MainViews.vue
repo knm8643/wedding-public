@@ -109,7 +109,7 @@
 </template>
 <script>
 import MobilePopup from "@/components/MobilePopup.vue";
-import img from "@/assets/images/10.jpg";
+import img from "@/assets/images/05.jpg";
 export default {
   components: {MobilePopup},
   data() {
@@ -120,8 +120,8 @@ export default {
       isPopupVisible: false,
       isMenuOpen: false,
       templates: [
-        { id: 1, name: '모던 초대장', description: '깔끔하고 세련된 디자인의 초대장', image: null },
-        { id: 2, name: '심플 초대장', description: '최소한의 디자인으로 감성을 더한 초대장', image: null },
+        { id: 1, name: '심플 초대장', description: '최소한의 디자인으로 감성을 더한 초대장', image: img },
+        { id: 2, name: '모던 초대장', description: '깔끔하고 세련된 디자인의 초대장', image: null },
         { id: 3, name: '클래식 초대장', description: '우아하고 전통적인 스타일의 초대장', image: null },
       ],
     };

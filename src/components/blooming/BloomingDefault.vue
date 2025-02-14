@@ -22,7 +22,6 @@ import PhotoDefault from "@/components/blooming/photo/PhotoDefault.vue";
 import CalenderDefault from "@/components/blooming/calender/CalenderDefault.vue";
 import AddressDefault from "@/components/blooming/address/AddressDefault.vue";
 import GiftDefaultInfo from "@/components/blooming/gift/GiftDefaultInfo.vue";
-import LetterDefault from "@/components/blooming/letter/LetterDefault.vue";
 import cherry from "@/assets/svg/cherryBlossoms.svg";
 import { markRaw } from 'vue';
 
@@ -37,7 +36,6 @@ export default {
         { title: 'Calendar', description: 'This is the calendar section.', component: markRaw(CalenderDefault) },
         { title: 'Address', description: 'This is the address section.', component: markRaw(AddressDefault) },
         { title: 'Gift Info', description: 'This is the gift info section.', component: markRaw(GiftDefaultInfo) },
-        { title: 'Letter', description: 'This is the letter section.', component: markRaw(LetterDefault) }
       ],
       showSection: 0,
       touchStartY: 0,
@@ -47,10 +45,10 @@ export default {
   mounted() {
     this.startSakuraEffect();
 
-    window.addEventListener('wheel', this.handleScroll);
     this.setBodyOverflow();
 
     // 모바일 터치 이벤트
+    window.addEventListener('wheel', this.handleScroll, { passive: false });
     window.addEventListener('touchstart', this.handleTouchStart, { passive: false });
     window.addEventListener('touchmove', this.handleTouchMove, { passive: false });
     window.addEventListener('touchend', this.handleTouchEnd, { passive: false });
@@ -65,7 +63,9 @@ export default {
 
   methods: {
     handleScroll(event) {
-      event.preventDefault(); // 🚀 추가
+      if (event.cancelable) {
+        event.preventDefault();
+      }
       if (event.deltaY > 0 && this.showSection < this.sections.length - 1) {
         this.showSection++;
       } else if (event.deltaY < 0 && this.showSection > 0) {
@@ -73,11 +73,15 @@ export default {
       }
     },
     handleTouchStart(event) {
-      event.preventDefault(); // 🚀 추가
+      if (event.cancelable) {
+        event.preventDefault();
+      }
       this.touchStartY = event.touches[0].clientY;
     },
     handleTouchMove(event) {
-      event.preventDefault(); // 🚀 추가
+      if (event.cancelable) {
+        event.preventDefault();
+      }
       this.touchEndY = event.touches[0].clientY;
     },
     handleTouchEnd() {
@@ -229,7 +233,7 @@ export default {
   align-items: flex-start;
   opacity: 0;
   transform: translateY(100%);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 1.3s ease, transform 1.3s ease;
 }
 
 .section *{

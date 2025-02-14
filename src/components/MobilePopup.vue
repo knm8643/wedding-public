@@ -1,9 +1,9 @@
 <template>
   <div class="mobile-popup">
     <div class="popup-content">
-      <Blooming v-if="dynamicCurrent === 1"/>
+      <Blooming v-if="dynamicCurrent === 0"/>
       <BloomingOrigin v-if="dynamicCurrent === 2"/>
-      <BloomingPlus v-if="dynamicCurrent === 0"/>
+      <BloomingPlus v-if="dynamicCurrent === 1"/>
     </div>
   </div>
 </template>
@@ -58,8 +58,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
-
 
   .popup-content {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 -4px 6px rgba(0, 0, 0, 0.1);

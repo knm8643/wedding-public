@@ -1,38 +1,35 @@
 <template>
-  <div
-      class="gift-wrap"
-      :class="{ 'animate-visible': isVisible }"
-      ref="gift"
-  >
-    <div class="gift-title">
-      <h3>마음 전달하기</h3>
-    </div>
+  <div class="blooming-default">
+    <button class="call-button groom text_02" @pointerdown="callGroom">신랑에게 전화하기</button>
+    <button class="call-button bride text_02" @pointerdown="callBride">신부에게 전화하기</button>
+    <button class="gift-button text_02" @pointerdown="toggleGiftInfo">마음 전달하기</button>
 
-    <div class="gift-info-wrap">
-      <div class="font-wrap">
+    <div class="gift-info-wrap" :class="showGiftInfo ? 'show' : ''">
+      <button class="close-btn" @pointerdown="toggleGiftInfo">×</button>
+      <div class="font-wrap text_02">
         <h3>신부측</h3>
         <p>
           신부 : 0111-212312213-21 (신한은행)
-          <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-21')"></i>
+          <i class="fas fa-copy copy-icon" @pointerdown="copyToClipboard('0111-212312213-21')"></i>
         </p>
         <p>
           신부 어머니 : 0111-212312213-22 (신한은행)
-          <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-22')"></i>
+          <i class="fas fa-copy copy-icon" @pointerdown="copyToClipboard('0111-212312213-22')"></i>
         </p>
       </div>
-      <div class="font-wrap">
+      <div class="font-wrap text_02" >
         <h3>신랑측</h3>
         <p>
           신랑 : 0111-212312213-21 (카카오뱅크)
-          <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-21')"></i>
+          <i class="fas fa-copy copy-icon" @pointerdown="copyToClipboard('0111-212312213-21')"></i>
         </p>
         <p>
           신랑 어머니 : 0111-212312213-22 (카카오뱅크)
-          <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-22')"></i>
+          <i class="fas fa-copy copy-icon" @pointerdown="copyToClipboard('0111-212312213-22')"></i>
         </p>
         <p>
           신랑 아버지 : 0111-212312213-23 (카카오뱅크)
-          <i class="fas fa-copy copy-icon" @click="copyToClipboard('0111-212312213-23')"></i>
+          <i class="fas fa-copy copy-icon" @pointerdown="copyToClipboard('0111-212312213-23')"></i>
         </p>
       </div>
     </div>
@@ -40,104 +37,164 @@
 </template>
 
 <script>
-
 export default {
-  name: "giftDefaultInfo",
   data() {
     return {
-      isVisible: false,
+      showGiftInfo: false,
     };
   },
-  mounted() {
-    const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            this.isVisible = true;
-            observer.disconnect();
-          }
-        },
-        { threshold: 0.4 }
-    );
-
-    observer.observe(this.$refs.gift);
-  },
-
   methods: {
-    copyToClipboard(number) {
-      const textArea = document.createElement('textarea');
-      textArea.value = number;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textArea);
-      alert("복사되었습니다.")
+    callGroom() {
+      window.location.href = 'tel:01056961909';
     },
-  },
+    callBride() {
+      window.location.href = 'tel:01056961909';
+    },
+    toggleGiftInfo() {
+      this.showGiftInfo = !this.showGiftInfo;
+    },
+    copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert('계좌번호가 복사되었습니다!');
+      });
+    }
+  }
 };
 </script>
-<style scoped>
-.gift-wrap {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1.5s ease, transform 1.5s ease;
-  justify-self: center;
-  padding: 0 0 12px;
+
+<style>
+.blooming-default {
+  text-align: center;
+  padding: 10rem 0 0;
   width: 100%;
-
-  .gift-title {
-    h3{
-      text-align: center;
-      color:  #191c21;
-      font-size: 21px;
-      font-weight: 700;
-      padding-bottom: 16px;
-    }
-  }
-
-  .gift-info-wrap{
-    padding: 44px 0 12px;
-    margin: 12px 24px 24px;
-    border-top: 0.6px solid #b0b0b0;
-    .font-wrap {
-      position: relative;
-      padding: 12px 0;
-
-      h3 {
-        font-weight: 700;
-        padding-bottom: 16px;
-        white-space: nowrap;
-        font-size: 16px;
-        color: #E57373;
-      }
-      p {
-        font-weight: 500;
-        font-size: 14px;
-        color: #555;
-        margin-bottom: 10px;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        max-width: calc(100% - 30px);
-        line-height: 1.6;
-      }
-
-      .copy-icon {
-        cursor: pointer;
-        color: #fa8ea8;
-        transition: color 0.3s;
-        margin-left: 10px;
-        position: absolute;
-        right: 10px;
-      }
-
-      .copy-icon:hover {
-        color: #E57373;
-      }
-    }
-  }
+}
+.call-button, .gift-button {
+  display: block;
+  width: 80%;
+  margin: 10px auto 2rem;
+  padding: 10px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.call-button {
+  padding: 0.5rem 16px;
+  background-color: #eee;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.gift-button {
+  padding: 0.5rem 16px;
+  background-color: #fff1f3;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6rem;
+  gap: 6px;
+}
+.gift-info-wrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+  padding: 25px;
+  text-align: left;
+  transform: translateY(100%);
+  transition: transform 0.4s ease-out, opacity 0.3s ease-out;
+  z-index: 1000;
+  border-radius: 20px 20px 0 0;
+  opacity: 0;
 }
 
-.gift-wrap.animate-visible {
-  opacity: 1;
+.gift-info-wrap.show {
   transform: translateY(0);
+  opacity: 1;
+}
+
+.font-wrap {
+  margin-bottom: 20px;
+}
+
+.font-wrap h3 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.font-wrap p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.font-wrap p i {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #4A90E2;
+  transition: color 0.3s ease;
+}
+
+.font-wrap p i:hover {
+  color: #1D65B8;
+}
+
+.gift-info-wrap .copy-icon {
+  cursor: pointer;
+  color: #4A90E2;
+  font-size: 1.1rem;
+  margin-left: 8px;
+}
+
+.gift-info-wrap .copy-icon:hover {
+  color: #1D65B8;
+}
+
+.gift-info-wrap .font-wrap:last-child {
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+  margin-top: 15px;
+}
+
+.gift-info-wrap .font-wrap p {
+  font-size: 1rem;
+}
+
+.gift-info-wrap .footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.gift-info-wrap .footer p {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #d9534f;
 }
 </style>

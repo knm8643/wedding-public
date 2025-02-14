@@ -36,12 +36,12 @@
     <div class="content-fmInfo text_03">
       <div class="fmInfo">
         <p>김두환 · 홍길동</p>
-        <span>의 아들</span>
+        <span>의 외동</span>
         <p>충디딥</p>
       </div>
       <div class="fmInfo">
-        <p>이두환</p>
-        <span>의 딸</span>
+        <p>김두환 · 홍길동</p>
+        <span>의 삼녀</span>
         <p>유디딥</p>
       </div>
     </div>
@@ -102,7 +102,7 @@ export default {
 
   .content-fmInfo{
     margin: 2.5rem 2rem 2rem;
-    padding: 1rem;
+    padding: 1.2rem 1rem;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
 
@@ -110,6 +110,9 @@ export default {
       display: flex;
       justify-content: center;
       gap: 0.5rem;
+      &:first-child {
+        padding-bottom: 1rem;
+      }
     }
   }
 }
