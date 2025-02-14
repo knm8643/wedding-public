@@ -22,7 +22,7 @@ export default {
 <style scoped>
 .calender-wrap {
   justify-self: center;
-  padding: 62px 0;
+  padding: 52px 0;
   width: 100%;
   .calender-main-wrap {
     margin: 0 32px;

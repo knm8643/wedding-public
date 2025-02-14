@@ -7,7 +7,7 @@
 
     <div class="address-main-font">
       <p class="big_01">오시는 길</p>
-      <span class="text_02">서울특별시 용산구 용산동 1가 8번지 <br/>로얄파크컨벤션 1층</span>
+      <span class="big_02">서울특별시 용산구 용산동 1가 8번지 <br/>로얄파크컨벤션 1층</span>
     </div>
 
     <div class="address-map">
@@ -146,7 +146,7 @@ export default {
   transform: translateY(30px);
   transition: opacity 1.5s ease, transform 1.5s ease;
   justify-self: center;
-  padding: 4.5rem 0 0;
+  padding: 3.2rem 0 0;
   width: 100%;
 
   .address-main-font{
@@ -184,13 +184,12 @@ export default {
 
   .address-nav-wrap{
     color: #555555;
-    padding: 2.6rem 3rem 24px;
+    padding: 2.6rem 1.6rem 24px;
     position: relative;
     .kakao-wrap {
       width: 100%;
       .google-main {
-        margin-bottom: 1.2rem;
-        background-color: #fff1f3!important;
+        margin-bottom: 1.4rem;
       }
 
       .google-main,

@@ -93,14 +93,14 @@ export default {
 
   .image-item {
     width: 100%;
-    height: 70vh;
+    height: 60vh;
     object-fit: cover;
   }
 
   .scroll-instruction {
     text-align: center;
     width: 100%;
-    padding: 24px;
+    padding: 2.1rem 24px;
 
 
     .scroll-arrow {
@@ -108,7 +108,7 @@ export default {
     }
 
     p {
-      padding-top: 0.9rem;
+      padding-top: 1.6rem;
     }
   }
 
