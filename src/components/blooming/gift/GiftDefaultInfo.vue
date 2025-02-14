@@ -116,6 +116,7 @@ export default {
 }
 
 .gift-info-wrap.show {
+  padding-bottom: 6rem;
   transform: translateY(0);
   opacity: 1;
 }
@@ -185,7 +186,7 @@ export default {
 .close-btn {
   position: absolute;
   top: 15px;
-  right: 15px;
+  right: 21px;
   background: none;
   border: none;
   font-size: 1.5rem;

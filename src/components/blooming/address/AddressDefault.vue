@@ -6,7 +6,7 @@
   >
 
     <div class="address-main-font">
-      <p class="big_01">오시는 길</p>
+      <p class="big_02">오시는 길</p>
       <span class="big_02">서울특별시 용산구 용산동 1가 8번지 <br/>로얄파크컨벤션 1층</span>
     </div>
 
@@ -63,7 +63,6 @@ export default {
   methods: {
     // 내비게이션 실행
     startNavigation(param) {
-      console.log('??')
       const lat = this.latitude;  // 목적지 위도
       const lng = this.longitude; // 목적지 경도
       const name = '서울특별시 용산구 용산동 1가 8번지'    // 목적지 이름 (옵션)
@@ -184,7 +183,7 @@ export default {
 
   .address-nav-wrap{
     color: #555555;
-    padding: 2.6rem 1.6rem 24px;
+    padding: 2rem 1.6rem 24px;
     position: relative;
     .kakao-wrap {
       width: 100%;
@@ -221,6 +220,10 @@ export default {
           transform: scale(1.05);
           box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
         }
+      }
+
+      .kakao-main{
+        background-color: #fff1f3!important;
       }
     }
   }

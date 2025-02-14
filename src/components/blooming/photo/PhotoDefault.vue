@@ -93,7 +93,7 @@ export default {
 
   .image-item {
     width: 100%;
-    height: 60vh;
+    height: 65vh;
     object-fit: cover;
   }
 
