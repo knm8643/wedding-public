@@ -9,27 +9,31 @@
       <div class="font-wrap text_02">
         <h3>신부측</h3>
         <p>
-          신부 : 0111-212312213-21 (신한은행)
-          <i class="fas fa-copy copy-icon" @pointerdown="copyToClipboard('0111-212312213-21')"></i>
+         신부 : 0111-212312213-21 (신한은행)
+          <i class="copy-icon" @pointerdown="copyToClipboard('0111-212312213-21')">
+            복사
+          </i>
         </p>
         <p>
           신부 어머니 : 0111-212312213-22 (신한은행)
-          <i class="fas fa-copy copy-icon" @pointerdown="copyToClipboard('0111-212312213-22')"></i>
+          <i class="copy-icon" @pointerdown="copyToClipboard('0111-212312213-22')">
+            복사
+          </i>
         </p>
       </div>
       <div class="font-wrap text_02" >
         <h3>신랑측</h3>
         <p>
           신랑 : 0111-212312213-21 (카카오뱅크)
-          <i class="fas fa-copy copy-icon" @pointerdown="copyToClipboard('0111-212312213-21')"></i>
+          <i class="copy-icon" @pointerdown="copyToClipboard('0111-212312213-21')">복사</i>
         </p>
         <p>
           신랑 어머니 : 0111-212312213-22 (카카오뱅크)
-          <i class="fas fa-copy copy-icon" @pointerdown="copyToClipboard('0111-212312213-22')"></i>
+          <i class="copy-icon" @pointerdown="copyToClipboard('0111-212312213-22')">복사</i>
         </p>
         <p>
           신랑 아버지 : 0111-212312213-23 (카카오뱅크)
-          <i class="fas fa-copy copy-icon" @pointerdown="copyToClipboard('0111-212312213-23')"></i>
+          <i class="copy-icon" @pointerdown="copyToClipboard('0111-212312213-23')">복사</i>
         </p>
       </div>
     </div>
