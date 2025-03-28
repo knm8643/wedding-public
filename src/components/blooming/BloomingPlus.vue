@@ -151,7 +151,7 @@ export default {
 }
 .blooming-wrap {
   position: relative;
-  background-color: #ffffff;
+  background-color: #F7F7F7;
   min-height: 100%;
   overflow: hidden;
   scrollbar-width: none;

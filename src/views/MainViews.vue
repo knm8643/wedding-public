@@ -55,7 +55,7 @@
           <div class="li-font">
             <p class="text_02">
               직접 수정이 어렵다면 하단 문의하기를 클릭하세요.
-              맞춤 제작을 도와드립니다.
+              맞춤 제작 및 배포 도와드립니다.
             </p>
           </div>
         </li>
@@ -84,8 +84,8 @@
     <footer class="footer">
       <ul class="footer-container">
         <li>
-          <a href="https://pf.kakao.com/_xjmCjn/chat" target="_blank">
-          카카오톡 문의하기
+          <a href="https://pf.kakao.com/_xjmCjn/chat" target="_blank" class="contact-link">
+            카카오톡 문의하기
           </a>
         </li>
         <li>
@@ -120,8 +120,8 @@ export default {
       isPopupVisible: false,
       isMenuOpen: false,
       templates: [
-        { id: 1, name: '심플 초대장', description: '최소한의 디자인으로 감성을 더한 초대장', image: img },
-        { id: 2, name: '모던 초대장', description: '깔끔하고 세련된 디자인의 초대장', image: null },
+        { id: 1, name: '심플 초대장', description: '최소한의 디자인 속에 따뜻한 초대장', image: null },
+        { id: 2, name: '핑크빛 초대장', description: '봄날의 설렘을 닮은 초대장', image: null },
         { id: 3, name: '클래식 초대장', description: '우아하고 전통적인 스타일의 초대장', image: null },
       ],
     };
@@ -324,17 +324,20 @@ main {
 // --- 아이템 리스트
 // ------------------
 .template-list {
-  margin: 2rem 0 3rem;
+  padding-bottom: 2rem;
+  margin: 0 0 3rem;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+
   .template-cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 0.9rem;
+    gap: 1.65rem;
   }
 
   .template-card {
     border-radius: 0.1rem;
     background-color: #fff;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    //box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -388,7 +391,7 @@ main {
     .img-font-wrap{
       width: 100%;
       text-align: left;
-      padding: 1rem 0 2rem;
+      //padding: 1rem 0 2rem;
     }
   }
 }
@@ -402,7 +405,7 @@ main {
   margin-bottom: 1rem;
 
   .footer-container {
-    li:last-child{
+    li:last-child {
       font-style: italic;
       margin-top: 0.7rem;
       display: flex;
@@ -425,16 +428,18 @@ main {
       align-items: center;
       gap: 0.5rem;
       margin-left: 0.2rem;
+      transition: color 0.3s;
 
       .footer-icon {
         fill: #666;
         transition: fill 0.3s;
         &:hover {
-          fill: #007bff;
+          fill: rgb(37 99 235);
         }
       }
 
       &:hover {
+        color: #007bff;
         text-decoration: underline;
       }
     }
