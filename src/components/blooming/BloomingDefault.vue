@@ -23,12 +23,13 @@ import CalenderDefault from "@/components/blooming/calender/CalenderDefault.vue"
 import AddressDefault from "@/components/blooming/address/AddressDefault.vue";
 import GiftDefaultInfo from "@/components/blooming/gift/GiftDefaultInfo.vue";
 import cherry from "@/assets/svg/cherryBlossoms.svg";
-import { markRaw } from 'vue';
+import { markRaw ,computed} from 'vue';
 
 export default {
   name: "BloomingDefault",
   data() {
     return {
+      scrollLocked: false,
       sections: [
         { title: 'Big Banner', description: 'This is the big banner section.', component: markRaw(BigBannerDefault) },
         { title: 'Intro', description: 'This is the intro section.', component: markRaw(IntroDefault) },
@@ -40,6 +41,14 @@ export default {
       showSection: 0,
       touchStartY: 0,
       touchEndY: 0
+    };
+  },
+  provide() {
+    return {
+      scrollLocked: computed({
+        get: () => this.scrollLocked,
+        set: (val) => this.scrollLocked = val
+      })
     };
   },
   mounted() {
@@ -63,9 +72,8 @@ export default {
 
   methods: {
     handleScroll(event) {
-      if (event.cancelable) {
-        event.preventDefault();
-      }
+      if (this.scrollLocked || !event.cancelable) return;
+      event.preventDefault();
       if (event.deltaY > 0 && this.showSection < this.sections.length - 1) {
         this.showSection++;
       } else if (event.deltaY < 0 && this.showSection > 0) {
@@ -73,18 +81,18 @@ export default {
       }
     },
     handleTouchStart(event) {
-      if (event.cancelable) {
-        event.preventDefault();
-      }
+      if (this.scrollLocked || !event.cancelable) return;
+      event.preventDefault();
       this.touchStartY = event.touches[0].clientY;
     },
     handleTouchMove(event) {
-      if (event.cancelable) {
-        event.preventDefault();
-      }
+      if (this.scrollLocked || !event.cancelable) return;
+      event.preventDefault();
       this.touchEndY = event.touches[0].clientY;
     },
     handleTouchEnd() {
+      if (this.scrollLocked) return;
+
       if (this.touchStartY - this.touchEndY > 60 && this.showSection < this.sections.length - 1) {
         this.showSection++;
       } else if (this.touchEndY - this.touchStartY > 60 && this.showSection > 0) {

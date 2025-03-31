@@ -3,7 +3,7 @@
     <button class="call-button groom text_02" @pointerdown="callGroom">신랑에게 전화하기</button>
     <button class="call-button bride text_02" @pointerdown="callBride">신부에게 전화하기</button>
     <button class="gift-button text_02" @pointerdown="toggleGiftInfo">마음 전달하기</button>
-
+    <div v-if="showGiftInfo" class="dimmed-bg" @pointerdown="toggleGiftInfo"></div>
     <div class="gift-info-wrap" :class="showGiftInfo ? 'show' : ''">
       <button class="close-btn" @pointerdown="toggleGiftInfo">×</button>
       <div class="font-wrap text_02">
@@ -47,6 +47,7 @@ export default {
       showGiftInfo: false,
     };
   },
+  inject: ['scrollLocked'],
   methods: {
     callGroom() {
       window.location.href = 'tel:01056961909';
@@ -56,6 +57,11 @@ export default {
     },
     toggleGiftInfo() {
       this.showGiftInfo = !this.showGiftInfo;
+
+      this.$nextTick(() => {
+        this.scrollLocked = this.showGiftInfo;
+        document.body.style.overflow = this.showGiftInfo ? 'hidden' : '';
+      });
     },
     copyToClipboard(text) {
       navigator.clipboard.writeText(text).then(() => {
@@ -103,6 +109,16 @@ export default {
   margin-top: 6rem;
   gap: 6px;
 }
+.dimmed-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
 .gift-info-wrap {
   position: fixed;
   bottom: 0;
@@ -120,7 +136,7 @@ export default {
 }
 
 .gift-info-wrap.show {
-  padding-bottom: 6rem;
+  padding-bottom: 6.5rem;
   transform: translateY(0);
   opacity: 1;
 }
