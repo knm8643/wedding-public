@@ -34,7 +34,7 @@
 
 ---
 
-## 🚀 프로젝트 사용법 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fknm8643%2Fwedding-public&count_bg=%23000000&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+## 🚀 프로젝트 사용법 
 
 1️⃣ **원하는 템플릿 선택** – 메인 페이지에서 탐색  
 2️⃣ **템플릿 세부 정보 확인 & 공유** – 클릭하여 확인하고 링크 복사  
