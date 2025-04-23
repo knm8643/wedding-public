@@ -75,7 +75,7 @@
             <p class="template-name text_05">{{ template.name }}</p>
             <span class="text_02">{{ template.description }}</span>
           </div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M9 18l6-6-6-6" />
           </svg>
         </div>
@@ -333,7 +333,7 @@ main {
   .template-cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.6rem;
+    gap: 2.1rem;
   }
 
   .template-card {
@@ -345,12 +345,12 @@ main {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 24px;
-    border: 1px solid #ddd;
+    //padding: 24px;
+    //border: 1px solid #ddd;
 
     &:hover {
       transform: translateY(-5px);
-      background-color: #f6f7f8;
+      //background-color: #f6f7f8;
     }
 
     &:hover{
