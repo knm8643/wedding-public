@@ -45,11 +45,11 @@
         <li>
           <div class="li-wrap">
             <h2 class="text_05">제작문의
-              <svg @click="goPush" width="14" height="14" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="24" cy="24" r="22" stroke="#555" stroke-width="4" fill="none"/>
-                <line x1="24" y1="14" x2="24" y2="28" stroke="#555" stroke-width="4" stroke-linecap="round"/>
-                <circle cx="24" cy="34" r="2.5" fill="#555"/>
-              </svg>
+<!--              <svg @click="goPush" width="14" height="14" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--                <circle cx="24" cy="24" r="22" stroke="#555" stroke-width="4" fill="none"/>-->
+<!--                <line x1="24" y1="14" x2="24" y2="28" stroke="#555" stroke-width="4" stroke-linecap="round"/>-->
+<!--                <circle cx="24" cy="34" r="2.5" fill="#555"/>-->
+<!--              </svg>-->
             </h2>
           </div>
           <div class="li-font">
@@ -72,10 +72,12 @@
             <img :src="template.image" alt="Template Image" class="template-image">
           </div>
           <div class="img-font-wrap" :style="template.image ? { padding: '2rem 0 2rem' } : {}">
-<!--          <div class="img-font-wrap" >-->
             <p class="template-name text_05">{{ template.name }}</p>
             <span class="text_02">{{ template.description }}</span>
           </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
         </div>
       </div>
     </section>
@@ -324,29 +326,31 @@ main {
 // --- 아이템 리스트
 // ------------------
 .template-list {
-  padding-bottom: 2rem;
-  margin: 0 0 3rem;
+  padding-bottom: 2.5rem;
+  margin: 0 0 2rem;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 
   .template-cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 2.1rem;
+    gap: 1.6rem;
   }
 
   .template-card {
-    border-radius: 0.1rem;
+    border-radius: 0.5rem;
     background-color: #fff;
     //box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 24px;
+    border: 1px solid #ddd;
 
     &:hover {
       transform: translateY(-5px);
+      background-color: #f6f7f8;
     }
 
     &:hover{
@@ -406,7 +410,6 @@ main {
 
   .footer-container {
     li:last-child {
-      font-style: italic;
       margin-top: 0.7rem;
       display: flex;
       justify-content: right;
