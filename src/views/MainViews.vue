@@ -10,6 +10,12 @@
 
     </header>
 
+    <ins class="kakao_ad_area" style="display:none;"
+         data-ad-unit = "DAN-sTUDpUwdWGann1rV"
+         data-ad-width = "320"
+         data-ad-height = "100"></ins>
+    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+
     <!-- 광고 배너 -->
     <section class="ad-banner">
       <a href="https://github.com/knm8643/wedding-public" target="_blank" class="ad-link placeholder-banner">
