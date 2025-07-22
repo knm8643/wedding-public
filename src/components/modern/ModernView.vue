@@ -159,11 +159,14 @@ export default {
   name: 'modernView',
   mounted() {
     // 로딩 화면
-    document.addEventListener('DOMContentLoaded', function () {
-      setTimeout(() => {
-        document.getElementById('loader').classList.add('hidden');
-      }, 1000);
-    });
+    function hideLoader() {
+      const loader = document.getElementById('loader');
+      if (loader) loader.classList.add('hidden');
+    }
+    // Safari 등에서 window.onload가 트리거되지 않는 경우 대비
+    window.addEventListener('load', hideLoader);
+    // fallback: 3초 뒤 강제로 로딩 화면 제거
+    setTimeout(hideLoader, 3000);
 
     // 스크롤 애니메이션
     const observerOptions = {
@@ -426,7 +429,7 @@ body {
     align-items: center;
     justify-content: center;
     z-index: 9999;
-    transition: opacity 0.5s ease;
+    transition: opacity 1s ease;
   }
 
   .loader.hidden {
