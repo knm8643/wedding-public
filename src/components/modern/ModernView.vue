@@ -765,6 +765,12 @@ body {
     font-family: inherit;
   }
 
+  .btn:hover {
+    background: #fff;
+    color: #000;
+    transform: translateY(-2px);
+  }
+
   // Override .btn only inside .account-item
   .account-item .btn {
     display: inline-block;
@@ -777,14 +783,12 @@ body {
     border: 1px solid #000;
     border-radius: 4px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transform: translateY(0);
+    transition: transform 0.3s ease, background 0.3s ease;
+    will-change: transform;
   }
 
   .account-item .btn:hover {
-    background-color: #333;
-  }
-
-  .btn:hover {
     background: #fff;
     color: #000;
     transform: translateY(-2px);
