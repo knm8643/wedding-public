@@ -541,6 +541,9 @@ body {
     font-size: 0.7rem;
     letter-spacing: 2px;
     writing-mode: vertical-rl;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   /* 섹션 공통 */
