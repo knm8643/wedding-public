@@ -35,5 +35,10 @@ Copyright (c) knm8643 All rights reserved.
   }
 }
 </script>
+<style>
+#app{
+  background-color: #f0f0f0;
+}
+</style>
 
 

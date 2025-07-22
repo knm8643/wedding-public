@@ -1,9 +1,13 @@
 <template>
   <div class="mobile-popup">
     <div class="popup-content">
+      <!-- 벚꽃형식 -->
       <Blooming v-if="dynamicCurrent === 0"/>
       <BloomingOrigin v-if="dynamicCurrent === 2"/>
       <BloomingPlus v-if="dynamicCurrent === 1"/>
+
+      <!-- 블랙앤 화이트 -->
+      <ModernView v-if="dynamicCurrent === 3"/>
     </div>
   </div>
 </template>
@@ -12,9 +16,10 @@
 import Blooming from "@/components/blooming/BloomingDefault.vue";
 import BloomingOrigin from "@/components/blooming/BloomingOrigin.vue";
 import BloomingPlus from "@/components/blooming/BloomingPlus.vue";
+import ModernView from "@/components/modern/ModernView.vue";
 
 export default {
-  components: {Blooming,BloomingOrigin,BloomingPlus},
+  components: {Blooming,BloomingOrigin,BloomingPlus, ModernView},
   name:"MobilePopup",
   props:{
     current: {
@@ -53,7 +58,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(100px);
   z-index: 1000;
   display: flex;
   justify-content: center;
