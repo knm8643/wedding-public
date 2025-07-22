@@ -62,7 +62,7 @@
           </div>
           <div class="li-font">
             <p class="text_02">
-              직접 수정이 어렵다면 하단 문의하기를 클릭하세요.
+              직접 수정이 어렵다면 하단 카카오톡 문의하기를 클릭하세요.
               맞춤 제작 및 배포 도와드립니다.
             </p>
           </div>
@@ -190,7 +190,7 @@ main {
 // ------------------
 .header {
   text-align: left;
-  margin: 2rem 0;
+  margin: 2rem 0 1rem;
   font-family: 'LINESeedKR', sans-serif !important;
   .site-description {
     margin-top: 1rem;
