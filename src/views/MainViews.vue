@@ -14,14 +14,14 @@
          data-ad-unit = "DAN-sTUDpUwdWGann1rV"
          data-ad-width = "320"
          data-ad-height = "100"></ins>
-    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+    <!--    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>-->
 
     <!-- 광고 배너 -->
-    <section class="ad-banner">
-      <a href="https://github.com/knm8643/wedding-public" target="_blank" class="ad-link placeholder-banner">
-        소스가 궁금하세요?<br>누구든지 볼수 있게 오픈했습니다.
-      </a>
-    </section>
+    <!--    <section class="ad-banner">-->
+    <!--      <a href="https://github.com/knm8643/wedding-public" target="_blank" class="ad-link placeholder-banner">-->
+    <!--        소스가 궁금하세요?<br>누구든지 볼수 있게 오픈했습니다.-->
+    <!--      </a>-->
+    <!--    </section>-->
 
     <!-- 이용방법 -->
     <section class="hero">
@@ -134,6 +134,11 @@ export default {
     };
   },
   mounted() {
+    const s = document.createElement('script');
+    s.src = '//t1.daumcdn.net/kas/static/ba.min.js';
+    s.async = true;
+    document.body.appendChild(s);
+
     this.urlCheck();
   },
 
