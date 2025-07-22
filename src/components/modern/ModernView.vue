@@ -159,7 +159,7 @@ export default {
   name: 'modernView',
   mounted() {
     // 로딩 화면
-    window.addEventListener('load', function () {
+    document.addEventListener('DOMContentLoaded', function () {
       setTimeout(() => {
         document.getElementById('loader').classList.add('hidden');
       }, 1000);
