@@ -417,6 +417,7 @@ body {
 }
 
 .modern-wrapper {
+  overflow: hidden;
   /* 로딩 애니메이션 */
   .loader {
     position: fixed;
